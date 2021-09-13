@@ -11,8 +11,14 @@ function update_position(){
 
 	if (follow != noone)
 	{
-		x_to = follow.x;
-		y_to = follow.y;
+		if (x < follow.x - global.camera_drag_left)
+			x_to = follow.x - global.camera_drag_left;
+		else if (x > follow.x + global.camera_drag_right)
+			x_to = follow.x + global.camera_drag_left;
+		if (y < follow.y - global.camera_drag_top)
+			y_to = follow.y - global.camera_drag_top;
+		else if (y > follow.y + global.camera_drag_bottom)
+			y_to = follow.y + global.camera_drag_bottom;
 	}
 	
 	// Bound the camera's viewport within the room

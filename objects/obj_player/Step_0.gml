@@ -1,17 +1,14 @@
 /// @description Handle motion
 
-var key_left = keyboard_check(vk_left);
-var key_right = keyboard_check(vk_right);
-var key_run = keyboard_check(vk_tab) or keyboard_check(vk_shift);
+var key_left = keyboard_check(vk_left) || keyboard_check(ord("A"))
+var key_right = keyboard_check(vk_right) || keyboard_check(ord("D"));
+var key_jump = keyboard_check(vk_space) || keyboard_check(ord("W")) || mouse_check_button(mb_left);;
+var key_run = keyboard_check(vk_tab) || keyboard_check(vk_shift) || mouse_check_button(mb_right);;
 
 // Horizontal motion
 
 // Check keypresses to determine desired direction of motion
 var dir = key_right - key_left;
-
-if key_right{
-	var _temp=1;
-}
 
 // Get the current direction of motion before any adjustments, and ensure not 0
 last_dir = current_dir;
@@ -292,7 +289,7 @@ x += hsp;
 // Vertical motion
 
 // Jumping
-if keyboard_check(vk_space)
+if key_jump
 {
 	var jump_factor = 1;
 	var jump_sound = snd_player_jump;
@@ -322,7 +319,7 @@ if keyboard_check(vk_space)
 		vsp = jump_factor * global.jump_init_vspeed;
 		set_jump_state_jump();
 		audio_play_sound(jump_sound,0,false)
-		instance_create_layer(x,y,"Effects",jump_effect)
+		instance_create_layer(x,y,"Effects_between",jump_effect)
 		space_released = false;
 		coyote_time = 0;
 		break;

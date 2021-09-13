@@ -76,7 +76,11 @@ global.gravity_rise_vaccel = 0.9
 global.gravity_fall_vaccel = 1.4
 
 // Camera controls
-global.camera_x_speed = 0.04;
-global.camera_y_speed = 0.04;
+global.camera_x_speed = 0.2;
+global.camera_y_speed = 0.2;
+global.camera_drag_left = 140;
+global.camera_drag_right = 140;
+global.camera_drag_bottom = 70;
+global.camera_drag_top = 70;
 global.viewport_width = 1366;
 global.viewport_height = 768;

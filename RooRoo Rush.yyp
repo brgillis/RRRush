@@ -13,6 +13,7 @@
     {"id":{"name":"spr_jump_effect","path":"sprites/spr_jump_effect/spr_jump_effect.yy",},"order":0,},
     {"id":{"name":"spr_player_walk","path":"sprites/spr_player_walk/spr_player_walk.yy",},"order":4,},
     {"id":{"name":"spr_full_player_jump_idle","path":"sprites/spr_full_player_jump_idle/spr_full_player_jump_idle.yy",},"order":1,},
+    {"id":{"name":"spr_background_grassland_tall","path":"sprites/spr_background_grassland_tall/spr_background_grassland_tall.yy",},"order":4,},
     {"id":{"name":"scr_init","path":"scripts/scr_init/scr_init.yy",},"order":0,},
     {"id":{"name":"spr_player_idle","path":"sprites/spr_player_idle/spr_player_idle.yy",},"order":5,},
     {"id":{"name":"spr_full_player_idle","path":"sprites/spr_full_player_idle/spr_full_player_idle.yy",},"order":0,},
