@@ -30,13 +30,22 @@ function tile_meeting_precise(argument0, argument1, argument2){
 	var _layer = argument2,
 	    _tm = layer_tilemap_get_id(_layer),
 	    _checker = obj_precise_tile_checker;
-	if(!instance_exists(_checker)) instance_create_depth(0,0,0,_checker); 
+	if(!instance_exists(_checker)) instance_create_depth(0,0,0,_checker);
+	
+	var _x_left =  bbox_left + (argument0 - x);
+	var _y_top =  bbox_top + (argument1 - y);
+	var _x_right =  bbox_right + (argument0 - x);
+	var _y_bottom =  bbox_bottom + (argument1 - y);
+	
+	// Check for left/right/bottom boundary collision
+	if (_x_left < 0) or (_x_right > room_width) or (_y_bottom > room_height)
+		return true;
 
 
-	var _x1 = tilemap_get_cell_x_at_pixel(_tm, bbox_left + (argument0 - x), y),
-	    _y1 = tilemap_get_cell_y_at_pixel(_tm, x, bbox_top + (argument1 - y)),
-	    _x2 = tilemap_get_cell_x_at_pixel(_tm, bbox_right + (argument0 - x), y),
-	    _y2 = tilemap_get_cell_y_at_pixel(_tm, x, bbox_bottom + (argument1 - y));
+	var _x1 = tilemap_get_cell_x_at_pixel(_tm, _x_left, y),
+	    _y1 = tilemap_get_cell_y_at_pixel(_tm, x, _y_top),
+	    _x2 = tilemap_get_cell_x_at_pixel(_tm, _x_right, y),
+	    _y2 = tilemap_get_cell_y_at_pixel(_tm, x, _y_bottom);
 
 	for(var _x = _x1; _x <= _x2; _x++){
 	 for(var _y = _y1; _y <= _y2; _y++){

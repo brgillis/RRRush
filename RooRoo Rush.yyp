@@ -21,7 +21,8 @@
     {"id":{"name":"spr_full_player_walk","path":"sprites/spr_full_player_walk/spr_full_player_walk.yy",},"order":5,},
     {"id":{"name":"spr_background_desert","path":"sprites/spr_background_desert/spr_background_desert.yy",},"order":2,},
     {"id":{"name":"scr_tile_meeting","path":"scripts/scr_tile_meeting/scr_tile_meeting.yy",},"order":2,},
-    {"id":{"name":"rm_playroom","path":"rooms/rm_playroom/rm_playroom.yy",},"order":1,},
+    {"id":{"name":"rm_w1_parent","path":"rooms/rm_w1_parent/rm_w1_parent.yy",},"order":1,},
+    {"id":{"name":"rm_playroom","path":"rooms/rm_playroom/rm_playroom.yy",},"order":4,},
     {"id":{"name":"spr_full_player_jump_run","path":"sprites/spr_full_player_jump_run/spr_full_player_jump_run.yy",},"order":2,},
     {"id":{"name":"obj_parent_all_collide","path":"objects/obj_parent_all_collide/obj_parent_all_collide.yy",},"order":1,},
     {"id":{"name":"snd_player_land","path":"sounds/snd_player_land/snd_player_land.yy",},"order":1,},
@@ -32,6 +33,7 @@
     {"id":{"name":"snd_player_walk","path":"sounds/snd_player_walk/snd_player_walk.yy",},"order":2,},
     {"id":{"name":"obj_jump_effect","path":"objects/obj_jump_effect/obj_jump_effect.yy",},"order":6,},
     {"id":{"name":"spr_full_player_jump_walk","path":"sprites/spr_full_player_jump_walk/spr_full_player_jump_walk.yy",},"order":3,},
+    {"id":{"name":"obj_camera","path":"objects/obj_camera/obj_camera.yy",},"order":9,},
     {"id":{"name":"spr_full_player_run","path":"sprites/spr_full_player_run/spr_full_player_run.yy",},"order":4,},
     {"id":{"name":"spr_background_grassland","path":"sprites/spr_background_grassland/spr_background_grassland.yy",},"order":0,},
     {"id":{"name":"scr_player_state","path":"scripts/scr_player_state/scr_player_state.yy",},"order":1,},
@@ -52,6 +54,7 @@
     "children": [],
   },
   "RoomOrderNodes": [
+    {"roomId":{"name":"rm_w1_parent","path":"rooms/rm_w1_parent/rm_w1_parent.yy",},},
     {"roomId":{"name":"rm_playroom","path":"rooms/rm_playroom/rm_playroom.yy",},},
   ],
   "Folders": [

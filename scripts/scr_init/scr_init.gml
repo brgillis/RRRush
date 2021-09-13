@@ -74,3 +74,9 @@ global.total_coyote_time = 5
 // Gravity
 global.gravity_rise_vaccel = 0.9
 global.gravity_fall_vaccel = 1.4
+
+// Camera controls
+global.camera_x_speed = 0.04;
+global.camera_y_speed = 0.04;
+global.viewport_width = 1366;
+global.viewport_height = 768;
