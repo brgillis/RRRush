@@ -72,5 +72,5 @@ global.super_jump_factor = 1.25
 global.total_coyote_time = 5
 
 // Gravity
-global.gravity_rise_vaccel = 1
-global.gravity_fall_vaccel = 1.5
+global.gravity_rise_vaccel = 0.9
+global.gravity_fall_vaccel = 1.4

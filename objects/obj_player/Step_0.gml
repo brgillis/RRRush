@@ -231,18 +231,15 @@ if (hsp!=0)
 		
 			// Move as close as possible to the object
 			var dx = 1*sign(hsp);
-			while (abs(dx) > 0.9)
+			var loop_count = 0;
+			while (!obj_or_tile_meeting(x+dx, y))
 			{
-				var loop_count = 0;
-				while (!obj_or_tile_meeting(x+dx, y))
-				{
-					x += dx;
-					loop_count += 1;
-					if loop_count > 20 {
-						var _temp = 0;
-					}
+				x += dx;
+				loop_count += 1;
+				if (loop_count > abs(hsp)) {
+					// Something's gone wrong with collision detection, so break out to avoid an infinite loop
+					break;
 				}
-				dx /= 10
 			}
 		
 			hsp = 0;
@@ -258,12 +255,15 @@ if (hsp!=0)
 			var loop_count = 0
 			var dy = 1;
 			slope_down = true;
+			var init_y = y;
 			while !(obj_or_tile_meeting(x+hsp, y+dy))
 			{
 				y += dy;
 				loop_count += 1;
 				if loop_count > 20 {
-					var _temp = 0;
+					// If we get here, something's gone wrong with slope detection. Revert y and let the player fall
+					y = init_y;
+					break;
 				}
 			}
 		}
@@ -368,18 +368,15 @@ if (vsp>0)
 		
 			// Move as close as possible to the object
 			var dy = 1;
-			while (dy > 0.9)
+			var loop_count = 0
+			while !(obj_or_tile_meeting(x, y+dy))
 			{
-				var loop_count = 0
-				while !(obj_or_tile_meeting(x, y+dy))
-				{
-					y += dy;
-					loop_count += 1;
-					if loop_count > 20 {
-						var _temp = 0;
-					}
+				y += dy;
+				loop_count += 1;
+				if (loop_count > abs(vsp)) {
+					// Something's gone wrong with collision detection, so break out to avoid an infinite loop
+					break;
 				}
-				dy /= 10
 			}
 		
 			vsp = 0;
@@ -404,18 +401,15 @@ else if (vsp<0)
 		{
 			// Move as close as possible to the object
 			var dy = -1;
-			while (dy < -0.009)
+			var loop_count = 0
+			while !(obj_or_tile_meeting(x, y+dy))
 			{
-				var loop_count = 0
-				while !(obj_or_tile_meeting(x, y+dy))
-				{
-					y += dy;
-					loop_count += 1;
-					if loop_count > 20 {
-						var _temp = 0;
-					}
+				y += dy;
+				loop_count += 1;
+				if (loop_count > abs(vsp)) {
+					// Something's gone wrong with collision detection, so break out to avoid an infinite loop
+					break;
 				}
-				dy /= 10
 			}
 			vsp = 0;
 		}
