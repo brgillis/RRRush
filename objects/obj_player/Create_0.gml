@@ -8,6 +8,7 @@ hsp = 0;
 vsp = 0;
 
 // Timers for specific states
+flash_time = 0;
 jump_time = 0;
 land_time = 0;
 coyote_time = 0;
@@ -18,7 +19,3 @@ space_released = true;
 // Directions
 current_dir = 1;
 jump_dir = 1;
-
-// Set player scale
-// image_xscale = 0.5
-// image_yscale = 0.5

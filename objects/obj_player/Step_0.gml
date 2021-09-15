@@ -1,9 +1,26 @@
-/// @description Handle motion
+/// @description Handle motion and timers
 
-var key_left = keyboard_check(vk_left) || keyboard_check(ord("A"))
+// Decrease flash time
+if (flash_time > 0)
+	flash_time--;
+
+var key_left = keyboard_check(vk_left) || keyboard_check(ord("A"));
 var key_right = keyboard_check(vk_right) || keyboard_check(ord("D"));
-var key_jump = keyboard_check(vk_space) || keyboard_check(ord("W")) || mouse_check_button(mb_left);;
-var key_run = keyboard_check(vk_tab) || keyboard_check(vk_shift) || mouse_check_button(mb_right);;
+var key_jump = keyboard_check(vk_space) || keyboard_check(ord("W")) || mouse_check_button(mb_left);
+var key_run = keyboard_check(vk_tab) || keyboard_check(vk_shift) || mouse_check_button(mb_right);
+
+// Calculate maximum speed boost due to glitterishness
+
+var glitter_boost = 1 + obj_game.glitterishness/100;
+
+var max_walk_speed = global.walk_speed * glitter_boost;
+var max_run_speed = global.run_speed * glitter_boost;
+var min_idle_air_speed = global.min_idle_air_speed * glitter_boost;
+var max_idle_air_speed = global.max_idle_air_speed * glitter_boost;
+var min_walk_air_speed = global.min_walk_air_speed * glitter_boost;
+var max_walk_air_speed = global.max_walk_air_speed * glitter_boost;
+var min_run_air_speed = global.min_run_air_speed * glitter_boost;
+var max_run_air_speed = global.max_run_air_speed * glitter_boost;
 
 // Horizontal motion
 
@@ -49,7 +66,7 @@ case player_land:
 			hsp += dir*global.walk_accel;
 		
 			// If we exceed maximum walk speed and tab is held, switch to run state
-			if (hsp > global.walk_speed) or (hsp < -global.walk_speed)
+			if (hsp > max_walk_speed) or (hsp < -max_walk_speed)
 			{
 				if (key_run)
 				{
@@ -59,13 +76,13 @@ case player_land:
 				{
 					// Tab not held, so decelerate toward maximum walk speed
 					hsp -= dir*global.run_decel;
-					if (hsp > global.walk_speed)
+					if (hsp > max_walk_speed)
 					{
-						hsp = global.walk_speed;
+						hsp = max_walk_speed;
 					}
-					else if (hsp < -global.walk_speed)
+					else if (hsp < -max_walk_speed)
 					{
-						hsp = -global.walk_speed;
+						hsp = -max_walk_speed;
 					}
 					set_move_state_walk(dir);
 				}
@@ -93,13 +110,13 @@ case player_land:
 				// Accelerate up to maximum run speed
 				hsp += dir*haccel;
 		
-				if (hsp > global.run_speed)
+				if (hsp > max_run_speed)
 				{
-					hsp = global.run_speed
+					hsp = max_run_speed
 				}
-				else if (hsp < -global.run_speed)
+				else if (hsp < -max_run_speed)
 				{
-					hsp = -global.run_speed
+					hsp = -max_run_speed
 				}
 			
 				// Flip the sprite if direction changes
@@ -112,14 +129,14 @@ case player_land:
 			{
 				// Tab not held, so decelerate toward maximum walk speed
 				hsp -= dir*global.run_decel;
-				if (hsp > global.walk_speed)
+				if (hsp > max_walk_speed)
 				{
-					hsp = global.walk_speed;
+					hsp = max_walk_speed;
 					set_move_state_walk(dir);
 				}
-				else if (hsp < -global.walk_speed)
+				else if (hsp < -max_walk_speed)
 				{
-					hsp = -global.walk_speed;
+					hsp = -max_walk_speed;
 					set_move_state_walk(dir);
 				}
 			}
@@ -166,24 +183,24 @@ case player_land_coyote:
 		{
 		case player_idle:
 			var haccel = global.idle_air_accel;
-			var min_air_speed = global.min_idle_air_speed;
-			var max_air_speed = global.max_idle_air_speed;
+			var min_air_speed = min_idle_air_speed;
+			var max_air_speed = max_idle_air_speed;
 			break;
 		case player_walk:
 			var haccel = global.walk_air_accel;
-			var min_air_speed = global.min_walk_air_speed;
-			var max_air_speed = global.max_walk_air_speed;
+			var min_air_speed = min_walk_air_speed;
+			var max_air_speed = max_walk_air_speed;
 			break;
 		case player_run:
 			var haccel = global.run_air_accel;
-			var min_air_speed = global.min_run_air_speed;
-			var max_air_speed = global.max_run_air_speed;
+			var min_air_speed = min_run_air_speed;
+			var max_air_speed = max_run_air_speed;
 			break;
 		default:
 			// Shouldn't be hit, but just in case
 			var haccel = global.idle_air_accel;
-			var min_air_speed = global.min_idle_air_speed;
-			var max_air_speed = global.max_idle_air_speed;
+			var min_air_speed = min_idle_air_speed;
+			var max_air_speed = max_idle_air_speed;
 		}
 		
 		hsp += dir*haccel;
@@ -318,7 +335,7 @@ if key_jump
 		}
 		vsp = jump_factor * global.jump_init_vspeed;
 		set_jump_state_jump();
-		audio_play_sound(jump_sound,0,false)
+		audio_play_sound(jump_sound,1,false)
 		instance_create_layer(x,y,"Effects_between",jump_effect)
 		space_released = false;
 		coyote_time = 0;
@@ -420,7 +437,7 @@ if (land)
 	// If we're falling, set jump state to landing and play sound
 	if ((jump_state==player_jump) or (jump_state==player_rise) or (jump_state==player_fall))
 	{
-		audio_play_sound(snd_player_land,0,false)
+		audio_play_sound(snd_player_land,1,false)
 		set_jump_state_land();
 		update_player_sprite(dir);
 	}

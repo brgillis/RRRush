@@ -78,9 +78,16 @@ global.gravity_fall_vaccel = 1.4
 // Camera controls
 global.camera_x_speed = 0.2;
 global.camera_y_speed = 0.2;
-global.camera_drag_left = 140;
-global.camera_drag_right = 140;
+global.camera_drag_left = 70;
+global.camera_drag_right = 70;
 global.camera_drag_bottom = 70;
 global.camera_drag_top = 70;
 global.viewport_width = 1366;
 global.viewport_height = 768;
+
+// Effects
+global.glitter_rate = 50;
+global.glitter_power = 6;
+ 
+// Init the RNG
+randomize();
