@@ -9,6 +9,8 @@
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"order":0,},
     {"id":{"name":"spr_glitter_particles_greyscale","path":"sprites/spr_glitter_particles_greyscale/spr_glitter_particles_greyscale.yy",},"order":10,},
     {"id":{"name":"snd_puff_collect","path":"sounds/snd_puff_collect/snd_puff_collect.yy",},"order":0,},
+    {"id":{"name":"obj_gui_puff","path":"objects/obj_gui_puff/obj_gui_puff.yy",},"order":1,},
+    {"id":{"name":"seq_gui_puff","path":"sequences/seq_gui_puff/seq_gui_puff.yy",},"order":2,},
     {"id":{"name":"spr_super_jump_effect","path":"sprites/spr_super_jump_effect/spr_super_jump_effect.yy",},"order":2,},
     {"id":{"name":"spr_background_castle","path":"sprites/spr_background_castle/spr_background_castle.yy",},"order":3,},
     {"id":{"name":"spr_tileset_grass","path":"sprites/spr_tileset_grass/spr_tileset_grass.yy",},"order":0,},
