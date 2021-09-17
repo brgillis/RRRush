@@ -107,16 +107,37 @@ case player_land:
 					var haccel = global.run_decel;	
 				}
 				
-				// Accelerate up to maximum run speed
-				hsp += dir*haccel;
 		
 				if (hsp > max_run_speed)
 				{
-					hsp = max_run_speed
+					// Decelerate to maximum run speed
+					hsp -= global.run_decel;
+					if (hsp < max_run_speed)
+					{
+						hsp = max_run_speed;
+					}
 				}
 				else if (hsp < -max_run_speed)
 				{
-					hsp = -max_run_speed
+					// Decelerate to maximum run speed
+					hsp += global.run_decel;
+					if (hsp > -max_run_speed)
+					{
+						hsp = -max_run_speed;
+					}
+				}
+				else
+				{
+					// Accelerate up to maximum run speed
+					hsp += dir*haccel;
+					if (hsp > max_run_speed)
+					{
+						hsp = max_run_speed;
+					}
+					else if (hsp < -max_run_speed)
+					{
+						hsp = -max_run_speed;
+					}
 				}
 			
 				// Flip the sprite if direction changes
@@ -265,7 +286,8 @@ if (hsp!=0)
 		if (!obj_or_tile_meeting(x+2*sign(hsp), y+1) and obj_or_tile_meeting(x+2*sign(hsp), y+3) and
 	        ((jump_state==player_ground) or (jump_state==player_land)))
 		{
-			// Move down along the slope
+			// Speed up and move down along the slope
+			hsp *= global.slope_down_factor;
 			var loop_count = 0
 			var dy = 1;
 			slope_down = true;
@@ -274,7 +296,7 @@ if (hsp!=0)
 			{
 				y += dy;
 				loop_count += 1;
-				if loop_count > 20 {
+				if loop_count > 50 {
 					// If we get here, something's gone wrong with slope detection. Revert y and let the player fall
 					y = init_y;
 					break;

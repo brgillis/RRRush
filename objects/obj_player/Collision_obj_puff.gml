@@ -1,7 +1,7 @@
 /// @description Collect puff
 
 // Increment counter and increase glitterishness
-obj_game.puffs_collected += 1;
+obj_game.glitterpuffs_collected += 10;
 obj_game.glitterishness += 10;
 
 // Burst glitter particles

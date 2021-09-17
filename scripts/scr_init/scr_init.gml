@@ -42,7 +42,7 @@ global.run_speed = 10
 
 // Slopes
 global.slope_up_factor = 0.9
-global.slope_down_run_speed = 15
+global.slope_down_factor = 1.25
 
 // Jumping
 global.total_jump_time = 20
@@ -50,7 +50,7 @@ global.jump_init_vspeed = -12
 global.jump_vaccel = -0.75
 
 // Idle air
-global.idle_air_accel = 0.25*global.walk_accel
+global.idle_air_accel = 0.5*global.walk_accel
 global.min_idle_air_speed = -global.walk_speed
 global.max_idle_air_speed = global.walk_speed
 

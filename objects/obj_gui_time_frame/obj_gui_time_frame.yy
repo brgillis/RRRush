@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_puff_small",
-    "path": "sprites/spr_puff_small/spr_puff_small.yy",
+    "name": "spr_gui_time_frame",
+    "path": "sprites/spr_gui_time_frame/spr_gui_time_frame.yy",
   },
   "solid": false,
   "visible": true,
@@ -31,7 +31,7 @@
     "path": "folders/Objects/GUI.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_gui_puff",
+  "name": "obj_gui_time_frame",
   "tags": [],
   "resourceType": "GMObject",
 }
