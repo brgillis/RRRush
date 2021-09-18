@@ -6,6 +6,7 @@ time_frames = 0;
 puffs_collected = 0;
 glitterpuffs_collected = 0;
 glitterishness = 0;
+level_complete = false;
 
 // Set up the particle system
 
