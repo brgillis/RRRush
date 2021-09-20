@@ -91,3 +91,6 @@ global.glitter_power = 6;
  
 // Init the RNG
 randomize();
+
+// Misc variables
+global._tmp_best_time_frames = 200;

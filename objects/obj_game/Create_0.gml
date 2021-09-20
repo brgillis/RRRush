@@ -8,6 +8,8 @@ glitterpuffs_collected = 0;
 glitterishness = 0;
 level_complete = false;
 
+best_time_frames = global._tmp_best_time_frames;
+
 // Set up the particle system
 
 particle_system_between = part_system_create_layer("Effects_between", 0);
