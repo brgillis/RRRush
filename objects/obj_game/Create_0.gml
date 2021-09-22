@@ -76,3 +76,8 @@ for(var i=0; i<4; ++i)
 	part_type_orientation(particle, 0, 360, 15, 60, true);
 	
 }
+
+// Fade in from a black screen
+
+i_seq_fade_in = layer_sequence_create("Screen_cover",0,0,seq_fade_in);
+alarm_set(0,20)

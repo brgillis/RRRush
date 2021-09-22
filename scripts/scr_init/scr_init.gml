@@ -1,6 +1,6 @@
 // Initialize various things for the game
 
-// Enum values for the player movement state
+// Enum values for the player movement state // TODO - change to Enum
 #macro player_idle 0
 #macro player_walk 1
 #macro player_run 2
