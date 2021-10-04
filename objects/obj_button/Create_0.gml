@@ -2,10 +2,6 @@
 
 // Set text and text color
 text = "Text";
-//text_c1 = $A0A0FF;
-//text_c2 = $7070FF;
-//text_c3 = $4040FF;
-//text_c4 = $7070FF;
 text_c1 = $0000B0;
 text_c2 = $0000B0;
 text_c3 = $000080;

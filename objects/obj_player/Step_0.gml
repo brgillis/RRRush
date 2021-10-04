@@ -4,10 +4,21 @@
 if (flash_time > 0)
 	flash_time--;
 
-var key_left = keyboard_check(vk_left) || keyboard_check(ord("A"));
-var key_right = keyboard_check(vk_right) || keyboard_check(ord("D"));
-var key_jump = keyboard_check(vk_space) || keyboard_check(ord("W")) || mouse_check_button(mb_left);
-var key_run = keyboard_check(vk_tab) || keyboard_check(vk_shift) || mouse_check_button(mb_right);
+// Get values for control. If not controllable, set all to false
+if(global.player_control)
+{
+	var key_left = keyboard_check(vk_left) || keyboard_check(ord("A"));
+	var key_right = keyboard_check(vk_right) || keyboard_check(ord("D"));
+	var key_jump = keyboard_check(vk_space) || keyboard_check(ord("W")) || mouse_check_button(mb_left);
+	var key_run = keyboard_check(vk_tab) || keyboard_check(vk_shift) || mouse_check_button(mb_right);
+}
+else
+{
+	var key_left = 0;
+	var key_right = 0;
+	var key_jump = 0;
+	var key_run = 0;
+}
 
 // Calculate maximum speed boost due to glitterishness
 

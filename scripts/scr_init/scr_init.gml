@@ -94,3 +94,5 @@ randomize();
 
 // Misc variables
 global._tmp_best_time_frames = 200;
+global.player_control = false;
+global.player_move = false;

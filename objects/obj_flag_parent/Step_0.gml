@@ -22,8 +22,14 @@ if (obj_player.x >= x)
 		obj_gui_best_time_frame.value_c2 = $00FF00;
 		obj_gui_best_time_frame.value_c3 = $00D000;
 		obj_gui_best_time_frame.value_c4 = $00FF00;
+		
+		// Update the temporary best time variable
+		global._tmp_best_time_frames = obj_game.best_time_frames;
 	}
 	
 	
-	// TODO - level completion code
+	// Level completion code
+	
+	// Stop player control of movement
+	global.player_control = false;
 }
