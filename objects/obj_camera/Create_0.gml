@@ -6,41 +6,41 @@ function update_position(){
 
 	// Move toward x_yo, y_to
 
-	x += (x_to-x)*global.camera_x_speed;
-	y += (y_to-y)*global.camera_y_speed;
+	x += (x_to-x)*global.CAMERA_X_SPEED;
+	y += (y_to-y)*global.CAMERA_Y_SPEED;
 
 	if (follow != noone)
 	{
-		if (x < follow.x - global.camera_drag_left)
-			x_to = follow.x - global.camera_drag_left;
-		else if (x > follow.x + global.camera_drag_right)
-			x_to = follow.x + global.camera_drag_left;
-		if (y < follow.y - global.camera_drag_top)
-			y_to = follow.y - global.camera_drag_top;
-		else if (y > follow.y + global.camera_drag_bottom)
-			y_to = follow.y + global.camera_drag_bottom;
+		if (x < follow.x - global.CAMERA_DRAG_LEFT)
+			x_to = follow.x - global.CAMERA_DRAG_LEFT;
+		else if (x > follow.x + global.CAMERA_DRAG_RIGHT)
+			x_to = follow.x + global.CAMERA_DRAG_LEFT;
+		if (y < follow.y - global.CAMERA_DRAG_TOP)
+			y_to = follow.y - global.CAMERA_DRAG_TOP;
+		else if (y > follow.y + global.CAMERA_DRAG_BOTTOM)
+			y_to = follow.y + global.CAMERA_DRAG_BOTTOM;
 	}
 	
 	// Bound the camera's viewport within the room
-	if (x < global.viewport_width/2)
+	if (x < global.VIEWPORT_WIDTH/2)
 	{
-		x = global.viewport_width/2;
+		x = global.VIEWPORT_WIDTH/2;
 	}
-	else if (x > room_width - global.viewport_width/2)
+	else if (x > room_width - global.VIEWPORT_WIDTH/2)
 	{
-		x = room_width - global.viewport_width/2;
+		x = room_width - global.VIEWPORT_WIDTH/2;
 	}
-	if (y < global.viewport_height/2)
+	if (y < global.VIEWPORT_HEIGHT/2)
 	{
-		y = global.viewport_height/2;
+		y = global.VIEWPORT_HEIGHT/2;
 	}
-	else if (y > room_height - global.viewport_height/2)
+	else if (y > room_height - global.VIEWPORT_HEIGHT/2)
 	{
-		y = room_height - global.viewport_height/2;
+		y = room_height - global.VIEWPORT_HEIGHT/2;
 	}
 
 	var vm = matrix_build_lookat(x,y,-10,x,y,0,0,1,0);
-	var pm = matrix_build_projection_ortho(global.viewport_width,global.viewport_height,1,10000);
+	var pm = matrix_build_projection_ortho(global.VIEWPORT_WIDTH,global.VIEWPORT_HEIGHT,1,10000);
 
 	camera_set_view_mat(camera,vm);
 	camera_set_proj_mat(camera,pm);

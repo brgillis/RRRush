@@ -24,14 +24,14 @@ else
 
 var glitter_boost = 1 + obj_game.glitterishness/100;
 
-var max_walk_speed = global.walk_speed * glitter_boost;
-var max_run_speed = global.run_speed * glitter_boost;
-var min_idle_air_speed = global.min_idle_air_speed * glitter_boost;
-var max_idle_air_speed = global.max_idle_air_speed * glitter_boost;
-var min_walk_air_speed = global.min_walk_air_speed * glitter_boost;
-var max_walk_air_speed = global.max_walk_air_speed * glitter_boost;
-var min_run_air_speed = global.min_run_air_speed * glitter_boost;
-var max_run_air_speed = global.max_run_air_speed * glitter_boost;
+var max_walk_speed = global.WALK_SPEED * glitter_boost;
+var max_run_speed = global.RUN_SPEED * glitter_boost;
+var min_idle_air_speed = global.MIN_IDLE_AIR_SPEED * glitter_boost;
+var max_idle_air_speed = global.MAX_IDLE_AIR_SPEED * glitter_boost;
+var min_walk_air_speed = global.MIN_WALK_AIR_SPEED * glitter_boost;
+var max_walk_air_speed = global.MAX_WALK_AIR_SPEED * glitter_boost;
+var min_run_air_speed = global.MIN_RUN_AIR_SPEED * glitter_boost;
+var max_run_air_speed = global.MAX_RUN_AIR_SPEED * glitter_boost;
 
 // Horizontal motion
 
@@ -74,7 +74,7 @@ case JumpState.LAND:
 		if (move_state==MoveState.WALK)
 		{
 			// Accelerate
-			hsp += dir*global.walk_accel;
+			hsp += dir*global.WALK_ACCEL;
 		
 			// If we exceed maximum walk speed and tab is held, switch to run state
 			if (hsp > max_walk_speed) or (hsp < -max_walk_speed)
@@ -86,7 +86,7 @@ case JumpState.LAND:
 				else
 				{
 					// Tab not held, so decelerate toward maximum walk speed
-					hsp -= dir*global.run_decel;
+					hsp -= dir*global.RUN_DECEL;
 					if (hsp > max_walk_speed)
 					{
 						hsp = max_walk_speed;
@@ -113,16 +113,16 @@ case JumpState.LAND:
 				// Use accel based on whether we're accelerating or decelerating
 				if (dir==current_dir)
 				{
-					var haccel = global.run_accel;
+					var haccel = global.RUN_ACCEL;
 				} else {
-					var haccel = global.run_decel;	
+					var haccel = global.RUN_DECEL;	
 				}
 				
 		
 				if (hsp > max_run_speed)
 				{
 					// Decelerate to maximum run speed
-					hsp -= global.run_decel;
+					hsp -= global.RUN_DECEL;
 					if (hsp < max_run_speed)
 					{
 						hsp = max_run_speed;
@@ -131,7 +131,7 @@ case JumpState.LAND:
 				else if (hsp < -max_run_speed)
 				{
 					// Decelerate to maximum run speed
-					hsp += global.run_decel;
+					hsp += global.RUN_DECEL;
 					if (hsp > -max_run_speed)
 					{
 						hsp = -max_run_speed;
@@ -160,7 +160,7 @@ case JumpState.LAND:
 			else // Run key not held
 			{
 				// Tab not held, so decelerate toward maximum walk speed
-				hsp -= dir*global.run_decel;
+				hsp -= dir*global.RUN_DECEL;
 				if (hsp > max_walk_speed)
 				{
 					hsp = max_walk_speed;
@@ -179,7 +179,7 @@ case JumpState.LAND:
 		if (move_state==MoveState.RUN)
 		{
 			// If running, decelerate to 0
-			var haccel = -current_dir*global.run_decel;
+			var haccel = -current_dir*global.RUN_DECEL;
 			hsp += haccel;
 			
 			// Check if we've decelerated past 0, and if so, set speed to 0
@@ -214,23 +214,23 @@ case JumpState.LAND_COYOTE:
 		switch move_state
 		{
 		case MoveState.IDLE:
-			var haccel = global.idle_air_accel;
+			var haccel = global.IDLE_AIR_ACCEL;
 			var min_air_speed = min_idle_air_speed;
 			var max_air_speed = max_idle_air_speed;
 			break;
 		case MoveState.WALK:
-			var haccel = global.walk_air_accel;
+			var haccel = global.WALK_AIR_ACCEL;
 			var min_air_speed = min_walk_air_speed;
 			var max_air_speed = max_walk_air_speed;
 			break;
 		case MoveState.RUN:
-			var haccel = global.run_air_accel;
+			var haccel = global.RUN_AIR_ACCEL;
 			var min_air_speed = min_run_air_speed;
 			var max_air_speed = max_run_air_speed;
 			break;
 		default:
 			// Shouldn't be hit, but just in case
-			var haccel = global.idle_air_accel;
+			var haccel = global.IDLE_AIR_ACCEL;
 			var min_air_speed = min_idle_air_speed;
 			var max_air_speed = max_idle_air_speed;
 		}
@@ -267,7 +267,7 @@ if (hsp!=0)
 	        ((jump_state==JumpState.GROUND) or (jump_state==JumpState.LAND)))
 		{
 			// Slow down and move up
-			hsp *= global.slope_up_factor;
+			hsp *= global.SLOPE_UP_FACTOR;
 			y -= 1*abs(hsp);
 			slope_up = true;
 		}
@@ -298,7 +298,7 @@ if (hsp!=0)
 	        ((jump_state==JumpState.GROUND) or (jump_state==JumpState.LAND)))
 		{
 			// Speed up and move down along the slope
-			hsp *= global.slope_down_factor;
+			hsp *= global.SLOPE_DOWN_FACTOR;
 			var loop_count = 0
 			var dy = 1;
 			slope_down = true;
@@ -356,7 +356,7 @@ if key_jump
 	case JumpState.LAND:
 	case JumpState.LAND_COYOTE:
 		// If we're in a landing state, set for a super jump
-		jump_factor *= global.super_jump_factor;
+		jump_factor *= global.SUPER_JUMP_FACTOR;
 		jump_sound = snd_player_super_jump;
 		jump_effect = obj_super_jump_effect;
 	case JumpState.GROUND:
@@ -366,7 +366,7 @@ if key_jump
 		{
 			break;
 		}
-		vsp = jump_factor * global.jump_init_vspeed;
+		vsp = jump_factor * global.JUMP_INIT_VSPEED;
 		set_jump_state_jump();
 		audio_play_sound(jump_sound,1,false)
 		instance_create_layer(x,y,"Effects_between",jump_effect)
@@ -375,7 +375,7 @@ if key_jump
 		break;
 	// In jump state, add jump acceleration each frame
 	case JumpState.JUMP:
-		vsp += global.jump_vaccel;
+		vsp += global.JUMP_VACCEL;
 		break;
 	default:
 		break;
@@ -388,9 +388,9 @@ if key_jump
 // Gravity - different gravity depending on if rising or falling
 if (vsp<0)
 {
-	vsp += global.gravity_rise_vaccel;
+	vsp += global.GRAVITY_RISE_VACCEL;
 } else {
-	vsp += global.gravity_fall_vaccel;
+	vsp += global.GRAVITY_FALL_VACCEL;
 }
 
 // Vertical collision check

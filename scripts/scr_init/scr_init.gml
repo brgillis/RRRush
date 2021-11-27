@@ -1,5 +1,15 @@
 // Initialize various things for the game
 
+// Enum values for game state
+enum GameState {
+	MENU,
+	ACTIVE,
+	NO_CONTROL,
+	OVERLOAD,
+	PAUSE,
+	STAGE_END,
+}
+
 // Enum values for the player movement state
 enum MoveState {
 	IDLE = 0,
@@ -8,7 +18,6 @@ enum MoveState {
 }
 
 // Enum values for the player jumping state
-
 enum JumpState {
 	GROUND = 0,
 	JUMP = 1,
@@ -20,82 +29,91 @@ enum JumpState {
 }
 
 // Create an array of sprites for each possible state
-global.aa_player_sprites = array_create(3, [], [], [])
-global.aa_player_sprites[MoveState.IDLE] = [spr_player_idle, spr_player_jump_idle, spr_player_jump_idle,
+global.AA_PLAYER_SPRITES = array_create(3, [], [], [])
+global.AA_PLAYER_SPRITES[MoveState.IDLE] = [spr_player_idle, spr_player_jump_idle, spr_player_jump_idle,
                                          spr_player_jump_idle, spr_player_idle,
 										 spr_player_idle, spr_player_idle ];
-global.aa_player_sprites[MoveState.WALK] = [spr_player_walk, spr_player_jump_walk, spr_player_jump_walk,
+global.AA_PLAYER_SPRITES[MoveState.WALK] = [spr_player_walk, spr_player_jump_walk, spr_player_jump_walk,
                                          spr_player_jump_walk, spr_player_walk,
 										 spr_player_walk, spr_player_walk];
-global.aa_player_sprites[MoveState.RUN]  = [spr_player_run, spr_player_jump_run, spr_player_jump_run,
+global.AA_PLAYER_SPRITES[MoveState.RUN]  = [spr_player_run, spr_player_jump_run, spr_player_jump_run,
                                          spr_player_jump_run,  spr_player_run,
 										 spr_player_run, spr_player_run];
-global.a_player_images = [0, 0, 0,
+global.A_PLAYER_IMAGES = [0, 0, 0,
                           1, 0,
 						  0, 0]
 
 // Constants related to motion
 
 // Walking
-global.walk_accel = 0.5
-global.walk_speed = 5
+global.WALK_ACCEL = 0.5
+global.WALK_SPEED = 5
 
 // Running
-global.run_accel = 0.5
-global.run_decel = 2
-global.run_speed = 10
+global.RUN_ACCEL = 0.5
+global.RUN_DECEL = 2
+global.RUN_SPEED = 10
 
 // Slopes
-global.slope_up_factor = 0.9
-global.slope_down_factor = 1.25
+global.SLOPE_UP_FACTOR = 0.9
+global.SLOPE_DOWN_FACTOR = 1.25
 
 // Jumping
-global.total_jump_time = 20
-global.jump_init_vspeed = -12
-global.jump_vaccel = -0.75
+global.TOTAL_JUMP_TIME = 20
+global.JUMP_INIT_VSPEED = -12
+global.JUMP_VACCEL = -0.75
 
 // Idle air
-global.idle_air_accel = 0.5*global.walk_accel
-global.min_idle_air_speed = -global.walk_speed
-global.max_idle_air_speed = global.walk_speed
+global.IDLE_AIR_ACCEL = 0.5*global.WALK_ACCEL
+global.MIN_IDLE_AIR_SPEED = -global.WALK_SPEED
+global.MAX_IDLE_AIR_SPEED = global.WALK_SPEED
 
 // Walk air
-global.walk_air_accel = 1*global.walk_accel
-global.min_walk_air_speed = -global.walk_speed
-global.max_walk_air_speed = global.walk_speed
+global.WALK_AIR_ACCEL = 1*global.WALK_ACCEL
+global.MIN_WALK_AIR_SPEED = -global.WALK_SPEED
+global.MAX_WALK_AIR_SPEED = global.WALK_SPEED
 
 // Run air
-global.run_air_accel = 1*global.run_accel
-global.min_run_air_speed = -global.run_speed
-global.max_run_air_speed = global.run_speed
+global.RUN_AIR_ACCEL = 1*global.RUN_ACCEL
+global.MIN_RUN_AIR_SPEED = -global.RUN_SPEED
+global.MAX_RUN_AIR_SPEED = global.RUN_SPEED
 
 // Landing
-global.total_land_time = 5
-global.super_jump_factor = 1.25
+global.TOTAL_LAND_TIME = 5
+global.SUPER_JUMP_FACTOR = 1.25
 
 // Coyote time
-global.total_coyote_time = 5
+global.TOTAL_COYOTE_TIME = 5
 
 // Gravity
-global.gravity_rise_vaccel = 0.9
-global.gravity_fall_vaccel = 1.4
+global.GRAVITY_RISE_VACCEL = 0.9
+global.GRAVITY_FALL_VACCEL = 1.4
+
+// Glitterishness
+global.GLITTER_MIN = 0
+global.GLITTER_MAX = 100
+global.GLITTER_DECAY_IDLE = 0.2
+global.GLITTER_DECAY_WALK = 0.05
+global.GLITTER_DECAY_RUN = 0.0
+global.GLITTER_OVERLOAD_FACTOR = 4
 
 // Camera controls
-global.camera_x_speed = 0.2;
-global.camera_y_speed = 0.2;
-global.camera_drag_left = 70;
-global.camera_drag_right = 70;
-global.camera_drag_bottom = 70;
-global.camera_drag_top = 70;
-global.viewport_width = 1366;
-global.viewport_height = 768;
+global.CAMERA_X_SPEED = 0.2;
+global.CAMERA_Y_SPEED = 0.2;
+global.CAMERA_DRAG_LEFT = 70;
+global.CAMERA_DRAG_RIGHT = 70;
+global.CAMERA_DRAG_BOTTOM = 70;
+global.CAMERA_DRAG_TOP = 70;
+global.VIEWPORT_WIDTH = 1366;
+global.VIEWPORT_HEIGHT = 768;
 
 // Effects
-global.glitter_rate = 50;
-global.glitter_power = 6;
+global.GLITTER_PARTICLE_RATE = 50;
+global.GLITTER_PARTICLE_POWER = 6;
 
 // Misc variables
 global._tmp_best_time_frames = 200;
+global.game_state = GameState.MENU;
 global.player_control = false;
 global.player_move = false;
  
