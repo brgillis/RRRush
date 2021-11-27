@@ -1,7 +1,7 @@
 /// @description Initialize idle on the ground
 
-move_state = player_idle;
-jump_state = player_ground;
+move_state = MoveState.IDLE;
+jump_state = JumpState.GROUND;
 
 // Initial speeds
 hsp = 0;

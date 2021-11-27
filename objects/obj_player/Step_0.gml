@@ -49,29 +49,29 @@ if (current_dir==0)
 // Separate handling depending on jump state
 switch jump_state
 {
-case player_ground:
+case JumpState.GROUND:
 	// Land state and ground state have similar ground controls, with the only exception being
 	// that ground state allows instant turn-around in walk state
 	
 	// If we're in walk state and flipping direction, start by setting horizontal speed to zero
-	if (dir != current_dir) and (move_state==player_walk)
+	if (dir != current_dir) and (move_state==MoveState.WALK)
 	{		
 		hsp = 0;
 	}
 	
-	// Pass through to player_land state, which handles the rest of horizontal ground controls
-case player_land:
+	// Pass through to JumpState.LAND state, which handles the rest of horizontal ground controls
+case JumpState.LAND:
 
 	if (dir != 0)
 	{
 	
 		// We're moving, so set walk state if we were in idle state
-		if (move_state==player_idle)
+		if (move_state==MoveState.IDLE)
 		{
 			set_move_state_walk(dir);
 		}
 	
-		if (move_state==player_walk)
+		if (move_state==MoveState.WALK)
 		{
 			// Accelerate
 			hsp += dir*global.walk_accel;
@@ -104,7 +104,7 @@ case player_land:
 				set_move_state_walk(dir);
 			}
 		}
-		else // move_state==player_run
+		else // move_state==MoveState.RUN
 		{
 			
 			// Check if we're still holding the run key
@@ -176,7 +176,7 @@ case player_land:
 	
 	} else {
 	
-		if (move_state==player_run)
+		if (move_state==MoveState.RUN)
 		{
 			// If running, decelerate to 0
 			var haccel = -current_dir*global.run_decel;
@@ -201,11 +201,11 @@ case player_land:
 	break;
 	
 // The remaining states all have air controls, so we pass through to use one block for all
-case player_jump:
-case player_rise:
-case player_fall:
-case player_ground_coyote:
-case player_land_coyote:
+case JumpState.JUMP:
+case JumpState.RISE:
+case JumpState.FALL:
+case JumpState.GROUND_COYOTE:
+case JumpState.LAND_COYOTE:
 
 	// Check if we're accelerating or not
 	if (dir != 0)
@@ -213,17 +213,17 @@ case player_land_coyote:
 		// Get acceleration based on current move state
 		switch move_state
 		{
-		case player_idle:
+		case MoveState.IDLE:
 			var haccel = global.idle_air_accel;
 			var min_air_speed = min_idle_air_speed;
 			var max_air_speed = max_idle_air_speed;
 			break;
-		case player_walk:
+		case MoveState.WALK:
 			var haccel = global.walk_air_accel;
 			var min_air_speed = min_walk_air_speed;
 			var max_air_speed = max_walk_air_speed;
 			break;
-		case player_run:
+		case MoveState.RUN:
 			var haccel = global.run_air_accel;
 			var min_air_speed = min_run_air_speed;
 			var max_air_speed = max_run_air_speed;
@@ -264,7 +264,7 @@ if (hsp!=0)
 	{
 		// Check for an upward slope
 		if ((!obj_or_tile_meeting(x+hsp, y-2*abs(hsp))) and
-	        ((jump_state==player_ground) or (jump_state==player_land)))
+	        ((jump_state==JumpState.GROUND) or (jump_state==JumpState.LAND)))
 		{
 			// Slow down and move up
 			hsp *= global.slope_up_factor;
@@ -295,7 +295,7 @@ if (hsp!=0)
 	{
 		// Check for going down a slope	
 		if (!obj_or_tile_meeting(x+2*sign(hsp), y+1) and obj_or_tile_meeting(x+2*sign(hsp), y+3) and
-	        ((jump_state==player_ground) or (jump_state==player_land)))
+	        ((jump_state==JumpState.GROUND) or (jump_state==JumpState.LAND)))
 		{
 			// Speed up and move down along the slope
 			hsp *= global.slope_down_factor;
@@ -321,7 +321,7 @@ if (hsp!=0)
 if (hcollide)
 {
 	// If we're grounded, set move state to walk
-	if (jump_state==player_ground)
+	if (jump_state==JumpState.GROUND)
 	{
 		if (dir!=0)
 		{
@@ -349,18 +349,18 @@ if key_jump
 	switch jump_state
 	{
 	// Ignore space input if rising or falling
-	case player_rise:
-	case player_fall:
+	case JumpState.RISE:
+	case JumpState.FALL:
 		break;
 	// Start a (super) jump if in an appropriate state
-	case player_land:
-	case player_land_coyote:
+	case JumpState.LAND:
+	case JumpState.LAND_COYOTE:
 		// If we're in a landing state, set for a super jump
 		jump_factor *= global.super_jump_factor;
 		jump_sound = snd_player_super_jump;
 		jump_effect = obj_super_jump_effect;
-	case player_ground:
-	case player_ground_coyote:
+	case JumpState.GROUND:
+	case JumpState.GROUND_COYOTE:
 		// Only start a jump if space was released during the last jump
 		if !(space_released)
 		{
@@ -374,7 +374,7 @@ if key_jump
 		coyote_time = 0;
 		break;
 	// In jump state, add jump acceleration each frame
-	case player_jump:
+	case JumpState.JUMP:
 		vsp += global.jump_vaccel;
 		break;
 	default:
@@ -404,7 +404,7 @@ if (vsp>0)
 	{
 		
 		// Check for right-stickiness issue
-		if ((jump_state!=player_ground) and (jump_state!=player_land) and !obj_or_tile_meeting(x-1, y+vsp))
+		if ((jump_state!=JumpState.GROUND) and (jump_state!=JumpState.LAND) and !obj_or_tile_meeting(x-1, y+vsp))
 		{
 			x -= 1;
 		}
@@ -440,7 +440,7 @@ else if (vsp<0)
 	{
 		
 		// Check for right-stickiness issue
-		if ((jump_state!=player_ground) and (jump_state!=player_land) and !obj_or_tile_meeting(x-1, y+vsp))
+		if ((jump_state!=JumpState.GROUND) and (jump_state!=JumpState.LAND) and !obj_or_tile_meeting(x-1, y+vsp))
 		{
 			x -= 1;
 		}
@@ -468,7 +468,7 @@ if (land)
 {
 	
 	// If we're falling, set jump state to landing and play sound
-	if ((jump_state==player_jump) or (jump_state==player_rise) or (jump_state==player_fall))
+	if ((jump_state==JumpState.JUMP) or (jump_state==JumpState.RISE) or (jump_state==JumpState.FALL))
 	{
 		audio_play_sound(snd_player_land,1,false)
 		set_jump_state_land();
@@ -480,7 +480,7 @@ if (land)
 y += vsp;
 
 // Decrement timer if jump state
-if (jump_state==player_jump)
+if (jump_state==JumpState.JUMP)
 {
 	if (jump_time>0)
 	{
@@ -494,7 +494,7 @@ if (jump_state==player_jump)
 }
 
 // Decrement timer if land state
-if ((jump_state==player_land) or (jump_state==player_land_coyote))
+if ((jump_state==JumpState.LAND) or (jump_state==JumpState.LAND_COYOTE))
 {
 	if (land_time>0)
 	{
@@ -503,7 +503,7 @@ if ((jump_state==player_land) or (jump_state==player_land_coyote))
 	else
 	{
 		// When land time hits 0, switch to ground state
-		if (jump_state==player_land)
+		if (jump_state==JumpState.LAND)
 		{
 			set_jump_state_ground();
 		} else {
@@ -514,7 +514,7 @@ if ((jump_state==player_land) or (jump_state==player_land_coyote))
 }
 
 // Decrement timer if coyote state
-if ((jump_state==player_ground_coyote) or (jump_state==player_land_coyote))
+if ((jump_state==JumpState.GROUND_COYOTE) or (jump_state==JumpState.LAND_COYOTE))
 {
 	if (coyote_time>0)
 	{
@@ -531,17 +531,17 @@ if ((jump_state==player_ground_coyote) or (jump_state==player_land_coyote))
 if (vsp>0) and (!slope_up) and (!slope_down)
 {
 	// From jump or rise state, go to fall state
-	if ((jump_state==player_jump) or (jump_state==player_rise))
+	if ((jump_state==JumpState.JUMP) or (jump_state==JumpState.RISE))
 	{
 		set_jump_state_fall();
 	}
 	// From ground state, go to ground coyote state
-	else if (jump_state==player_ground)
+	else if (jump_state==JumpState.GROUND)
 	{
 		set_jump_state_ground_coyote();
 	}
 	// From ground state, go to ground coyote state
-	else if (jump_state==player_land)
+	else if (jump_state==JumpState.LAND)
 	{
 		set_jump_state_land_coyote();
 	}

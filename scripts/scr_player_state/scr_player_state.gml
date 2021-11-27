@@ -15,65 +15,65 @@ function update_player_sprite(dir=0){
 function set_move_state_idle(){
 	
 	// Do nothing if the state is already right, so as to not interrupt animations
-	if (move_state==player_idle)
+	if (move_state==MoveState.IDLE)
 	{
 		return;	
 	}
 	
 	// Set the state and update the sprite
-	move_state = player_idle;
+	move_state = MoveState.IDLE;
 	update_player_sprite()
 }
 
 function set_move_state_walk(dir=1){
 	
 	// Do nothing if the state and direction are already right, so as to not interrupt animations
-	if ((move_state==player_walk) and (dir==current_dir))
+	if ((move_state==MoveState.WALK) and (dir==current_dir))
 	{
 		return;	
 	}
 	
 	// Set the state and update the sprite
-	move_state = player_walk;
+	move_state = MoveState.WALK;
 	update_player_sprite(dir)
 }
 
 function set_move_state_run(dir=1){
 	
 	// Do nothing if the state is already right, so as to not interrupt animations
-	if ((move_state==player_run) and (dir==current_dir))
+	if ((move_state==MoveState.RUN) and (dir==current_dir))
 	{
 		return;	
 	}
 	
 	// Set the state and update the sprite
-	move_state = player_run;
+	move_state = MoveState.RUN;
 	update_player_sprite(dir)
 }
 
 function set_jump_state_ground(){
 	
 	// Do nothing if the state is already right, so as to not interrupt animations
-	if (jump_state==player_ground)
+	if (jump_state==JumpState.GROUND)
 	{
 		return;	
 	}
 	
 	// Set the state and update the sprite
-	jump_state = player_ground;
+	jump_state = JumpState.GROUND;
 	update_player_sprite()
 }
 
 function set_jump_state_jump(){
 	
 	// Do nothing if the state is already right, so as to not interrupt animations
-	if (jump_state==player_jump)
+	if (jump_state==JumpState.JUMP)
 	{
 		return;	
 	}
 	
 	// Set the state and update the sprite
-	jump_state = player_jump;
+	jump_state = JumpState.JUMP;
 	update_player_sprite();
 	
 	// Start the jump_time timer
@@ -84,13 +84,13 @@ function set_jump_state_jump(){
 function set_jump_state_rise(){
 	
 	// Do nothing if the state is already right, so as to not interrupt animations
-	if (jump_state==player_rise)
+	if (jump_state==JumpState.RISE)
 	{
 		return;	
 	}
 	
 	// Set the state and update the sprite
-	jump_state = player_rise;
+	jump_state = JumpState.RISE;
 	jump_time = 0;
 	update_player_sprite()
 }
@@ -98,13 +98,13 @@ function set_jump_state_rise(){
 function set_jump_state_fall(){
 	
 	// Do nothing if the state is already right, so as to not interrupt animations
-	if jump_state==player_fall
+	if jump_state==JumpState.FALL
 	{
 		return;	
 	}
 	
 	// Set the state and update the sprite
-	jump_state = player_fall;
+	jump_state = JumpState.FALL;
 	coyote_time = 0;
 	update_player_sprite()
 }
@@ -112,13 +112,13 @@ function set_jump_state_fall(){
 function set_jump_state_land(){
 	
 	// Do nothing if the state is already right, so as to not interrupt animations
-	if jump_state==player_land
+	if jump_state==JumpState.LAND
 	{
 		return;	
 	}
 	
 	// Set the state and update the sprite
-	jump_state = player_land;
+	jump_state = JumpState.LAND;
 	update_player_sprite()
 	
 	// Start the land_time timer
@@ -128,13 +128,13 @@ function set_jump_state_land(){
 function set_jump_state_ground_coyote(){
 	
 	// Do nothing if the state is already right, so as to not interrupt animations
-	if (jump_state==player_ground_coyote)
+	if (jump_state==JumpState.GROUND_COYOTE)
 	{
 		return;	
 	}
 	
 	// Set the state and update the sprite
-	jump_state = player_ground_coyote;
+	jump_state = JumpState.GROUND_COYOTE;
 	coyote_time = global.total_coyote_time;
 	update_player_sprite()
 }
@@ -142,13 +142,13 @@ function set_jump_state_ground_coyote(){
 function set_jump_state_land_coyote(){
 	
 	// Do nothing if the state is already right, so as to not interrupt animations
-	if (jump_state==player_land_coyote)
+	if (jump_state==JumpState.LAND_COYOTE)
 	{
 		return;	
 	}
 	
 	// Set the state and update the sprite
-	jump_state = player_land_coyote;
+	jump_state = JumpState.LAND_COYOTE;
 	coyote_time = global.total_coyote_time;
 	update_player_sprite()
 }
