@@ -62,3 +62,6 @@ x_to = x;
 y_to = y;
 
 update_position();
+
+// Get the ID for the parallax background layer
+parallax_layer = layer_get_id("Parallax_Background")
