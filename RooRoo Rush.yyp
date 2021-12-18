@@ -54,6 +54,7 @@
     {"id":{"name":"rm_playroom","path":"rooms/rm_playroom/rm_playroom.yy",},"order":4,},
     {"id":{"name":"spr_full_player_jump_run","path":"sprites/spr_full_player_jump_run/spr_full_player_jump_run.yy",},"order":2,},
     {"id":{"name":"obj_glitterishness","path":"objects/obj_glitterishness/obj_glitterishness.yy",},"order":0,},
+    {"id":{"name":"scr_key","path":"scripts/scr_key/scr_key.yy",},"order":6,},
     {"id":{"name":"obj_parent_all_collide","path":"objects/obj_parent_all_collide/obj_parent_all_collide.yy",},"order":1,},
     {"id":{"name":"snd_player_land","path":"sounds/snd_player_land/snd_player_land.yy",},"order":1,},
     {"id":{"name":"obj_super_jump_effect","path":"objects/obj_super_jump_effect/obj_super_jump_effect.yy",},"order":1,},

@@ -7,18 +7,18 @@ menu_y += (menu_y_target - menu_y) / menu_speed;
 // Keyboard controls
 if (menu_control)
 {
-	if (keyboard_check_pressed(vk_up))
+	if (key_pressed_up())
 	{
 		menu_cursor++;
 		if (menu_cursor >= menu_num_items) menu_cursor = 0;
 	}
-	if (keyboard_check_pressed(vk_down))
+	if (key_pressed_down())
 	{
 		menu_cursor--;
 		if (menu_cursor <0) menu_cursor = menu_num_items-1;
 	}
 	
-	if (keyboard_check_pressed(vk_enter))
+	if (key_pressed_confirm())
 	{
 		// Move the menu back off the screen
 		menu_x_target = gui_width+200;
