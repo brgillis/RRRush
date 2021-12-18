@@ -6,7 +6,6 @@ draw_set_valign(fa_bottom);
 
 for (var i = 0; i < menu_num_items; i++)
 {
-	var offset = 1;
 	var text = l_menu_options[i];
 	if (menu_cursor == i)
 	{
@@ -24,19 +23,11 @@ for (var i = 0; i < menu_num_items; i++)
 		text_c3 = $606080;
 		text_c4 = $606080;
 	}
-	var xx = menu_x;
-	var yy = menu_y - (menu_item_height * i * 1.5);
+	var text_x = menu_x;
+	var text_y = menu_y - (menu_item_height * i * 1.5);
 	
-	// Draw outline of text
-	draw_set_color(c_black);
-	draw_text(xx-offset,yy-offset,text);
-	draw_text(xx+offset,yy-offset,text);
-	draw_text(xx-offset,yy+offset,text);
-	draw_text(xx+offset,yy+offset,text);
-	
-	// Draw the text
-
-	draw_text_color(xx, yy, text,
+	// Draw the text with outline
+	draw_text_color_outline(text_x, text_y, text,
 				    text_c1,
 					text_c2,
 					text_c3,
