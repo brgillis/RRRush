@@ -1,7 +1,14 @@
 /// @description Update globals
 
+// Set game state to active at end of transition in
+if ((obj_persistent.percent==0) && (fade_in))
+{
+	set_game_state_active();
+	fade_in = false; // Set to false so we only set to active once, at the beginning
+}
+
 // Update time in active and overload states
-if (global.game_state == GameState.ACTIVE)
+if ((global.game_state == GameState.ACTIVE) || (global.game_state == GameState.OVERLOAD))
 {
 	time_frames += 1;
 }

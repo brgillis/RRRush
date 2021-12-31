@@ -13,6 +13,8 @@ level_complete = false;
 
 best_time_frames = global._tmp_best_time_frames;
 
+fade_in = true; // Note at start we're fading in, so we can set game state to active only once
+
 // Set up the particle system
 
 particle_system_between = part_system_create_layer("Effects_between", 0);
@@ -79,8 +81,3 @@ for(var i=0; i<4; ++i)
 	part_type_orientation(particle, 0, 360, 15, 60, true);
 	
 }
-
-// Fade in from a black screen
-
-i_seq_fade_in = layer_sequence_create("Screen_cover",0,0,seq_fade_in);
-alarm_set(0,20)

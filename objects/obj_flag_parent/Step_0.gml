@@ -31,5 +31,5 @@ if (obj_player.x >= x)
 	// Level completion code
 	
 	// Stop player control of movement
-	global.player_control = false;
+	set_game_state_stage_end();
 }

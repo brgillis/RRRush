@@ -1,3 +1,3 @@
 /// @description After fadeout, restart the room
 
-room_restart();
+room_transition(TransMode.RESTART);

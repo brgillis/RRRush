@@ -1,4 +1,4 @@
-// Initialize various things for the game
+/// Initialize various things for the game
 
 // Enum values for game state
 enum GameState {
@@ -42,6 +42,15 @@ global.AA_PLAYER_SPRITES[MoveState.RUN]  = [spr_player_run, spr_player_jump_run,
 global.A_PLAYER_IMAGES = [0, 0, 0,
                           1, 0,
 						  0, 0]
+						  
+// Constatns related to display
+
+global.display_width = display_get_gui_width();
+global.display_height = display_get_gui_height();
+
+global.gui_margin = 32;
+global.gui_width = global.display_width - global.gui_margin;
+global.gui_height = global.display_height - global.gui_margin;
 
 // Constants related to motion
 
