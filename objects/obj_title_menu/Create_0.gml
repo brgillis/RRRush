@@ -30,6 +30,11 @@ text_sel_c2 = $0000B0;
 text_sel_c3 = $000080;
 text_sel_c4 = $000080;
 
+text_com_c1 = $E0E0FF;
+text_com_c2 = $E0E0FF;
+text_com_c3 = $B0B0D0;
+text_com_c4 = $B0B0D0;
+
 text_unsel_c1 = $9090B0;
 text_unsel_c2 = $9090B0;
 text_unsel_c3 = $606080;
@@ -41,16 +46,21 @@ sel_suffix = "";
 halign = fa_right;
 valign = fa_bottom;
 
+// menu_item_height is determined from the font size
+menu_item_width = 500;
+
 // Menu items
-l_menu_options[MainMenuOption.NEW_GAME] = "New Game";
-l_menu_options[MainMenuOption.CONTINUE] = "Continue";
-l_menu_options[MainMenuOption.LEVEL_SELECT] = "Level Select";
-l_menu_options[MainMenuOption.QUIT] = "Quit";
+ll_menu_options[MainMenuOption.NEW_GAME][0] = "New Game";
+ll_menu_options[MainMenuOption.CONTINUE][0] = "Continue";
+ll_menu_options[MainMenuOption.LEVEL_SELECT][0] = "Level Select";
+ll_menu_options[MainMenuOption.QUIT][0] = "Quit";
 
 // Menu control
 
-menu_cursor = MENU_NO_OPTION; // Which item is selected
-menu_committed = MENU_NO_OPTION;
+menu_cursor_x = MENU_NO_OPTION; // Which item is selected
+menu_cursor_y = MENU_NO_OPTION; // Which item is selected
+menu_committed_x = MENU_NO_OPTION;
+menu_committed_y = MENU_NO_OPTION;
 
 commit_delay = 30;
 

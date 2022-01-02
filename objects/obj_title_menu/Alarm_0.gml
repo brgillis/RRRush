@@ -1,6 +1,6 @@
 /// @description Execute menu choice
 
-switch (menu_committed)
+switch (menu_committed_y)
 {
 case MainMenuOption.NEW_GAME: default:
 	room_transition(TransMode.GOTO, rm_w1_parent);
