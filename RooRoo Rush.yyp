@@ -93,6 +93,7 @@
     {"id":{"name":"spr_glitter_particles","path":"sprites/spr_glitter_particles/spr_glitter_particles.yy",},"order":9,},
     {"id":{"name":"seq_fade_in","path":"sequences/seq_fade_in/seq_fade_in.yy",},"order":4,},
     {"id":{"name":"ts_grass","path":"tilesets/ts_grass/ts_grass.yy",},"order":0,},
+    {"id":{"name":"obj_menu_parent","path":"objects/obj_menu_parent/obj_menu_parent.yy",},"order":5,},
     {"id":{"name":"spr_glitterishness","path":"sprites/spr_glitterishness/spr_glitterishness.yy",},"order":0,},
     {"id":{"name":"spr_button","path":"sprites/spr_button/spr_button.yy",},"order":3,},
     {"id":{"name":"scr_utility","path":"scripts/scr_utility/scr_utility.yy",},"order":3,},

@@ -1,5 +1,8 @@
 /// @description Execute menu choice
 
+// Inherit the parent event
+event_inherited();
+
 switch (menu_committed_y)
 {
 case MainMenuOption.NEW_GAME: default:

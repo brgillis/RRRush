@@ -1,11 +1,7 @@
-/// @description GUI/Vars/Menu setup
+/// @description Options and appearance
 
-// Set game state to MENU and enable control
-set_game_state_menu();
-menu_control = true; // Whether or not we have control of the menu
-
-// Value to indicate no option is selected
-MENU_NO_OPTION = -1;
+// Inherit the parent event
+event_inherited();
 
 // Enum for menu options
 enum MainMenuOption {
@@ -46,23 +42,8 @@ sel_suffix = "";
 halign = fa_right;
 valign = fa_bottom;
 
-// menu_item_height is determined from the font size
-menu_item_width = 500;
-
 // Menu items
 ll_menu_options[MainMenuOption.NEW_GAME][0] = "New Game";
 ll_menu_options[MainMenuOption.CONTINUE][0] = "Continue";
 ll_menu_options[MainMenuOption.LEVEL_SELECT][0] = "Level Select";
 ll_menu_options[MainMenuOption.QUIT][0] = "Quit";
-
-// Menu control
-
-menu_cursor_x = MENU_NO_OPTION; // Which item is selected
-menu_cursor_y = MENU_NO_OPTION; // Which item is selected
-menu_committed_x = MENU_NO_OPTION;
-menu_committed_y = MENU_NO_OPTION;
-
-commit_delay = 30;
-
-// Set a flag to do post-creation tasks (after anything done by child objects) in the Step event
-init_finalized = false;
