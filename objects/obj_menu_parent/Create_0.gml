@@ -3,9 +3,13 @@
 // Set game state to MENU and enable control
 set_game_state_menu();
 menu_control = true; // Whether or not we have control of the menu
+allow_cancel = true; // Whether or not it's possible to cancel out of this menu
 
 // Value to indicate no option is selected
 MENU_NO_OPTION = -1;
+
+// Value to indicate the user cancelled out of the menu
+MENU_CANCEL = -2;
 
 // Layout of the menu
 menu_x_start = global.display_width+200;

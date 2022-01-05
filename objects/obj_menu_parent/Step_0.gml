@@ -53,12 +53,12 @@ if (menu_control)
 		if (key_pressed_up())
 		{
 			menu_cursor_y = menu_num_rows-1;
-			menu_cursor_x = l_menu_num_cols[menu_cursor_y]-1;
+			menu_cursor_x = 0;
 		}
 		if (key_pressed_down())
 		{
 			menu_cursor_y = menu_num_rows-2;
-			menu_cursor_x = l_menu_num_cols[menu_cursor_y]-1;
+			menu_cursor_x = 0;
 		}
 		if (key_pressed_left())
 		{
@@ -94,15 +94,23 @@ if (menu_control)
 			if (menu_cursor_x >= l_menu_num_cols[menu_cursor_y]) menu_cursor_x = 0;
 		}
 	
-		if (key_pressed_confirm() and menu_cursor_y!=MENU_NO_OPTION)
+		if (key_pressed_confirm() and menu_cursor_y!=MENU_NO_OPTION) or (key_pressed_cancel() and allow_cancel)
 		{
 			// Move the menu back to its start position
 			menu_x_target = menu_x_start;
 			menu_y_target = menu_y_start;
 			
-			// Note the selected item
-			menu_committed_x = menu_cursor_x;
-			menu_committed_y = menu_cursor_y;
+			// Note the selected item if confirm, or that we cancelled
+			if key_pressed_confirm()
+			{
+				menu_committed_x = menu_cursor_x;
+				menu_committed_y = menu_cursor_y;
+			}
+			else
+			{
+				menu_committed_x = MENU_CANCEL;
+				menu_committed_y = MENU_CANCEL;	
+			}
 			
 			// Play selection effects
 			// ScreenShake(4,30);

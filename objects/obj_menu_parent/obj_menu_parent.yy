@@ -26,8 +26,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Utility",
-    "path": "folders/Objects/Utility.yy",
+    "name": "Menus",
+    "path": "folders/Objects/Menus.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_menu_parent",

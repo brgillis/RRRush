@@ -12,9 +12,9 @@ enum MainMenuOption {
 }
 
 // Layout of the menu
-menu_x_start = global.display_width+200;
-menu_y_start = global.gui_height;
-menu_x_end = global.gui_width;
+menu_x_start = global.display_width/2;
+menu_y_start = 3*global.display_height/2;
+menu_x_end = global.display_width/2;
 menu_y_end = global.gui_height;
 menu_speed = 0.04;
 
@@ -37,9 +37,9 @@ text_unsel_c3 = $606080;
 text_unsel_c4 = $606080;
 
 sel_prefix = "> ";
-sel_suffix = "";
+sel_suffix = " <";
 
-halign = fa_right;
+halign = fa_center;
 valign = fa_bottom;
 
 // Menu items
@@ -47,3 +47,5 @@ ll_menu_options[MainMenuOption.NEW_GAME][0] = "New Game";
 ll_menu_options[MainMenuOption.CONTINUE][0] = "Continue";
 ll_menu_options[MainMenuOption.LEVEL_SELECT][0] = "Level Select";
 ll_menu_options[MainMenuOption.QUIT][0] = "Quit";
+
+allow_cancel = false; // Don't allow cancelling out of this menu

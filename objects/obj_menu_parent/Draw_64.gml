@@ -37,7 +37,7 @@ for (var i = 0; i < menu_num_rows; i++)
 			text_c3 = text_unsel_c3;
 			text_c4 = text_unsel_c4;
 		}
-		var text_x = menu_x;
+		var text_x = menu_x + (menu_item_width * j);
 		var text_y = menu_y - (menu_item_height * i * 1.5);
 	
 		// Draw the text with outline

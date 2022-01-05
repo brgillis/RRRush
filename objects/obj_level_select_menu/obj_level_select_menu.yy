@@ -31,7 +31,7 @@
     "path": "folders/Objects/Menus.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_title_menu",
+  "name": "obj_level_select_menu",
   "tags": [],
   "resourceType": "GMObject",
 }

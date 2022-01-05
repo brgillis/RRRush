@@ -12,7 +12,9 @@ case MainMenuOption.CONTINUE:
 	// TODO: Continue game
 	break;
 case MainMenuOption.LEVEL_SELECT:
-	// TODO: Level select
+	// Switch to level select menu
+	instance_create_layer(0,0,"Instances",obj_level_select_menu);
+	instance_destroy();
 	break;
 case MainMenuOption.QUIT:
 	// Close the game
