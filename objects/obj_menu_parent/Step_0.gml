@@ -48,7 +48,8 @@ if (menu_control)
 	var old_menu_cursor_x = menu_cursor_x;
 	var old_menu_cursor_y = menu_cursor_y;
 	
-	if (menu_cursor_y==MENU_NO_OPTION or menu_cursor_x==MENU_NO_OPTION) and not (key_pressed_cancel() and allow_cancel)
+	if ((menu_cursor_y==MENU_NO_OPTION or menu_cursor_x==MENU_NO_OPTION) and
+	    not (key_pressed_cancel() and allow_cancel))
 	{
 		if (key_pressed_up() or key_pressed_left() or key_pressed_confirm())
 		{

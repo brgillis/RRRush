@@ -7,31 +7,45 @@ if (flash_time > 0)
 // Get values for control. If not controllable, set all to false
 if(global.player_control)
 {
-	var key_left = key_down_left();
-	var key_right = key_down_right();
-	var key_jump = key_down_confirm() || keyboard_check(ord("W"));
-	var key_run = key_down_cancel();
+	key_left = key_down_left();
+	key_right = key_down_right();
+	key_jump = key_down_confirm() || key_down_up();
+	key_run = key_down_cancel();
 }
 else
 {
-	var key_left = 0;
-	var key_right = 0;
-	var key_jump = 0;
-	var key_run = 0;
+	key_left = 0;
+	key_right = 0;
+	key_jump = 0;
+	key_run = 0;
 }
 
 // Calculate maximum speed boost due to glitterishness
 
-var glitter_boost = 1 + obj_game.glitterishness/100;
+var glitter_affect_walk = false; // Toggle to test if it's better to have glitterishness affect walk speed or not
+var glitter_affect_jump = 0.5; // Toggle to vary how much glitterishness affects jump height
 
-var max_walk_speed = global.WALK_SPEED * glitter_boost;
+var glitter_boost = 1 + obj_game.glitterishness/100;
+var jump_glitter_boost = 1 + obj_game.glitterishness/100*glitter_affect_jump;
+
 var max_run_speed = global.RUN_SPEED * glitter_boost;
-var min_idle_air_speed = global.MIN_IDLE_AIR_SPEED * glitter_boost;
-var max_idle_air_speed = global.MAX_IDLE_AIR_SPEED * glitter_boost;
-var min_walk_air_speed = global.MIN_WALK_AIR_SPEED * glitter_boost;
-var max_walk_air_speed = global.MAX_WALK_AIR_SPEED * glitter_boost;
 var min_run_air_speed = global.MIN_RUN_AIR_SPEED * glitter_boost;
 var max_run_air_speed = global.MAX_RUN_AIR_SPEED * glitter_boost;
+
+if (glitter_affect_walk)
+{
+	var max_walk_speed = global.WALK_SPEED * glitter_boost;
+	var min_idle_air_speed = global.MIN_IDLE_AIR_SPEED * glitter_boost;
+	var max_idle_air_speed = global.MAX_IDLE_AIR_SPEED * glitter_boost;
+	var min_walk_air_speed = global.MIN_WALK_AIR_SPEED * glitter_boost;
+	var max_walk_air_speed = global.MAX_WALK_AIR_SPEED * glitter_boost;
+} else {
+	var max_walk_speed = global.WALK_SPEED;
+	var min_idle_air_speed = global.MIN_IDLE_AIR_SPEED;
+	var max_idle_air_speed = global.MAX_IDLE_AIR_SPEED;
+	var min_walk_air_speed = global.MIN_WALK_AIR_SPEED;
+	var max_walk_air_speed = global.MAX_WALK_AIR_SPEED;
+}
 
 // Horizontal motion
 
@@ -375,7 +389,10 @@ if key_jump
 		break;
 	// In jump state, add jump acceleration each frame
 	case JumpState.JUMP:
-		vsp += global.JUMP_VACCEL;
+		if (key_run)
+			vsp += global.JUMP_VACCEL*jump_glitter_boost;
+		else
+			vsp += global.JUMP_VACCEL;
 		break;
 	default:
 		break;
