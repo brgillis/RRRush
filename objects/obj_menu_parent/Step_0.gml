@@ -3,8 +3,14 @@
 // Post-creation init tasks, if not already done
 if (not init_finalized)
 {
+	menu_cursor_x = init_selected_x;
+	menu_cursor_y = init_selected_y;
+	
+	back_alpha = back_alpha_start;
 	menu_x = menu_x_start;
 	menu_y = menu_y_start;
+	
+	back_alpha_target = back_alpha_end;
 	menu_x_target = menu_x_end;
 	menu_y_target = menu_y_end;
 
@@ -20,6 +26,7 @@ if (not init_finalized)
 }
 
 // Ease in the menu
+back_alpha += (back_alpha_target - back_alpha) * menu_speed;
 menu_x += (menu_x_target - menu_x) * menu_speed;
 menu_y += (menu_y_target - menu_y) * menu_speed;
 
@@ -93,6 +100,7 @@ if (menu_control)
 		if (key_pressed_confirm() and menu_cursor_y!=MENU_NO_OPTION) or (key_pressed_cancel() and allow_cancel)
 		{
 			// Move the menu back to its start position
+			back_alpha_target = back_alpha_start;
 			menu_x_target = menu_x_start;
 			menu_y_target = menu_y_start;
 			

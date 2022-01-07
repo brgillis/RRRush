@@ -105,3 +105,21 @@ function key_released_cancel()
 	/// Checks if any key signaling cancel is released this frame
 	return keyboard_check_released(vk_tab) || keyboard_check_released(vk_shift) || mouse_check_button_released(mb_right);
 }
+
+function key_down_pause()
+{
+	/// Checks if any key signaling pause is held down
+	return keyboard_check(vk_return) || keyboard_check(ord("P")) || mouse_check_button(mb_middle);
+}
+
+function key_pressed_pause()
+{
+	/// Checks if any key signaling pause is held down
+	return keyboard_check_pressed(vk_return) || keyboard_check_pressed(ord("P")) || mouse_check_button_pressed(mb_middle);
+}
+
+function key_released_pause()
+{
+	/// Checks if any key signaling pause is released this frame
+	return keyboard_check_released(vk_return) || keyboard_check_released(ord("P")) || mouse_check_button_released(mb_middle);
+}

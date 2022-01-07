@@ -2,12 +2,11 @@
 
 // Enum values for game state
 enum GameState {
-	MENU,
-	ACTIVE,
-	NO_CONTROL,
-	OVERLOAD,
-	PAUSE,
-	STAGE_END,
+	MENU = 0,
+	ACTIVE = 1,
+	NO_CONTROL = 2,
+	OVERLOAD = 3,
+	STAGE_END = 4,
 }
 
 // Enum values for the player movement state

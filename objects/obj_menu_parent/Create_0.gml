@@ -12,10 +12,15 @@ MENU_NO_OPTION = -1;
 MENU_CANCEL = -2;
 
 // Layout of the menu
+back_color = c_black;
+back_alpha_start = 0;
 menu_x_start = global.display_width+200;
 menu_y_start = global.gui_height;
+
+back_alpha_end = 0;
 menu_x_end = global.gui_width;
 menu_y_end = global.gui_height;
+
 menu_speed = 0.04;
 
 // How menu items are drawn
@@ -50,8 +55,10 @@ ll_menu_options[0][0] = "Option";
 
 // Menu control
 
-menu_cursor_x = MENU_NO_OPTION; // Which item is selected
-menu_cursor_y = MENU_NO_OPTION; // Which item is selected
+// Which item is selected initially
+init_selected_x = MENU_NO_OPTION;
+init_selected_y = MENU_NO_OPTION;
+
 menu_committed_x = MENU_NO_OPTION;
 menu_committed_y = MENU_NO_OPTION;
 

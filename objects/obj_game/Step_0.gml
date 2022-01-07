@@ -7,6 +7,15 @@ if ((obj_persistent.percent==0) && (fade_in))
 	fade_in = false; // Set to false so we only set to active once, at the beginning
 }
 
+// Pause the game if the pause button is pressed
+if ((global.game_state == GameState.ACTIVE) or (global.game_state == GameState.NO_CONTROL)
+     or (global.game_state == GameState.OVERLOAD)) and (key_pressed_pause())
+{
+	var old_game_state = global.game_state;
+	instance_create_layer(0,0,"Instances",obj_pause_menu);
+	obj_pause_menu.old_game_state = old_game_state;
+}
+
 // Update time in active and overload states
 if ((global.game_state == GameState.ACTIVE) || (global.game_state == GameState.OVERLOAD))
 {

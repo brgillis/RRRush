@@ -38,16 +38,6 @@ function set_game_state_overload() {
 	global.player_move = true;
 }
 
-function set_game_state_pause() {
-	
-	// Update the game state
-	global.game_state = GameState.PAUSE;
-	
-	// Set player control and move flags appropriately
-	global.player_control = false;
-	global.player_move = false;
-}
-
 function set_game_state_stage_end() {
 	
 	// Update the game state
@@ -55,5 +45,26 @@ function set_game_state_stage_end() {
 	
 	// Set player control and move flags appropriately
 	global.player_control = false;
-	global.player_move = false;
+	global.player_move = true;
+}
+
+function set_game_state(game_state) {
+	switch (game_state)
+	{
+	case GameState.ACTIVE: default:
+		set_game_state_active();
+		break;
+	case GameState.MENU:
+		set_game_state_menu();
+		break;
+	case GameState.NO_CONTROL:
+		set_game_state_no_control();
+		break;
+	case GameState.OVERLOAD:
+		set_game_state_overload();
+		break;
+	case GameState.STAGE_END:
+		set_game_state_stage_end();
+		break;
+	}
 }

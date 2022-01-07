@@ -44,8 +44,8 @@
   "creationCodeFile": "",
   "inheritCode": false,
   "instanceCreationOrder": [
-    {"name":"inst_D677714","path":"rooms/rm_menu_parent/rm_menu_parent.yy",},
-    {"name":"inst_30CB6924","path":"rooms/rm_menu_parent/rm_menu_parent.yy",},
+    {"name":"inst_D677714","path":"rooms/rm_title_menu/rm_title_menu.yy",},
+    {"name":"inst_30CB6924","path":"rooms/rm_title_menu/rm_title_menu.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,
@@ -73,7 +73,7 @@
     "path": "folders/Rooms.yy",
   },
   "resourceVersion": "1.0",
-  "name": "rm_menu_parent",
+  "name": "rm_title_menu",
   "tags": [],
   "resourceType": "GMRoom",
 }

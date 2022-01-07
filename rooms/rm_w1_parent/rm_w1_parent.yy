@@ -25,7 +25,6 @@
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_gui_puff_frame","path":"objects/obj_gui_puff_frame/obj_gui_puff_frame.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1219.0,"y":74.0,"resourceVersion":"1.0","name":"inst_5EB5E6F1","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_gui_time_frame","path":"objects/obj_gui_time_frame/obj_gui_time_frame.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":112.0,"y":37.0,"resourceVersion":"1.0","name":"inst_58DFCA4A","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_gui_best_time_frame","path":"objects/obj_gui_best_time_frame/obj_gui_best_time_frame.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":112.0,"y":108.0,"resourceVersion":"1.0","name":"inst_3A9D1FC0","tags":[],"resourceType":"GMRInstance",},
-        {"properties":[],"isDnd":false,"objectId":{"name":"obj_button_retry","path":"objects/obj_button_retry/obj_button_retry.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":97.0,"y":170.0,"resourceVersion":"1.0","name":"inst_3C21C16A","tags":[],"resourceType":"GMRInstance",},
       ],"visible":true,"depth":300,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"resourceVersion":"1.0","name":"GUI","tags":[],"resourceType":"GMRInstanceLayer",},
     {"instances":[],"visible":true,"depth":400,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"resourceVersion":"1.0","name":"Effects_front","tags":[],"resourceType":"GMRInstanceLayer",},
     {"instances":[
@@ -78,7 +77,6 @@
     {"name":"inst_58DFCA4A","path":"rooms/rm_w1_parent/rm_w1_parent.yy",},
     {"name":"inst_5C89F71A","path":"rooms/rm_w1_parent/rm_w1_parent.yy",},
     {"name":"inst_3A9D1FC0","path":"rooms/rm_w1_parent/rm_w1_parent.yy",},
-    {"name":"inst_3C21C16A","path":"rooms/rm_w1_parent/rm_w1_parent.yy",},
     {"name":"inst_17702DE1","path":"rooms/rm_w1_parent/rm_w1_parent.yy",},
   ],
   "inheritCreationOrder": false,

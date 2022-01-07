@@ -1,5 +1,11 @@
 /// @description Handle motion and timers
 
+// Skip all processing if the player is paused
+if (not global.player_move)
+{
+	return;
+}
+
 // Decrease flash time
 if (flash_time > 0)
 	flash_time--;
