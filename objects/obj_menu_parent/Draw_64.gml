@@ -32,25 +32,58 @@ for (var i = 0; i < menu_num_rows; i++)
 			// Different color depending on if menu is currently controllable or not
 			if (menu_control)
 			{
-				text_c1 = text_sel_c1;
-				text_c2 = text_sel_c2;
-				text_c3 = text_sel_c3;
-				text_c4 = text_sel_c4;
+				// Different color depending on if disabled or not
+				if (item_enabled(i, j))
+				{
+					text_c1 = text_sel_c1;
+					text_c2 = text_sel_c2;
+					text_c3 = text_sel_c3;
+					text_c4 = text_sel_c4;
+				}
+				else
+				{
+					text_c1 = text_dis_sel_c1;
+					text_c2 = text_dis_sel_c2;
+					text_c3 = text_dis_sel_c3;
+					text_c4 = text_dis_sel_c4;
+				}
 			}
 			else
 			{
-				text_c1 = text_com_c1;
-				text_c2 = text_com_c2;
-				text_c3 = text_com_c3;
-				text_c4 = text_com_c4;
+				// Different color depending on if disabled or not
+				if (item_enabled(i, j))
+				{
+					text_c1 = text_com_c1;
+					text_c2 = text_com_c2;
+					text_c3 = text_com_c3;
+					text_c4 = text_com_c4;
+				}
+				else
+				{
+					text_c1 = text_dis_sel_c1;
+					text_c2 = text_dis_sel_c2;
+					text_c3 = text_dis_sel_c3;
+					text_c4 = text_dis_sel_c4;
+				}
 			}
 		}
 		else
 		{		
-			text_c1 = text_unsel_c1;
-			text_c2 = text_unsel_c2;
-			text_c3 = text_unsel_c3;
-			text_c4 = text_unsel_c4;
+			// Different color depending on if disabled or not
+			if (item_enabled(i, j))
+			{
+				text_c1 = text_unsel_c1;
+				text_c2 = text_unsel_c2;
+				text_c3 = text_unsel_c3;
+				text_c4 = text_unsel_c4;
+			}
+			else
+			{
+				text_c1 = text_dis_unsel_c1;
+				text_c2 = text_dis_unsel_c2;
+				text_c3 = text_dis_unsel_c3;
+				text_c4 = text_dis_unsel_c4;
+			}
 		}
 		var text_x = menu_x + (menu_item_width * j);
 		var text_y = menu_y - (menu_item_height * i * 1.5);

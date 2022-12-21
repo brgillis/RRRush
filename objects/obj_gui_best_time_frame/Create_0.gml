@@ -1,8 +1,8 @@
 /// @description Set the label and value to be displayed
 
 label = "Best:";
-if (obj_game.best_time_frames > 0)
-	value = get_time_string(obj_game.best_time_frames);
+if (obj_persistent.best_time_frames > 0)
+	value = get_time_string(obj_persistent.best_time_frames);
 else
 	value = ""
 	

@@ -11,8 +11,6 @@ glitterpuffs_collected = 0;
 glitterishness = 0;
 level_complete = false;
 
-best_time_frames = global._tmp_best_time_frames;
-
 fade_in = true; // Note at start we're fading in, so we can set game state to active only once
 
 // Set up the particle system

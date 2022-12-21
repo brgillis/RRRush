@@ -27,8 +27,27 @@ enum StageSelectOption {
 var num_worlds = 8;
 var num_stages = 4;
 
+ll_room_targets[WorldSelectOption.WORLD_1] = [rm_w1_s1, 0, 0, 0]
+ll_room_targets[WorldSelectOption.WORLD_2] = [0, 0, 0, 0]
+ll_room_targets[WorldSelectOption.WORLD_3] = [0, 0, 0, 0]
+ll_room_targets[WorldSelectOption.WORLD_4] = [0, 0, 0, 0]
+ll_room_targets[WorldSelectOption.WORLD_5] = [0, 0, 0, 0]
+ll_room_targets[WorldSelectOption.WORLD_6] = [0, 0, 0, 0]
+ll_room_targets[WorldSelectOption.WORLD_7] = [0, 0, 0, 0]
+ll_room_targets[WorldSelectOption.WORLD_8] = [0, 0, 0, 0]
+ll_menu_options[WorldSelectOption.BACK] = ["Back"];
+
+ll_disabled_options[WorldSelectOption.WORLD_1] = [false, true, true, true]
+ll_disabled_options[WorldSelectOption.WORLD_2] = [true, true, true, true]
+ll_disabled_options[WorldSelectOption.WORLD_3] = [true, true, true, true]
+ll_disabled_options[WorldSelectOption.WORLD_4] = [true, true, true, true]
+ll_disabled_options[WorldSelectOption.WORLD_5] = [true, true, true, true]
+ll_disabled_options[WorldSelectOption.WORLD_6] = [true, true, true, true]
+ll_disabled_options[WorldSelectOption.WORLD_7] = [true, true, true, true]
+ll_disabled_options[WorldSelectOption.WORLD_8] = [true, true, true, true]
+ll_disabled_options[WorldSelectOption.BACK] = [false];
+
 // How menu items are drawn
-menu_font = fnt_menu;
 
 menu_item_height = font_get_size(menu_font);
 menu_item_width = 5*font_get_size(menu_font);
@@ -39,21 +58,6 @@ menu_y_start = -global.gui_height;
 menu_x_end = global.display_width/2 - menu_item_width*(num_stages/2-0.5);
 menu_y_end = global.display_height/2 + 1.5*menu_item_height*(num_worlds/2);
 menu_speed = 0.1;
-
-text_sel_c1 = $0000B0;
-text_sel_c2 = $0000B0;
-text_sel_c3 = $000080;
-text_sel_c4 = $000080;
-
-text_com_c1 = $E0E0FF;
-text_com_c2 = $E0E0FF;
-text_com_c3 = $B0B0D0;
-text_com_c4 = $B0B0D0;
-
-text_unsel_c1 = $9090B0;
-text_unsel_c2 = $9090B0;
-text_unsel_c3 = $606080;
-text_unsel_c4 = $606080;
 
 sel_prefix = "> ";
 sel_suffix = " <";
@@ -72,5 +76,3 @@ for(var world_index=num_worlds; world_index>=1; world_index--)
 		ll_menu_options[world_index][stage_index] = string(world_number)+"-"+string(stage_number);
 	}
 }
-
-ll_menu_options[WorldSelectOption.BACK][0] = "Back";

@@ -5,13 +5,8 @@ event_inherited();
 
 switch (menu_committed_y)
 {
-	case WorldSelectOption.WORLD_1: default:
-		switch (menu_committed_x)
-		{
-			case StageSelectOption.STAGE_1: default:
-				room_transition(TransMode.GOTO, rm_w1_parent);
-				break;
-		}
+	default:
+		room_transition(TransMode.GOTO, ll_room_targets[menu_committed_y][menu_committed_x]);
 		break;
 		
 	case WorldSelectOption.BACK: case MENU_CANCEL:

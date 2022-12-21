@@ -14,3 +14,6 @@ enum TransMode
 mode = TransMode.INTRO;
 percent = 1;
 target = room;
+
+// Data that will be kept between room transitions
+best_time_frames = 0;

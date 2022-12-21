@@ -58,46 +58,74 @@ if (menu_control)
 	if ((menu_cursor_y==MENU_NO_OPTION or menu_cursor_x==MENU_NO_OPTION) and
 	    not (key_pressed_cancel() and allow_cancel))
 	{
-		if (key_pressed_up() or key_pressed_left() or key_pressed_confirm())
+		if (key_repeat_up() or key_repeat_down() or key_repeat_left() or key_repeat_right() or
+		    key_pressed_confirm())
 		{
 			menu_cursor_y = menu_num_rows-1;
 			menu_cursor_x = 0;
-		}
-		if (key_pressed_down())
-		{
-			menu_cursor_y = menu_num_rows-2;
-			menu_cursor_x = 0;
-		}
-		if (key_pressed_right())
-		{
-			menu_cursor_y = menu_num_rows-1;
-			menu_cursor_x = 1;
 		}
 	}
 	else
 	{
-		if (key_pressed_up())
+		if (key_repeat_up())
 		{
 			menu_cursor_y++;
-			if (menu_cursor_y >= menu_num_rows) menu_cursor_y = 0;
+			if (menu_cursor_y >= menu_num_rows)
+			{
+				// Only wrap on key press, not repeat
+				if (key_pressed_up())
+					menu_cursor_y = 0;
+				else
+					menu_cursor_y--;
+			}
 		}
-		if (key_pressed_down())
+		if (key_repeat_down())
 		{
 			menu_cursor_y--;
-			if (menu_cursor_y < 0) menu_cursor_y = menu_num_rows-1;
+			if (menu_cursor_y < 0)
+			{
+				// Only wrap on key press, not repeat
+				if (key_pressed_down())
+					menu_cursor_y = menu_num_rows-1;
+				else
+					menu_cursor_y++;
+			}
 		}
-		if (key_pressed_left())
+		if (key_repeat_left())
 		{
 			menu_cursor_x--;
-			if (menu_cursor_x < 0) menu_cursor_x = l_menu_num_cols[menu_cursor_y]-1;
+			if (menu_cursor_x < 0)
+			{
+				// Only wrap on key press, not repeat
+				if (key_pressed_left())
+					menu_cursor_x = l_menu_num_cols[menu_cursor_y]-1;
+				else
+					menu_cursor_x++;
+			}
 		}
-		if (key_pressed_right())
+		if (key_repeat_right())
 		{
 			menu_cursor_x++;
-			if (menu_cursor_x >= l_menu_num_cols[menu_cursor_y]) menu_cursor_x = 0;
+			if (menu_cursor_x >= l_menu_num_cols[menu_cursor_y])
+			{
+				// Only wrap on key press, not repeat
+				if (key_pressed_right())
+					menu_cursor_x = 0;
+				else
+					menu_cursor_x--;
+			}
 		}
+		
+		is_confirming = key_pressed_confirm() and menu_cursor_y!=MENU_NO_OPTION
 	
-		if (key_pressed_confirm() and menu_cursor_y!=MENU_NO_OPTION) or (key_pressed_cancel() and allow_cancel)
+		if (is_confirming and not item_enabled(menu_cursor_y, menu_cursor_x))
+		{
+			// Give an error sound and disable control briefly
+			audio_play_sound(snd_error, 0, false);
+			menu_control = false;
+			alarm_set(1,error_delay);
+		}
+		else if (is_confirming or (key_pressed_cancel() and allow_cancel))
 		{
 			// Move the menu back to its start position
 			back_alpha_target = back_alpha_start;
@@ -118,13 +146,13 @@ if (menu_control)
 			
 			// Play selection effects
 			// ScreenShake(4,30);
-			audio_play_sound(snd_menu_select,0,false);
+			audio_play_sound(snd_menu_select, 0, false);
 			
 			// Disable menu control
 			menu_control = false;
 			
 			// Set an alarm for when to execute selection
-			alarm_set(0,commit_delay);
+			alarm_set(0, commit_delay);
 		}
 	}
 	
@@ -132,6 +160,6 @@ if (menu_control)
 	{
 		// Perform common tasks for when the cursor moves
 		clamp_cursor();
-		audio_play_sound(snd_cursor_move,0,false);
+		audio_play_sound(snd_cursor_move, 0, false);
 	}
 }

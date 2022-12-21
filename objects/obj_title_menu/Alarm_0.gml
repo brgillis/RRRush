@@ -5,10 +5,13 @@ event_inherited();
 
 switch (menu_committed_y)
 {
-case MainMenuOption.NEW_GAME: case MainMenuOption.CONTINUE: default:
+case MainMenuOption.NEW_GAME: default:
 	room_transition(TransMode.GOTO, rm_w1_parent);
 	break;
-	// TODO: Implement Continue option
+case MainMenuOption.CONTINUE:
+	// TODO: Playroom for testing now
+	room_transition(TransMode.GOTO, rm_test_stage);
+	break;
 case MainMenuOption.LEVEL_SELECT:
 	// Switch to level select menu
 	instance_create_layer(0,0,"Instances",obj_level_select_menu);

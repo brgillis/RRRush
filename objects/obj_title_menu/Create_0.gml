@@ -19,22 +19,6 @@ menu_y_end = global.gui_height;
 menu_speed = 0.04;
 
 // How menu items are drawn
-menu_font = fnt_menu;
-
-text_sel_c1 = $0000B0;
-text_sel_c2 = $0000B0;
-text_sel_c3 = $000080;
-text_sel_c4 = $000080;
-
-text_com_c1 = $E0E0FF;
-text_com_c2 = $E0E0FF;
-text_com_c3 = $B0B0D0;
-text_com_c4 = $B0B0D0;
-
-text_unsel_c1 = $9090B0;
-text_unsel_c2 = $9090B0;
-text_unsel_c3 = $606080;
-text_unsel_c4 = $606080;
 
 sel_prefix = "> ";
 sel_suffix = " <";
@@ -47,5 +31,11 @@ ll_menu_options[MainMenuOption.NEW_GAME][0] = "New Game";
 ll_menu_options[MainMenuOption.CONTINUE][0] = "Continue";
 ll_menu_options[MainMenuOption.LEVEL_SELECT][0] = "Level Select";
 ll_menu_options[MainMenuOption.QUIT][0] = "Quit";
+
+// Disabled menu items
+ll_disabled_options[MainMenuOption.NEW_GAME][0] = false;
+ll_disabled_options[MainMenuOption.CONTINUE][0] = true;
+ll_disabled_options[MainMenuOption.LEVEL_SELECT][0] = false;
+ll_disabled_options[MainMenuOption.QUIT][0] = false;
 
 allow_cancel = false; // Don't allow cancelling out of this menu

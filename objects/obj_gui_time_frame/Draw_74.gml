@@ -5,7 +5,7 @@ value = get_time_string(obj_game.time_frames);
 // Set color of value
 if (!obj_game.level_complete)
 {
-	if ((obj_game.best_time_frames > 0) and (obj_game.time_frames <= obj_game.best_time_frames))
+	if ((obj_persistent.best_time_frames > 0) and (obj_game.time_frames <= obj_persistent.best_time_frames))
 	{
 		value_c1 = $C0C0FF;
 		value_c2 = $9090FF;
