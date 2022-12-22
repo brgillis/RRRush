@@ -14,10 +14,22 @@ if (not init_finalized)
 	menu_x_target = menu_x_end;
 	menu_y_target = menu_y_end;
 
-	menu_num_rows = array_length_1d(ll_menu_options);
+	menu_num_rows = array_length(ll_menu_options);
+	global_label_offset = 0;
 	for (var i = menu_num_rows-1; i >= 0; i--)
 	{
-		l_menu_num_cols[i] = array_length_1d(ll_menu_options[i]);
+		l_menu_num_cols[i] = array_length(ll_menu_options[i]);
+		row_label = get_row_label(i)
+		if (is_string(row_label))
+		{
+			l_menu_num_labels[i] = 1;
+			// If at least one row has a label, offset all columns by one to allow room for a label column
+			global_label_offset = 1;
+		}
+		else
+		{
+			l_menu_num_labels[i] = 0;
+		}
 	}
 	
 	menu_item_height = font_get_size(menu_font);

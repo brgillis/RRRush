@@ -21,9 +21,12 @@ draw_set_valign(valign);
 
 for (var i = 0; i < menu_num_rows; i++)
 {
-	for (var j = 0; j < l_menu_num_cols[i]; j++)
+	for (var j = -l_menu_num_labels[i]; j < l_menu_num_cols[i]; j++)
 	{
-		var text = ll_menu_options[i][j];
+		if (j==-1)
+			var text = l_row_labels[i];
+		else
+			var text = ll_menu_options[i][j];
 		if (menu_cursor_y == i and menu_cursor_x == j)
 		{
 			text = string_insert(sel_prefix, text, 0)
@@ -85,7 +88,7 @@ for (var i = 0; i < menu_num_rows; i++)
 				text_c4 = text_dis_unsel_c4;
 			}
 		}
-		var text_x = menu_x + (menu_item_width * j);
+		var text_x = menu_x + (menu_item_width * (j + global_label_offset));
 		var text_y = menu_y - (menu_item_height * i * 1.5);
 	
 		// Draw the text with outline

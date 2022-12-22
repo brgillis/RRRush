@@ -68,12 +68,26 @@ menu_item_width = 500;
 // Menu items
 ll_menu_options[0][0] = "Option";
 ll_disabled_options = []
+l_row_labels = []
 
 function item_enabled(y, x) {
+	// If x is -1, this is a label, so it's always enabled
+	if(x==-1)
+		return true;
 	// If the array is of length zero, then no options have been set up to be disabled, hence this item is enabled
 	if(array_length(ll_disabled_options)==0)
-		return true
-	return not ll_disabled_options[y][x]
+		return true;
+	return not ll_disabled_options[y][x];
+}
+
+function get_row_label(y) {
+	// If the array is of length zero, no rows have labels, so return 0 indicating this
+	if(array_length(l_row_labels)==0)
+		return false;
+	else if is_string(l_row_labels[y])
+		return l_row_labels[y];
+	else
+		return false;
 }
 
 // Menu control
