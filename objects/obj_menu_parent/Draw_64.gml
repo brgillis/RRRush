@@ -16,17 +16,28 @@ draw_set_alpha(1);
 // Draw the menu options
 
 draw_set_font(menu_font);
-draw_set_halign(halign);
-draw_set_valign(valign);
 
 for (var i = 0; i < menu_num_rows; i++)
 {
-	for (var j = -l_menu_num_labels[i]; j < l_menu_num_cols[i]; j++)
+	var num_labels = l_menu_num_labels[i];
+	for (var j = -num_labels; j < l_menu_num_cols[i]; j++)
 	{
+		var align_shift = 0;
 		if (j==-1)
+		{
 			var text = l_row_labels[i];
+			draw_set_halign(label_halign);
+			draw_set_valign(label_valign);
+			// Place labels close to items if they're right-aligned
+			if (label_halign==fa_right)
+				var align_shift = 0.9
+		}
 		else
+		{
 			var text = ll_menu_options[i][j];
+			draw_set_halign(halign);
+			draw_set_valign(valign);
+		}
 		if (menu_cursor_y == i and menu_cursor_x == j)
 		{
 			text = string_insert(sel_prefix, text, 0)
@@ -88,7 +99,13 @@ for (var i = 0; i < menu_num_rows; i++)
 				text_c4 = text_dis_unsel_c4;
 			}
 		}
-		var text_x = menu_x + (menu_item_width * (j + global_label_offset));
+		
+		if (offset_labels)
+			var label_offset = global_label_offset;
+		else
+			var label_offset = global_label_offset + num_labels - 1;
+		
+		var text_x = menu_x + (menu_item_width * (j + label_offset + align_shift));
 		var text_y = menu_y - (menu_item_height * i * 1.5);
 	
 		// Draw the text with outline

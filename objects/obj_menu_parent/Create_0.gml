@@ -59,16 +59,24 @@ text_dis_unsel_c4 = $404040;
 sel_prefix = "> ";
 sel_suffix = "";
 
+// Alignment for menu options
 halign = fa_right;
 valign = fa_bottom;
+
+// Alignment for labels
+label_halign = fa_right;
+label_valign = fa_bottom;
 
 // menu_item_height is determined from the font size
 menu_item_width = 500;
 
 // Menu items
 ll_menu_options[0][0] = "Option";
-ll_disabled_options = []
-l_row_labels = []
+ll_disabled_options = [];
+l_row_labels = [];
+
+// Whether or not to offset labels to the left of options
+offset_labels = true;
 
 function item_enabled(y, x) {
 	// If x is -1, this is a label, so it's always enabled
