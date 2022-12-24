@@ -64,3 +64,6 @@ init_selected_y = PauseMenuOption.RESUME;
 allow_cancel = true; // Don't allow cancelling out of this menu
 
 commit_delay = 15;
+
+// After setting everything up, call the parent's post_init to finalize creation
+menu_post_init();

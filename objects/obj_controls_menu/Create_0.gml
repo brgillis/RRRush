@@ -76,3 +76,6 @@ sel_suffix = " <";
 
 halign = fa_left;
 valign = fa_bottom;
+
+// After setting everything up, call the parent's post_init to finalize creation
+menu_post_init();

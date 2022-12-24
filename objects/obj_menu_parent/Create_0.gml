@@ -91,5 +91,39 @@ repeat_delay_first = 20;
 repeat_delay_after = 5;
 allow_repeat_down = false;
 
-// Set a flag to do post-creation tasks (after anything done by child objects) in the Step event
-init_finalized = false;
+
+/// Menu post_init - for tasks to be done at the end of creating a child menu object
+function menu_post_init() {
+	menu_cursor_x = init_selected_x;
+	menu_cursor_y = init_selected_y;
+	
+	back_alpha = back_alpha_start;
+	menu_x = menu_x_start;
+	menu_y = menu_y_start;
+	
+	back_alpha_target = back_alpha_end;
+	menu_x_target = menu_x_end;
+	menu_y_target = menu_y_end;
+
+	menu_num_rows = array_length(ll_menu_options);
+	global_label_offset = 0;
+	for (var i = menu_num_rows-1; i >= 0; i--)
+	{
+		l_menu_num_cols[i] = array_length(ll_menu_options[i]);
+		row_label = get_row_label(i)
+		if (is_string(row_label))
+		{
+			l_menu_num_labels[i] = 1;
+			// If at least one row has a label, offset all columns by one to allow room for a label column
+			global_label_offset = 1;
+		}
+		else
+		{
+			l_menu_num_labels[i] = 0;
+		}
+	}
+	
+	menu_item_height = font_get_size(menu_font);
+	
+	init_finalized = true;
+}

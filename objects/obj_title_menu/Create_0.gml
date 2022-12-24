@@ -45,3 +45,6 @@ ll_disabled_options[MainMenuOption.CONTROLS][0] = false;
 ll_disabled_options[MainMenuOption.QUIT][0] = false;
 
 allow_cancel = false; // Don't allow cancelling out of this menu
+
+// After setting everything up, call the parent's post_init to finalize creation
+menu_post_init();

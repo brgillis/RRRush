@@ -76,3 +76,6 @@ for(var world_index=num_worlds; world_index>=1; world_index--)
 		ll_menu_options[world_index][stage_index] = string(world_number)+"-"+string(stage_number);
 	}
 }
+
+// After setting everything up, call the parent's post_init to finalize creation
+menu_post_init();
