@@ -1,5 +1,18 @@
 /// Constants, functions, and other utilities related to menus
 
+/// Structs
+
+function MenuItem(_option, _is_disabled = false) constructor {
+	option = _option;
+	is_disabled = _is_disabled;
+}
+
+function MenuRow(_l = [], _label = false, _selectable = true) constructor {
+	l = [];
+	label = _label;
+	selectable = _selectable;
+}
+
 /// Constants
 
 // Value to indicate no option is selected
