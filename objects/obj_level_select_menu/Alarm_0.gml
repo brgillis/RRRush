@@ -9,7 +9,7 @@ switch (menu_committed_y)
 		room_transition(TransMode.GOTO, ll_room_targets[menu_committed_y][menu_committed_x]);
 		break;
 		
-	case WorldSelectOption.BACK: case MENU_CANCEL:
+	case WorldSelectOption.BACK: case global.MENU_CANCEL:
 		// Return to the title menu
 		instance_create_layer(0,0,"Instances",obj_title_menu);
 		instance_destroy();

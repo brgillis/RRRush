@@ -5,7 +5,7 @@ event_inherited();
 
 switch (menu_committed_y)
 {
-case PauseMenuOption.RESUME: case MENU_CANCEL: default:
+case PauseMenuOption.RESUME: case global.MENU_CANCEL: default:
 	set_game_state(old_game_state);
 	instance_destroy();
 	break;

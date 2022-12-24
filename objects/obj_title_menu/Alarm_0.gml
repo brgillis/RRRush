@@ -6,7 +6,7 @@ event_inherited();
 switch (menu_committed_y)
 {
 case MainMenuOption.NEW_GAME: default:
-	room_transition(TransMode.GOTO, rm_w1_parent);
+	room_transition(TransMode.GOTO, rm_w1_s1);
 	break;
 case MainMenuOption.CONTINUE:
 	// TODO: Playroom for testing now

@@ -67,7 +67,7 @@ if (menu_control)
 	var old_menu_cursor_x = menu_cursor_x;
 	var old_menu_cursor_y = menu_cursor_y;
 	
-	if ((menu_cursor_y==MENU_NO_OPTION or menu_cursor_x==MENU_NO_OPTION) and
+	if ((menu_cursor_y==global.MENU_NO_OPTION or menu_cursor_x==global.MENU_NO_OPTION) and
 	    not (key_pressed_cancel() and allow_cancel))
 	{
 		if (key_repeat_up() or key_repeat_down() or key_repeat_left() or key_repeat_right() or
@@ -128,7 +128,7 @@ if (menu_control)
 			}
 		}
 		
-		is_confirming = key_pressed_confirm() and menu_cursor_y!=MENU_NO_OPTION
+		is_confirming = key_pressed_confirm() and menu_cursor_y!=global.MENU_NO_OPTION
 	
 		if (is_confirming and not item_enabled(menu_cursor_y, menu_cursor_x))
 		{
@@ -152,8 +152,8 @@ if (menu_control)
 			}
 			else
 			{
-				menu_committed_x = MENU_CANCEL;
-				menu_committed_y = MENU_CANCEL;	
+				menu_committed_x = global.MENU_CANCEL;
+				menu_committed_y = global.MENU_CANCEL;	
 			}
 			
 			// Play selection effects
