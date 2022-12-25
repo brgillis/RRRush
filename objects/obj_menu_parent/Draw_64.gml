@@ -9,7 +9,7 @@ draw_set_alpha(1);
 
 // Draw the menu options
 
-draw_set_font(menu_font);
+draw_set_font(item_font);
 
 for (var i = 0; i < menu_num_rows; i++)
 {
@@ -32,8 +32,8 @@ for (var i = 0; i < menu_num_rows; i++)
 		else
 		{
 			var item = row.l[j];
-			draw_set_halign(halign);
-			draw_set_valign(valign);
+			draw_set_halign(item_halign);
+			draw_set_valign(item_valign);
 		}
 		
 		var text = item.text
@@ -91,7 +91,7 @@ for (var i = 0; i < menu_num_rows; i++)
 		var text_y = menu_y - (menu_item_height * i * 1.5);
 	
 		// Draw the text with outline
-		draw_text_color_outline(text_x, text_y, text, l_c_text, 1);
+		draw_text_color_outline(text_x, text_y, text, l_c_text, 1, 1, c_item_outline);
 	}
 	
 }

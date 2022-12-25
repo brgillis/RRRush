@@ -1,3 +1,5 @@
+/// Functions and constants related to drawing text
+
 function draw_text_outline(x, y, text, offset=1, col=c_black)
 {
 	/// Draws an outline behind text by dithering and drawing the outline - must be called before drawing
@@ -10,6 +12,8 @@ function draw_text_outline(x, y, text, offset=1, col=c_black)
 	draw_text(x+offset,y+offset,text);
 }
 
+global.TEXT_NO_OUTLINE = -1;
+
 function draw_text_color_outline(x,
                                  y,
 								 text,
@@ -20,7 +24,7 @@ function draw_text_color_outline(x,
 {
 	/// Draws text with a given color gradient and an outline behind it
 	
-	if (co!=-1)
+	if (co!=global.TEXT_NO_OUTLINE)
 		draw_text_outline(x, y, text, offset, co);
 		
 	// If l_c has two elements, treat it as a vertical gradient

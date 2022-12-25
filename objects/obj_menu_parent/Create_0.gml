@@ -17,8 +17,10 @@ menu_y_end = global.gui_height;
 
 menu_speed = 0.04;
 
-// How menu items are drawn
-menu_font = fnt_menu;
+/// How menu items are drawn
+
+item_font = fnt_menu;
+c_item_outline = c_black;
 
 // Text color if item is currently selected
 l_c_text_sel = [ $0000B0, $000080 ];
@@ -39,8 +41,14 @@ sel_prefix = "> ";
 sel_suffix = "";
 
 // Alignment for menu options
-halign = fa_right;
-valign = fa_bottom;
+item_halign = fa_right;
+item_valign = fa_bottom;
+
+
+/// How labels are drawn (if left unchanged, will be set to match items)
+
+label_font = -1;
+c_label_outline = -1;
 
 // Alignment for labels
 label_halign = fa_right;
@@ -76,6 +84,12 @@ allow_repeat_down = false;
 
 /// Menu post_init - for tasks to be done at the end of creating a child menu object
 function menu_post_init() {
+	
+	if (label_font==-1)
+		label_font = item_font;
+	if (c_label_outline==-1)
+		c_label_outline = c_item_outline;
+	
 	menu_cursor_x = init_selected_x;
 	menu_cursor_y = init_selected_y;
 	
@@ -100,5 +114,5 @@ function menu_post_init() {
 		}
 	}
 	
-	menu_item_height = font_get_size(menu_font);
+	menu_item_height = font_get_size(item_font);
 }

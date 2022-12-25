@@ -12,10 +12,10 @@ enum PauseMenuOption {
 }
 
 // How menu items are drawn
-menu_font = fnt_menu;
+item_font = fnt_menu;
 var num_options = PauseMenuOption.RESUME + 1;
 
-menu_item_height = font_get_size(menu_font);
+menu_item_height = font_get_size(item_font);
 
 // Layout of the menu
 back_alpha_start = 0;
@@ -29,28 +29,16 @@ menu_speed = 0.2;
 
 
 // How menu items are drawn
-menu_font = fnt_menu;
 
-text_sel_c1 = $0000B0;
-text_sel_c2 = $0000B0;
-text_sel_c3 = $000080;
-text_sel_c4 = $000080;
-
-text_com_c1 = $E0E0FF;
-text_com_c2 = $E0E0FF;
-text_com_c3 = $B0B0D0;
-text_com_c4 = $B0B0D0;
-
-text_unsel_c1 = $9090B0;
-text_unsel_c2 = $9090B0;
-text_unsel_c3 = $606080;
-text_unsel_c4 = $606080;
+l_c_text_sel = [ $0000B0, $000080 ];
+l_c_text_conf = [ $E0E0FF, $B0B0D0 ];
+l_c_text_unsel = [ $9090B0, $A0A6060800C0 ];
 
 sel_prefix = "> ";
 sel_suffix = " <";
 
-halign = fa_center;
-valign = fa_bottom;
+item_halign = fa_center;
+item_valign = fa_bottom;
 
 // Menu items
 l_menu_rows[PauseMenuOption.RESUME] = new MenuRow("Resume");
