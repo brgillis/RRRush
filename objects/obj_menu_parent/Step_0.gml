@@ -5,24 +5,6 @@ back_alpha += (back_alpha_target - back_alpha) * menu_speed;
 menu_x += (menu_x_target - menu_x) * menu_speed;
 menu_y += (menu_y_target - menu_y) * menu_speed;
 
-function clamp_cursor_x() {
-	/// Makes sure the menu cursor's x position is a valid value
-	if (menu_cursor_x >= l_menu_num_cols[menu_cursor_y]) menu_cursor_x = l_menu_num_cols[menu_cursor_y]-1;
-	if (menu_cursor_x < 0) menu_cursor_x = 0;
-}
-
-function clamp_cursor_y() {
-	/// Makes sure the menu cursor's y position is a valid value
-	if (menu_cursor_y >= menu_num_rows) menu_cursor_y = menu_num_rows-1;
-	if (menu_cursor_y < 0) menu_cursor_y = 0;
-}
-
-function clamp_cursor() {
-	/// Makes sure the menu cursor's x and y positions are valid values
-	clamp_cursor_y();
-	clamp_cursor_x();
-}
-
 // Keyboard controls
 if (menu_control)
 {
@@ -44,61 +26,30 @@ if (menu_control)
 	{
 		if (key_repeat_up())
 		{
-			menu_cursor_y++;
-			if (menu_cursor_y >= menu_num_rows)
-			{
-				// Only wrap on key press, not repeat
-				if (key_pressed_up())
-					menu_cursor_y = 0;
-				else
-					menu_cursor_y--;
-			}
+			menu_cursor_up();
 		}
 		if (key_repeat_down())
 		{
-			menu_cursor_y--;
-			if (menu_cursor_y < 0)
-			{
-				// Only wrap on key press, not repeat
-				if (key_pressed_down())
-					menu_cursor_y = menu_num_rows-1;
-				else
-					menu_cursor_y++;
-			}
+			menu_cursor_down();
 		}
 		if (key_repeat_left())
 		{
-			menu_cursor_x--;
-			if (menu_cursor_x < 0)
-			{
-				// Only wrap on key press, not repeat
-				if (key_pressed_left())
-					menu_cursor_x = l_menu_num_cols[menu_cursor_y]-1;
-				else
-					menu_cursor_x++;
-			}
+			menu_cursor_left();
 		}
 		if (key_repeat_right())
 		{
-			menu_cursor_x++;
-			if (menu_cursor_x >= l_menu_num_cols[menu_cursor_y])
-			{
-				// Only wrap on key press, not repeat
-				if (key_pressed_right())
-					menu_cursor_x = 0;
-				else
-					menu_cursor_x--;
-			}
+			menu_cursor_right();
 		}
 		
-		is_confirming = key_pressed_confirm() and menu_cursor_y!=global.MENU_NO_OPTION
+		var is_confirming = key_pressed_confirm() and menu_cursor_y!=global.MENU_NO_OPTION
+		var item = l_menu_rows[menu_cursor_y].l[menu_cursor_x];
 	
-		if (is_confirming and not item_enabled(menu_cursor_y, menu_cursor_x))
+		if (is_confirming and item.is_disabled)
 		{
 			// Give an error sound and disable control briefly
 			audio_play_sound(snd_error, 0, false);
 			menu_control = false;
-			alarm_set(1,error_delay);
+			alarm_set(1, error_delay);
 		}
 		else if (is_confirming or (key_pressed_cancel() and allow_cancel))
 		{

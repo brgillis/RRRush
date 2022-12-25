@@ -13,7 +13,7 @@ enum PauseMenuOption {
 
 // How menu items are drawn
 menu_font = fnt_menu;
-var num_options = 4;
+var num_options = PauseMenuOption.RESUME + 1;
 
 menu_item_height = font_get_size(menu_font);
 
@@ -53,15 +53,15 @@ halign = fa_center;
 valign = fa_bottom;
 
 // Menu items
-ll_menu_options[PauseMenuOption.RESUME][0] = "Resume";
-ll_menu_options[PauseMenuOption.RESTART][0] = "Restart Stage";
-ll_menu_options[PauseMenuOption.MAIN_MENU][0] = "Return to Main Menu";
-ll_menu_options[PauseMenuOption.QUIT][0] = "Quit Game";
+l_menu_rows[PauseMenuOption.RESUME] = new MenuRow("Resume");
+l_menu_rows[PauseMenuOption.RESTART] = new MenuRow("Restart Stage");
+l_menu_rows[PauseMenuOption.MAIN_MENU] = new MenuRow("Return to Main Menu");
+l_menu_rows[PauseMenuOption.QUIT] = new MenuRow("Quit Game");
 
 init_selected_x = 0;
 init_selected_y = PauseMenuOption.RESUME;
 
-allow_cancel = true; // Don't allow cancelling out of this menu
+allow_cancel = true;
 
 commit_delay = 15;
 

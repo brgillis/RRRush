@@ -35,7 +35,8 @@ ll_room_targets[WorldSelectOption.WORLD_5] = [0, 0, 0, 0]
 ll_room_targets[WorldSelectOption.WORLD_6] = [0, 0, 0, 0]
 ll_room_targets[WorldSelectOption.WORLD_7] = [0, 0, 0, 0]
 ll_room_targets[WorldSelectOption.WORLD_8] = [0, 0, 0, 0]
-ll_menu_options[WorldSelectOption.BACK] = ["Back"];
+
+var ll_disabled_options;
 
 ll_disabled_options[WorldSelectOption.WORLD_1] = [false, true, true, true]
 ll_disabled_options[WorldSelectOption.WORLD_2] = [true, true, true, true]
@@ -45,7 +46,6 @@ ll_disabled_options[WorldSelectOption.WORLD_5] = [true, true, true, true]
 ll_disabled_options[WorldSelectOption.WORLD_6] = [true, true, true, true]
 ll_disabled_options[WorldSelectOption.WORLD_7] = [true, true, true, true]
 ll_disabled_options[WorldSelectOption.WORLD_8] = [true, true, true, true]
-ll_disabled_options[WorldSelectOption.BACK] = [false];
 
 // How menu items are drawn
 
@@ -68,14 +68,19 @@ valign = fa_bottom;
 // Menu items
 for(var world_index=num_worlds; world_index>=1; world_index--)
 {
+	var l_items = []
 	for(var stage_index=num_stages-1; stage_index>=0; stage_index--)
 	{
 		var world_number = num_worlds-world_index+1;
 		var stage_number = stage_index+1;
 		
-		ll_menu_options[world_index][stage_index] = string(world_number)+"-"+string(stage_number);
+		l_items[stage_index] = new MenuItem(string(world_number)+"-"+string(stage_number),
+		                                    ll_disabled_options[world_index][stage_index]);
 	}
+	l_menu_rows[world_index] = new MenuRow(l_items)
 }
+
+l_menu_rows[WorldSelectOption.BACK] = new MenuRow("Back");
 
 // After setting everything up, call the parent's post_init to finalize creation
 menu_post_init();

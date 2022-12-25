@@ -65,9 +65,7 @@ label_valign = fa_bottom;
 menu_item_width = 500;
 
 // Menu items
-ll_menu_options[0][0] = "Option";
-ll_disabled_options = [];
-l_row_labels = [];
+l_menu_rows = [];
 
 // Whether or not to offset labels to the left of options
 offset_labels = true;
@@ -75,7 +73,7 @@ offset_labels = true;
 // Menu control
 
 // Which item is selected initially
-init_selected_x = global.MENU_NO_OPTION;
+init_selected_x = 0;
 init_selected_y = global.MENU_NO_OPTION;
 
 menu_committed_x = global.MENU_NO_OPTION;
@@ -86,7 +84,6 @@ commit_delay = 30;
 error_delay = 10;
 
 // Functions to check if a directional key press should be registered, allowing for repeat if held down
-
 repeat_delay_first = 20;
 repeat_delay_after = 5;
 allow_repeat_down = false;
@@ -105,25 +102,18 @@ function menu_post_init() {
 	menu_x_target = menu_x_end;
 	menu_y_target = menu_y_end;
 
-	menu_num_rows = array_length(ll_menu_options);
+	menu_num_rows = array_length(l_menu_rows);
+	
+	// Set offset to greatest number of labels we see
 	global_label_offset = 0;
 	for (var i = menu_num_rows-1; i >= 0; i--)
-	{
-		l_menu_num_cols[i] = array_length(ll_menu_options[i]);
-		row_label = get_row_label(i)
-		if (is_string(row_label))
+	{		
+		num_labels = l_menu_rows[i].num_labels;
+		if (num_labels>global_label_offset)
 		{
-			l_menu_num_labels[i] = 1;
-			// If at least one row has a label, offset all columns by one to allow room for a label column
-			global_label_offset = 1;
-		}
-		else
-		{
-			l_menu_num_labels[i] = 0;
+			global_label_offset = num_labels;
 		}
 	}
 	
 	menu_item_height = font_get_size(menu_font);
-	
-	init_finalized = true;
 }

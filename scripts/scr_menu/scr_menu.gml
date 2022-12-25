@@ -2,15 +2,33 @@
 
 /// Structs
 
-function MenuItem(_option, _is_disabled = false) constructor {
-	option = _option;
+function MenuItem(_text, _is_disabled = false) constructor {
+	text = _text;
 	is_disabled = _is_disabled;
 }
 
-function MenuRow(_l = [], _label = false, _selectable = true) constructor {
-	l = [];
+function MenuRow(_l = [], _label = false, _is_selectable = true) constructor {
+	
+	if (not is_array(_l))
+	{
+		if (is_string(_l))
+			_l = new MenuItem(_l);
+		l = [_l];
+	}
+	else
+	{
+		l = _l;
+	}
+	
 	label = _label;
-	selectable = _selectable;
+	is_selectable = _is_selectable;
+	
+	num_items = array_length(l);
+	
+	if is_string(label)
+		num_labels =  1;
+	else
+		num_labels =  0;
 }
 
 /// Constants
@@ -22,26 +40,6 @@ global.MENU_NO_OPTION = -1;
 global.MENU_CANCEL = -2;
 
 /// Functions
-
-function item_enabled(i, j) {
-	// If j is -1, this is a label, so it's always enabled
-	if(j==-1)
-		return true;
-	// If the array is of length zero, then no options have been set up to be disabled, hence this item is enabled
-	if(array_length(ll_disabled_options)==0)
-		return true;
-	return not ll_disabled_options[i][j];
-}
-
-function get_row_label(i) {
-	// If the array is of length zero, no rows have labels, so return 0 indicating this
-	if(array_length(l_row_labels)==0)
-		return false;
-	else if is_string(l_row_labels[i])
-		return l_row_labels[i];
-	else
-		return false;
-}
 
 function key_repeat(key_pressed, key_down) {
 	if (key_pressed())
@@ -71,4 +69,76 @@ function key_repeat_left() {
 }
 function key_repeat_right() {
 	return key_repeat(key_pressed_right, key_down_right);
+}
+
+function clamp_cursor_x() {
+	/// Makes sure the menu cursor's x position is a valid value
+	if (menu_cursor_x >= l_menu_rows[menu_cursor_y].num_items) menu_cursor_x = l_menu_rows[menu_cursor_y].num_items-1;
+	if (menu_cursor_x < 0) menu_cursor_x = 0;
+}
+
+function clamp_cursor_y() {
+	/// Makes sure the menu cursor's y position is a valid value
+	if (menu_cursor_y >= menu_num_rows) menu_cursor_y = menu_num_rows-1;
+	if (menu_cursor_y < 0) menu_cursor_y = 0;
+}
+
+function clamp_cursor() {
+	/// Makes sure the menu cursor's x and y positions are valid values
+	clamp_cursor_y();
+	clamp_cursor_x();
+}
+
+function menu_cursor_up() {
+	menu_cursor_y++;
+	if (menu_cursor_y >= menu_num_rows)
+	{
+		// Only wrap on key press, not repeat
+		if (key_pressed_up())
+			menu_cursor_y = 0;
+		else
+			menu_cursor_y--;
+	}
+	// If we've moved to an unselectable row, repeat until we reach a selectable row
+	if (not l_menu_rows[menu_cursor_y].is_selectable)
+		menu_cursor_up()
+}
+
+function menu_cursor_down() {
+	menu_cursor_y--;
+	if (menu_cursor_y < 0)
+	{
+		// Only wrap on key press, not repeat
+		if (key_pressed_down())
+			menu_cursor_y = menu_num_rows-1;
+		else
+			menu_cursor_y++;
+	}
+	// If we've moved to an unselectable row, repeat until we reach a selectable row
+	if (not l_menu_rows[menu_cursor_y].is_selectable)
+		menu_cursor_down()
+}
+
+function menu_cursor_left() {
+	menu_cursor_x--;
+	if (menu_cursor_x < 0)
+	{
+		// Only wrap on key press, not repeat
+		if (key_pressed_left())
+			menu_cursor_x = l_menu_rows[menu_cursor_y].num_items-1;
+		else
+			menu_cursor_x++;
+	}
+}
+
+function menu_cursor_right() {
+	menu_cursor_x++;
+	if (menu_cursor_x >= l_menu_rows[menu_cursor_y].num_items)
+	{
+		// Only wrap on key press, not repeat
+		if (key_pressed_right())
+			menu_cursor_x = 0;
+		else
+			menu_cursor_x--;
+	}
 }

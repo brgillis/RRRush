@@ -12,7 +12,7 @@ enum MainMenuOption {
 	QUIT = 0,
 }
 
-num_lines = MainMenuOption.NEW_GAME + 1;
+var num_lines = MainMenuOption.NEW_GAME + 1;
 menu_item_height = 1.5 * font_get_size(menu_font);
 
 // Layout of the menu
@@ -31,18 +31,11 @@ halign = fa_center;
 valign = fa_bottom;
 
 // Menu items
-ll_menu_options[MainMenuOption.NEW_GAME] = ["New Game"];
-ll_menu_options[MainMenuOption.CONTINUE] = ["Continue"];
-ll_menu_options[MainMenuOption.LEVEL_SELECT] = ["Level Select"];
-ll_menu_options[MainMenuOption.CONTROLS] = ["View Controls"];
-ll_menu_options[MainMenuOption.QUIT] = ["Quit"];
-
-// Disabled menu items
-ll_disabled_options[MainMenuOption.NEW_GAME][0] = false;
-ll_disabled_options[MainMenuOption.CONTINUE][0] = true;
-ll_disabled_options[MainMenuOption.LEVEL_SELECT][0] = false;
-ll_disabled_options[MainMenuOption.CONTROLS][0] = false;
-ll_disabled_options[MainMenuOption.QUIT][0] = false;
+l_menu_rows[MainMenuOption.NEW_GAME] = new MenuRow("New Game");
+l_menu_rows[MainMenuOption.CONTINUE] = new MenuRow(new MenuItem("Continue", true));
+l_menu_rows[MainMenuOption.LEVEL_SELECT] = new MenuRow("Level Select");
+l_menu_rows[MainMenuOption.CONTROLS] = new MenuRow("View Controls");
+l_menu_rows[MainMenuOption.QUIT] = new MenuRow("Quit");
 
 allow_cancel = false; // Don't allow cancelling out of this menu
 

@@ -1,11 +1,5 @@
 /// @description Draw Menu
 
-// Don't draw until initialization is finalized
-if (not init_finalized)
-{
-	return;
-}
-
 // Draw the background
 
 draw_set_color(back_color);
@@ -19,13 +13,16 @@ draw_set_font(menu_font);
 
 for (var i = 0; i < menu_num_rows; i++)
 {
-	var num_labels = l_menu_num_labels[i];
-	for (var j = -num_labels; j < l_menu_num_cols[i]; j++)
+	var row = l_menu_rows[i];
+	var num_items = row.num_items;
+	var num_labels = row.num_labels;
+	
+	for (var j = -num_labels; j < num_items; j++)
 	{
 		var align_shift = 0;
 		if (j==-1)
 		{
-			var text = l_row_labels[i];
+			var item = new MenuItem(row.label);
 			draw_set_halign(label_halign);
 			draw_set_valign(label_valign);
 			// Place labels close to items if they're right-aligned
@@ -34,10 +31,13 @@ for (var i = 0; i < menu_num_rows; i++)
 		}
 		else
 		{
-			var text = ll_menu_options[i][j];
+			var item = row.l[j];
 			draw_set_halign(halign);
 			draw_set_valign(valign);
 		}
+		
+		var text = item.text
+		
 		if (menu_cursor_y == i and menu_cursor_x == j)
 		{
 			text = string_insert(sel_prefix, text, 0)
@@ -47,7 +47,7 @@ for (var i = 0; i < menu_num_rows; i++)
 			if (menu_control)
 			{
 				// Different color depending on if disabled or not
-				if (item_enabled(i, j))
+				if (not item.is_disabled)
 				{
 					text_c1 = text_sel_c1;
 					text_c2 = text_sel_c2;
@@ -65,7 +65,7 @@ for (var i = 0; i < menu_num_rows; i++)
 			else
 			{
 				// Different color depending on if disabled or not
-				if (item_enabled(i, j))
+				if (not item.is_disabled)
 				{
 					text_c1 = text_com_c1;
 					text_c2 = text_com_c2;
@@ -84,7 +84,7 @@ for (var i = 0; i < menu_num_rows; i++)
 		else
 		{		
 			// Different color depending on if disabled or not
-			if (item_enabled(i, j))
+			if (not item.is_disabled)
 			{
 				text_c1 = text_unsel_c1;
 				text_c2 = text_unsel_c2;

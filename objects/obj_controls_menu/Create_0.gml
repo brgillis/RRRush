@@ -27,42 +27,27 @@ enum Line {
 
 num_lines = Line.MOVE_LEFT + 1
 
-ll_menu_options[Line.MOVE_LEFT] = ["A or left arrow"];
-ll_menu_options[Line.MOVE_RIGHT] = ["D or right arrow"];
-ll_menu_options[Line.RUN] = ["Tab, shift, or right mouse button"];
-ll_menu_options[Line.JUMP] = ["W, up array, Space, Enter, or left mouse button"];
-ll_menu_options[Line.HIGH_JUMP] = ["Hold jump button longer for extra height"];
-ll_menu_options[Line.SUPER_JUMP] = ["Jump just after landing for even more height"];
-ll_menu_options[Line.HOLD_GLITTER] = ["Hold run button"];
-ll_menu_options[Line.CONFIRM] = ["Space, Enter, or left mouse button"];
-ll_menu_options[Line.CANCEL] = ["Tab, shift, or right mouse button"];
-ll_menu_options[Line.PAUSE] = ["Return, P, or middle mouse button"];
-ll_menu_options[Line.RESTART] = ["R"];
-ll_menu_options[Line.RESET] = ["T or F5"];
-ll_menu_options[Line.BLANK] = [];
-ll_menu_options[Line.BACK] = ["Back"];
-
-l_row_labels[Line.MOVE_LEFT] = "Move left:";
-l_row_labels[Line.MOVE_RIGHT] = "Move left:";
-l_row_labels[Line.RUN] = "Run:";
-l_row_labels[Line.JUMP] = "Jump:";
-l_row_labels[Line.HIGH_JUMP] = "High jump:";
-l_row_labels[Line.SUPER_JUMP] = "Super jump:";
-l_row_labels[Line.HOLD_GLITTER] = "Keep glitterishness:";
-l_row_labels[Line.CONFIRM] = "Confirm:";
-l_row_labels[Line.CANCEL] = "Cancel:";
-l_row_labels[Line.PAUSE] = "Pause:";
-l_row_labels[Line.RESTART] = "Restart stage:";
-l_row_labels[Line.RESET] = "Reset game:";
-l_row_labels[Line.BLANK] = false;
-l_row_labels[Line.BACK] = false;
+l_menu_rows[Line.MOVE_LEFT] = new MenuRow("A or left arrow", "Move left:", false);
+l_menu_rows[Line.MOVE_RIGHT] = new MenuRow("D or right arrow", "Move left:", false);
+l_menu_rows[Line.RUN] = new MenuRow("Tab, shift, or right mouse button", "Run:", false);
+l_menu_rows[Line.JUMP] = new MenuRow("W, up array, Space, Enter, or left mouse button", "Jump:", false);
+l_menu_rows[Line.HIGH_JUMP] = new MenuRow("Hold jump button longer for extra height", "High jump:", false);
+l_menu_rows[Line.SUPER_JUMP] = new MenuRow("Jump just after landing for even more height", "Super jump:", false);
+l_menu_rows[Line.HOLD_GLITTER] = new MenuRow("Hold run button", "Keep glitterishness:", false);
+l_menu_rows[Line.CONFIRM] = new MenuRow("Space, Enter, or left mouse button", "Confirm:", false);
+l_menu_rows[Line.CANCEL] = new MenuRow("Tab, shift, or right mouse button", "Cancel:", false);
+l_menu_rows[Line.PAUSE] = new MenuRow("Return, P, or middle mouse button", "Pause:", false);
+l_menu_rows[Line.RESTART] = new MenuRow("R", "Restart stage:", false);
+l_menu_rows[Line.RESET] = new MenuRow("T or F5", "Reset game:", false);
+l_menu_rows[Line.BLANK] = new MenuRow([], false, false);
+l_menu_rows[Line.BACK] = new MenuRow("Back", false, true);
 
 offset_labels = true;
 
 // How menu items are drawn
 
 menu_item_height = font_get_size(menu_font);
-menu_item_width = 0.5*string_length(l_row_labels[Line.SUPER_JUMP])*font_get_size(menu_font);
+menu_item_width = 0.5*string_length(l_menu_rows[Line.SUPER_JUMP].label)*font_get_size(menu_font);
 
 // Layout of the menu
 menu_x_start =  0.35 * global.display_width - menu_item_width;
@@ -76,6 +61,9 @@ sel_suffix = " <";
 
 halign = fa_left;
 valign = fa_bottom;
+
+// Which item is selected initially
+init_selected_y = Line.BACK;
 
 // After setting everything up, call the parent's post_init to finalize creation
 menu_post_init();
