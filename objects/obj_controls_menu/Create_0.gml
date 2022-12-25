@@ -49,6 +49,9 @@ offset_labels = true;
 menu_item_height = font_get_size(item_font);
 menu_item_width = 0.5*string_length(l_menu_rows[Line.SUPER_JUMP].label)*font_get_size(item_font);
 
+c_item_outline = global.TEXT_NO_OUTLINE
+l_c_text_unsel = c_black;
+
 // Layout of the menu
 menu_x_start =  0.35 * global.display_width - menu_item_width;
 menu_y_start = -global.gui_height;

@@ -27,8 +27,12 @@ function draw_text_color_outline(x,
 	if (co!=global.TEXT_NO_OUTLINE)
 		draw_text_outline(x, y, text, offset, co);
 		
-	// If l_c has two elements, treat it as a vertical gradient
-	if (array_length(l_c)==2)
+	if (not is_array(l_c)) // If just one value, use for all four corners
+		l_c = [l_c, l_c, l_c, l_c]
+	else if (array_length(l_c)==1)
+		l_c = [l_c[0], l_c[0], l_c[0], l_c[0]]
+	else if (array_length(l_c)==2) // If l_c has two elements, treat it as a vertical gradient
 		l_c = [l_c[0], l_c[0], l_c[1], l_c[1]]
+		
 	draw_text_color(x, y, text, l_c[0], l_c[1], l_c[2], l_c[3], alpha);
 }
