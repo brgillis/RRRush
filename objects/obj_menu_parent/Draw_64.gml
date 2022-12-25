@@ -9,7 +9,6 @@ draw_set_alpha(1);
 
 // Draw the menu options
 
-draw_set_font(item_font);
 
 for (var i = 0; i < menu_num_rows; i++)
 {
@@ -28,12 +27,16 @@ for (var i = 0; i < menu_num_rows; i++)
 			// Place labels close to items if they're right-aligned
 			if (label_halign==fa_right)
 				var align_shift = 0.9
+			var c_outline = c_label_outline;
+			draw_set_font(label_font);
 		}
 		else
 		{
 			var item = row.l[j];
 			draw_set_halign(item_halign);
 			draw_set_valign(item_valign);
+			var c_outline = c_item_outline;
+			draw_set_font(item_font);
 		}
 		
 		var text = item.text
@@ -91,7 +94,7 @@ for (var i = 0; i < menu_num_rows; i++)
 		var text_y = menu_y - (menu_item_height * i * 1.5);
 	
 		// Draw the text with outline
-		draw_text_color_outline(text_x, text_y, text, l_c_text, 1, 1, c_item_outline);
+		draw_text_color_outline(text_x, text_y, text, l_c_text, 1, 1, c_outline);
 	}
 	
 }
