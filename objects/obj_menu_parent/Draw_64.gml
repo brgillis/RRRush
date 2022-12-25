@@ -49,17 +49,11 @@ for (var i = 0; i < menu_num_rows; i++)
 				// Different color depending on if disabled or not
 				if (not item.is_disabled)
 				{
-					text_c1 = text_sel_c1;
-					text_c2 = text_sel_c2;
-					text_c3 = text_sel_c3;
-					text_c4 = text_sel_c4;
+					l_c_text = l_c_text_sel;
 				}
 				else
 				{
-					text_c1 = text_dis_sel_c1;
-					text_c2 = text_dis_sel_c2;
-					text_c3 = text_dis_sel_c3;
-					text_c4 = text_dis_sel_c4;
+					l_c_text = l_c_text_dis_sel;
 				}
 			}
 			else
@@ -67,17 +61,11 @@ for (var i = 0; i < menu_num_rows; i++)
 				// Different color depending on if disabled or not
 				if (not item.is_disabled)
 				{
-					text_c1 = text_com_c1;
-					text_c2 = text_com_c2;
-					text_c3 = text_com_c3;
-					text_c4 = text_com_c4;
+					l_c_text = l_c_text_conf;
 				}
 				else
 				{
-					text_c1 = text_dis_sel_c1;
-					text_c2 = text_dis_sel_c2;
-					text_c3 = text_dis_sel_c3;
-					text_c4 = text_dis_sel_c4;
+					l_c_text = l_c_text_dis_sel;
 				}
 			}
 		}
@@ -86,17 +74,11 @@ for (var i = 0; i < menu_num_rows; i++)
 			// Different color depending on if disabled or not
 			if (not item.is_disabled)
 			{
-				text_c1 = text_unsel_c1;
-				text_c2 = text_unsel_c2;
-				text_c3 = text_unsel_c3;
-				text_c4 = text_unsel_c4;
+				l_c_text = l_c_text_unsel;
 			}
 			else
 			{
-				text_c1 = text_dis_unsel_c1;
-				text_c2 = text_dis_unsel_c2;
-				text_c3 = text_dis_unsel_c3;
-				text_c4 = text_dis_unsel_c4;
+				l_c_text = l_c_text_dis_unsel;
 			}
 		}
 		
@@ -109,12 +91,7 @@ for (var i = 0; i < menu_num_rows; i++)
 		var text_y = menu_y - (menu_item_height * i * 1.5);
 	
 		// Draw the text with outline
-		draw_text_color_outline(text_x, text_y, text,
-					    text_c1,
-						text_c2,
-						text_c3,
-						text_c4,
-						1);
+		draw_text_color_outline(text_x, text_y, text, l_c_text, 1);
 	}
 	
 }

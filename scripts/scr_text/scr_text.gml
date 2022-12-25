@@ -13,16 +13,18 @@ function draw_text_outline(x, y, text, offset=1, col=c_black)
 function draw_text_color_outline(x,
                                  y,
 								 text,
-								 c1=c_white,
-								 c2=c_white,
-								 c3=c_white,
-								 c4=c_white,
+								 l_c = [ c_white, c_white ],
 								 alpha=1,
 								 offset=1,
 								 co=c_black)
 {
 	/// Draws text with a given color gradient and an outline behind it
 	
-	draw_text_outline(x, y, text, offset, co);
-	draw_text_color(x, y, text, c1, c2, c3, c4, alpha);
+	if (co!=-1)
+		draw_text_outline(x, y, text, offset, co);
+		
+	// If l_c has two elements, treat it as a vertical gradient
+	if (array_length(l_c)==2)
+		l_c = [l_c[0], l_c[0], l_c[1], l_c[1]]
+	draw_text_color(x, y, text, l_c[0], l_c[1], l_c[2], l_c[3], alpha);
 }

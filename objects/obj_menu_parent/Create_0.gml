@@ -21,34 +21,19 @@ menu_speed = 0.04;
 menu_font = fnt_menu;
 
 // Text color if item is currently selected
-text_sel_c1 = $0000B0;
-text_sel_c2 = $0000B0;
-text_sel_c3 = $000080;
-text_sel_c4 = $000080;
+l_c_text_sel = [ $0000B0, $000080 ];
 
 // Text color if disabled item is currently selected
-text_dis_sel_c1 = $404040;
-text_dis_sel_c2 = $404040;
-text_dis_sel_c3 = $000000;
-text_dis_sel_c4 = $000000;
+l_c_text_dis_sel = [ $404040, $000000 ];
 
 // Text color if item is confirmed
-text_com_c1 = $0000FF;
-text_com_c2 = $0000FF;
-text_com_c3 = $0000D0;
-text_com_c4 = $0000D0;
+l_c_text_conf = [ $0000FF, $0000D0 ];
 
 // Text color if item is not selected
-text_unsel_c1 = $C0C0FF;
-text_unsel_c2 = $C0C0FF;
-text_unsel_c3 = $A0A0C0;
-text_unsel_c4 = $A0A0C0;
+l_c_text_unsel = [ $C0C0FF, $A0A0C0 ];
 
 // Text color if disabled item is not selected
-text_dis_unsel_c1 = $808080;
-text_dis_unsel_c2 = $808080;
-text_dis_unsel_c3 = $404040;
-text_dis_unsel_c4 = $404040;
+l_c_text_dis_unsel = [ $808080, $404040 ];
 
 sel_prefix = "> ";
 sel_suffix = "";
