@@ -19,69 +19,78 @@ for (var i = 0; i < menu_num_rows; i++)
 	for (var j = -num_labels; j < num_items; j++)
 	{
 		var align_shift = 0;
-		if (j==-1)
+		if (j==-1) // If this is a label
 		{
-			var item = new MenuItem(row.label);
+			var text = row.label;
+			
 			draw_set_halign(label_halign);
 			draw_set_valign(label_valign);
+			
 			// Place labels close to items if they're right-aligned
 			if (label_halign==fa_right)
 				var align_shift = 0.9
+				
 			var c_outline = c_label_outline;
+			
 			draw_set_font(label_font);
+			
+			l_c_text = l_c_label;
 		}
 		else
 		{
 			var item = row.l[j];
+			var text = item.text
+			
 			draw_set_halign(item_halign);
 			draw_set_valign(item_valign);
+			
 			var c_outline = c_item_outline;
+			
 			draw_set_font(item_font);
-		}
 		
-		var text = item.text
 		
-		if (menu_cursor_y == i and menu_cursor_x == j)
-		{
-			text = string_insert(sel_prefix, text, 0)
-			text = string_insert(text, sel_suffix, 0)
-		
-			// Different color depending on if menu is currently controllable or not
-			if (menu_control)
+			if (menu_cursor_y == i and menu_cursor_x == j)
 			{
-				// Different color depending on if disabled or not
-				if (not item.is_disabled)
+				text = string_insert(sel_prefix, text, 0)
+				text = string_insert(text, sel_suffix, 0)
+		
+				// Different color depending on if menu is currently controllable or not
+				if (menu_control)
 				{
-					l_c_text = l_c_text_sel;
+					// Different color depending on if disabled or not
+					if (not item.is_disabled)
+					{
+						l_c_text = l_c_text_sel;
+					}
+					else
+					{
+						l_c_text = l_c_text_dis_sel;
+					}
 				}
 				else
 				{
-					l_c_text = l_c_text_dis_sel;
+					// Different color depending on if disabled or not
+					if (not item.is_disabled)
+					{
+						l_c_text = l_c_text_conf;
+					}
+					else
+					{
+						l_c_text = l_c_text_dis_sel;
+					}
 				}
 			}
 			else
-			{
+			{		
 				// Different color depending on if disabled or not
 				if (not item.is_disabled)
 				{
-					l_c_text = l_c_text_conf;
+					l_c_text = l_c_text_unsel;
 				}
 				else
 				{
-					l_c_text = l_c_text_dis_sel;
+					l_c_text = l_c_text_dis_unsel;
 				}
-			}
-		}
-		else
-		{		
-			// Different color depending on if disabled or not
-			if (not item.is_disabled)
-			{
-				l_c_text = l_c_text_unsel;
-			}
-			else
-			{
-				l_c_text = l_c_text_dis_unsel;
 			}
 		}
 		

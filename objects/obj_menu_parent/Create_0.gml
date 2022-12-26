@@ -46,9 +46,9 @@ item_valign = fa_bottom;
 
 
 /// How labels are drawn (if left unchanged, will be set to match items)
-
 label_font = -1;
 c_label_outline = -1;
+l_c_label = -1;
 
 // Alignment for labels
 label_halign = fa_right;
@@ -89,6 +89,8 @@ function menu_post_init() {
 		label_font = item_font;
 	if (c_label_outline==-1)
 		c_label_outline = c_item_outline;
+	if (l_c_label==-1)
+		l_c_label = l_c_text_unsel;
 	
 	menu_cursor_x = init_selected_x;
 	menu_cursor_y = init_selected_y;

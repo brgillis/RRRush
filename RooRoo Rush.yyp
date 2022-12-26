@@ -72,6 +72,7 @@
     {"id":{"name":"spr_player_jump_idle","path":"sprites/spr_player_jump_idle/spr_player_jump_idle.yy",},"order":6,},
     {"id":{"name":"obj_precise_tile_checker","path":"objects/obj_precise_tile_checker/obj_precise_tile_checker.yy",},"order":1,},
     {"id":{"name":"spr_tileset_grass_frames","path":"sprites/spr_tileset_grass_frames/spr_tileset_grass_frames.yy",},"order":1,},
+    {"id":{"name":"fnt_controls_label","path":"fonts/fnt_controls_label/fnt_controls_label.yy",},"order":8,},
     {"id":{"name":"snd_button_up","path":"sounds/snd_button_up/snd_button_up.yy",},"order":1,},
     {"id":{"name":"obj_level_select_menu","path":"objects/obj_level_select_menu/obj_level_select_menu.yy",},"order":2,},
     {"id":{"name":"spr_particle_blue","path":"sprites/spr_particle_blue/spr_particle_blue.yy",},"order":2,},

@@ -29,7 +29,7 @@ num_lines = Line.MOVE_LEFT + 1
 
 l_menu_rows[Line.MOVE_LEFT] = new MenuRow("A or left arrow", "Move left:", false);
 l_menu_rows[Line.MOVE_RIGHT] = new MenuRow("D or right arrow", "Move left:", false);
-l_menu_rows[Line.RUN] = new MenuRow("Tab, shift, or right mouse button", "Run:", false);
+l_menu_rows[Line.RUN] = new MenuRow("Hold tab, shift, or right mouse button", "Run:", false);
 l_menu_rows[Line.JUMP] = new MenuRow("W, up array, Space, Enter, or left mouse button", "Jump:", false);
 l_menu_rows[Line.HIGH_JUMP] = new MenuRow("Hold jump button longer for extra height", "High jump:", false);
 l_menu_rows[Line.SUPER_JUMP] = new MenuRow("Jump just after landing for even more height", "Super jump:", false);
@@ -49,8 +49,14 @@ offset_labels = true;
 menu_item_height = font_get_size(item_font);
 menu_item_width = 0.5*string_length(l_menu_rows[Line.SUPER_JUMP].label)*font_get_size(item_font);
 
-c_item_outline = global.TEXT_NO_OUTLINE
+c_item_outline = global.TEXT_NO_OUTLINE;
 l_c_text_unsel = c_black;
+
+// How labels are drawn
+
+c_label_outline = global.TEXT_NO_OUTLINE;
+l_c_label = c_black;
+label_font = fnt_controls_label;
 
 // Layout of the menu
 menu_x_start =  0.35 * global.display_width - menu_item_width;
