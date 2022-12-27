@@ -42,17 +42,13 @@ back_alpha_start = 0;
 menu_x_start = global.display_width/2;
 menu_y_start = 1.5*global.gui_height + 1.5*menu_item_height*(num_options/2);
 
-back_alpha_end = 0.3;
+back_alpha_end = 0.5;
 menu_x_end = global.display_width/2;
 menu_y_end = 0.5*global.display_height + 1.5*menu_item_height*(num_options/2);
 menu_speed = 0.2;
 
 
 // How menu items are drawn
-
-l_c_text_sel = [ $0000B0, $000080 ];
-l_c_text_conf = [ $E0E0FF, $B0B0D0 ];
-l_c_text_unsel = [ $9090B0, $A0A6060800C0 ];
 
 sel_prefix = "> ";
 sel_suffix = " <";

@@ -1,14 +1,16 @@
 /// @description Update globals
 
 // Set game state to active at end of transition in
-if ((obj_persistent.percent==0) && (fade_in))
+if (fade_in)
 {
-	set_game_state_active();
-	fade_in = false; // Set to false so we only set to active once, at the beginning
+	if (obj_persistent.percent<=0.3)
+	{
+		set_game_state_active();
+		fade_in = false; // Set to false so we only set to active once, at the beginning
+	}
 }
-
 // Pause the game if the pause button is pressed
-if ((global.game_state == GameState.ACTIVE) or (global.game_state == GameState.NO_CONTROL)
+else if ((global.game_state == GameState.ACTIVE) or (global.game_state == GameState.NO_CONTROL)
      or (global.game_state == GameState.OVERLOAD)) and (key_pressed_pause())
 {
 	var old_game_state = global.game_state;

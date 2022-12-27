@@ -23,7 +23,7 @@ item_font = fnt_menu;
 c_item_outline = c_black;
 
 // Text color if item is currently selected
-l_c_text_sel = [ $0000B0, $000080 ];
+l_c_text_sel = [ $4040FF, $2020B0 ];
 
 // Text color if disabled item is currently selected
 l_c_text_dis_sel = [ $404040, $000000 ];
