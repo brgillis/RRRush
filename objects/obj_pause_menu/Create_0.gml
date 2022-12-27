@@ -1,5 +1,25 @@
 /// @description Options and appearance
 
+/// Special handling for the pause menu - stop all animations
+
+// Stop instance animations and save image speed
+var num_inst = instance_number(all);
+for (var i = 0; i < num_inst; ++i;)
+{
+	var instance = instance_find(all, i);
+    l_instance_image_speed[i] = instance.image_speed;
+	instance.image_speed = 0;
+}
+
+// Pause sequence animations
+l_seq_ids = layer_get_all_elements("Interact_assets");
+num_seq = array_length(l_seq_ids);
+for (var i = 0; i <num_seq; ++i;)
+{
+	var seq = l_seq_ids[i];
+	layer_sequence_pause(seq);
+}
+
 // Inherit the parent event
 event_inherited();
 
