@@ -15,7 +15,7 @@ if(global.player_control)
 {
 	key_left = key_down_left();
 	key_right = key_down_right();
-	key_jump = key_down_confirm() || key_down_up();
+	key_jump = key_down_jump();
 	key_run = key_down_cancel();
 }
 else
@@ -368,7 +368,7 @@ if key_jump
 	// Separate handling depending on current jump state
 	switch jump_state
 	{
-	// Ignore space input if rising or falling
+	// Ignore jump input if rising or falling
 	case JumpState.RISE:
 	case JumpState.FALL:
 		break;
@@ -381,8 +381,8 @@ if key_jump
 		jump_effect = obj_super_jump_effect;
 	case JumpState.GROUND:
 	case JumpState.GROUND_COYOTE:
-		// Only start a jump if space was released during the last jump
-		if !(space_released)
+		// Only start a jump if jump key was released during the last jump
+		if !(jump_released)
 		{
 			break;
 		}
@@ -390,7 +390,7 @@ if key_jump
 		set_jump_state_jump();
 		audio_play_sound(jump_sound,1,false)
 		instance_create_layer(x,y,"Effects_between",jump_effect)
-		space_released = false;
+		jump_released = false;
 		coyote_time = 0;
 		break;
 	// In jump state, add jump acceleration each frame
@@ -405,7 +405,7 @@ if key_jump
 	}
 	
 } else {
-	space_released = true;	
+	jump_released = true;	
 }
 
 // Gravity - different gravity depending on if rising or falling

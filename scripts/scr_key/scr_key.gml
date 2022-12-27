@@ -123,3 +123,21 @@ function key_released_pause()
 	/// Checks if any key signaling pause is released this frame
 	return keyboard_check_released(vk_return) || keyboard_check_released(ord("P")) || mouse_check_button_released(mb_middle);
 }
+
+function key_down_jump()
+{
+	/// Checks if any key signaling jump is held down
+	return keyboard_check(vk_space) || mouse_check_button(mb_left);
+}
+
+function key_pressed_jump()
+{
+	/// Checks if any key signaling jump is held down
+	return keyboard_check_pressed(vk_space) || mouse_check_button_pressed(mb_left);
+}
+
+function key_released_jump()
+{
+	/// Checks if any key signaling jump is released this frame
+	return keyboard_check_released(vk_space) || mouse_check_button_released(mb_left);
+}

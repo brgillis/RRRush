@@ -60,7 +60,7 @@ if  ((global.game_state == GameState.ACTIVE) or (global.game_state == GameState.
 	}
 
 	// Clamp glitterishness within bounds, and handle overload
-	if (glitterishness > global.GLITTER_MAX)
+	if (glitterishness >= global.GLITTER_MAX)
 	{
 		glitterishness = global.GLITTER_MAX;
 		if (global.game_state == GameState.ACTIVE)
