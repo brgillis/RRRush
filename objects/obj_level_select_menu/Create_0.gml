@@ -52,10 +52,10 @@ ll_disabled_options[WorldSelectOption.WORLD_8] = [true, true, true, true]
 
 // How menu items are drawn
 
-item_font = fnt_level_select_menu;
+l_item_font = [fnt_level_select_menu];
 
-menu_item_height = font_get_size(item_font);
-menu_item_width = 5*font_get_size(item_font);
+menu_item_height = font_get_size(l_item_font[0]);
+menu_item_width = 5*font_get_size(l_item_font[0]);
 
 // Layout of the menu
 menu_x_start = global.display_width/2 - menu_item_width*(num_stages/2-0.5);
@@ -67,8 +67,8 @@ menu_speed = 0.1;
 sel_prefix = "> ";
 sel_suffix = " <";
 
-item_halign = fa_center;
-item_valign = fa_bottom;
+l_item_halign = fa_center;
+l_item_valign = fa_bottom;
 
 // Menu items
 for(var world_index=WorldSelectOption.WORLD_1; world_index>=WorldSelectOption.WORLD_8; world_index--)

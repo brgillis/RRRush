@@ -23,16 +23,16 @@ for (var i = 0; i < menu_num_rows; i++)
 		{
 			var text = row.label;
 			
-			draw_set_halign(label_halign);
-			draw_set_valign(label_valign);
+			draw_set_halign(l_label_halign[i]);
+			draw_set_valign(l_label_valign[i]);
 			
 			// Place labels close to items if they're right-aligned
-			if (label_halign==fa_right)
+			if (l_label_halign[i]==fa_right)
 				var align_shift = 0.9
 				
-			var c_outline = c_label_outline;
+			var c_outline = l_c_label_outline[i];
 			
-			draw_set_font(label_font);
+			draw_set_font(l_label_font[i]);
 			
 			l_c_text = l_c_label;
 		}
@@ -41,12 +41,12 @@ for (var i = 0; i < menu_num_rows; i++)
 			var item = row.l[j];
 			var text = item.text
 			
-			draw_set_halign(item_halign);
-			draw_set_valign(item_valign);
+			draw_set_halign(l_item_halign[i]);
+			draw_set_valign(l_item_valign[i]);
 			
-			var c_outline = c_item_outline;
+			var c_outline = l_c_item_outline[i];
 			
-			draw_set_font(item_font);
+			draw_set_font(l_item_font[i]);
 		
 		
 			if (menu_cursor_y == i and menu_cursor_x == j)

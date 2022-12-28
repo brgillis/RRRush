@@ -19,8 +19,8 @@ menu_speed = 0.04;
 
 /// How menu items are drawn
 
-item_font = fnt_menu;
-c_item_outline = c_black;
+l_item_font = [fnt_menu];
+l_c_item_outline = [c_black];
 
 // Text color if item is currently selected
 l_c_text_sel = [ $4040FF, $2020B0 ];
@@ -41,18 +41,18 @@ sel_prefix = "> ";
 sel_suffix = "";
 
 // Alignment for menu options
-item_halign = fa_right;
-item_valign = fa_bottom;
+l_item_halign = fa_right;
+l_item_valign = fa_bottom;
 
 
 /// How labels are drawn (if left unchanged, will be set to match items)
-label_font = -1;
-c_label_outline = -1;
+l_label_font = -1;
+l_c_label_outline = -1;
 l_c_label = -1;
 
 // Alignment for labels
-label_halign = fa_right;
-label_valign = fa_bottom;
+l_label_halign = fa_right;
+l_label_valign = fa_bottom;
 
 // menu_item_height is determined from the font size
 menu_item_width = 500;
@@ -85,12 +85,27 @@ allow_repeat_down = false;
 /// Menu post_init - for tasks to be done at the end of creating a child menu object
 function menu_post_init() {
 	
-	if (label_font==-1)
-		label_font = item_font;
-	if (c_label_outline==-1)
-		c_label_outline = c_item_outline;
+	var num_rows = array_length(l_menu_rows);
+	
+	// Project item properties to always be a full array
+	l_item_font = project_array(l_item_font, num_rows);
+	l_c_item_outline = project_array(l_c_item_outline, num_rows);
+	l_item_halign = project_array(l_item_halign, num_rows);
+	l_item_valign = project_array(l_item_valign, num_rows);
+	
+	// Set label properties to match item properties if they were left unset
+	if (l_label_font==-1)
+		l_label_font = l_item_font;
+	if (l_c_label_outline==-1)
+		l_c_label_outline = l_c_item_outline;
 	if (l_c_label==-1)
 		l_c_label = l_c_text_unsel;
+	
+	// Project label properties to always be a full array
+	l_label_font = project_array(l_label_font, num_rows);
+	l_c_label_outline = project_array(l_c_label_outline, num_rows);
+	l_label_halign = project_array(l_label_halign, num_rows);
+	l_label_valign = project_array(l_label_valign, num_rows);
 	
 	menu_cursor_x = init_selected_x;
 	menu_cursor_y = init_selected_y;
@@ -116,5 +131,5 @@ function menu_post_init() {
 		}
 	}
 	
-	menu_item_height = font_get_size(item_font);
+	menu_item_height = font_get_size(l_item_font[0]);
 }

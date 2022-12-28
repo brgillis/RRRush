@@ -83,17 +83,34 @@ function fapproach(_a, _b, _famount)
 	return _a;
 }
 
-//Sine waves a value between two values over a given time. 
+// Sin waves a value between two values over a given time. 
 function wave(_from, _to, _duration, _offset) 
 {
 	var a4 = (_to - _from) * 0.5;
 	return _from + a4 + sin((((current_time * 0.001) + _duration * _offset) / _duration) * (pi*2)) * a4; 
 }
 
-//Wraps a value between a minimum and a given wrap point
+// Wraps a value between a minimum and a given wrap point
 function wrap(_value, _minimum, _wrapAt) 
 {
 
 	var _mod = ( _value - _minimum ) mod ( _wrapAt - _minimum );
 	if ( _mod < 0 ) return _mod + _wrapAt else return _mod + _minimum;
+}
+
+/// Project a scalar into an array of a given length, or if an array is provided, simply return it
+function project_array(_a, _len)
+{
+	if (is_array(_a))
+		if (array_length(_a)==_len)
+			return _a
+		else if (array_length(_a)==1)
+			var _v = _a[0]
+		else
+			debug_message("Length of array ", _a, " is ", array_length(_a),
+			              ", which doesn't match provided length ", _len)
+	else
+		var _v = _a
+		
+	return array_create(_len, _v)
 }

@@ -32,10 +32,10 @@ enum PauseMenuOption {
 }
 
 // How menu items are drawn
-item_font = fnt_menu;
+l_item_font = [fnt_menu];
 var num_options = PauseMenuOption.RESUME + 1;
 
-menu_item_height = font_get_size(item_font);
+menu_item_height = font_get_size(l_item_font[0]);
 
 // Layout of the menu
 back_alpha_start = 0;
@@ -53,13 +53,13 @@ menu_speed = 0.2;
 sel_prefix = "> ";
 sel_suffix = " <";
 
-item_halign = fa_center;
-item_valign = fa_bottom;
+l_item_halign = fa_center;
+l_item_valign = fa_bottom;
 
 // Menu items
 l_menu_rows[PauseMenuOption.RESUME] = new MenuRow("Resume");
-l_menu_rows[PauseMenuOption.RESTART] = new MenuRow("Restart Stage");
-l_menu_rows[PauseMenuOption.MAIN_MENU] = new MenuRow("Return to Main Menu");
+l_menu_rows[PauseMenuOption.RESTART] = new MenuRow("Restart Stage (R)");
+l_menu_rows[PauseMenuOption.MAIN_MENU] = new MenuRow("Return to Main Menu (T)");
 l_menu_rows[PauseMenuOption.QUIT] = new MenuRow("Quit Game");
 
 init_selected_x = 0;

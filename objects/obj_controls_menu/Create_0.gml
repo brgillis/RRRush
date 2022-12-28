@@ -4,7 +4,7 @@
 event_inherited();
 
 // Font
-item_font = fnt_controls;
+l_item_font = [fnt_controls];
 
 // Enums for menu options
 
@@ -46,17 +46,17 @@ offset_labels = true;
 
 // How menu items are drawn
 
-menu_item_height = font_get_size(item_font);
-menu_item_width = 0.5*string_length(l_menu_rows[Line.SUPER_JUMP].label)*font_get_size(item_font);
+menu_item_height = font_get_size(l_item_font[0]);
+menu_item_width = 0.5*string_length(l_menu_rows[Line.SUPER_JUMP].label)*font_get_size(l_item_font[0]);
 
-c_item_outline = global.TEXT_NO_OUTLINE;
+l_c_item_outline = global.TEXT_NO_OUTLINE;
 l_c_text_unsel = c_black;
 
 // How labels are drawn
 
-c_label_outline = global.TEXT_NO_OUTLINE;
+l_c_label_outline = global.TEXT_NO_OUTLINE;
 l_c_label = c_black;
-label_font = fnt_controls_label;
+l_label_font = fnt_controls_label;
 
 // Layout of the menu
 menu_x_start =  0.35 * global.display_width - menu_item_width;
@@ -68,8 +68,8 @@ menu_speed = 0.1;
 sel_prefix = "> ";
 sel_suffix = " <";
 
-item_halign = fa_left;
-item_valign = fa_bottom;
+l_item_halign = fa_left;
+l_item_valign = fa_bottom;
 
 // Which item is selected initially
 init_selected_y = Line.BACK;

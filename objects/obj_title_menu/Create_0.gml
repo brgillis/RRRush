@@ -13,7 +13,7 @@ enum MainMenuOption {
 }
 
 var num_lines = MainMenuOption.NEW_GAME + 1;
-menu_item_height = 1.5 * font_get_size(item_font);
+menu_item_height = 1.5 * font_get_size(l_item_font[0]);
 
 // Layout of the menu
 menu_x_start = global.display_width/2;
@@ -27,8 +27,8 @@ menu_speed = 0.04;
 sel_prefix = "> ";
 sel_suffix = " <";
 
-item_halign = fa_center;
-item_valign = fa_bottom;
+l_item_halign = fa_center;
+l_item_valign = fa_bottom;
 
 // Menu items
 l_menu_rows[MainMenuOption.NEW_GAME] = new MenuRow("New Game");
