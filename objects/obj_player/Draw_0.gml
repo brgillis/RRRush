@@ -2,18 +2,13 @@
 
 switch flash_time
 {
-case 1:
-case 2:
-case 8:
+case 1: case 2: case 8:
 	shader_set(sh_flash_mild);
 	break;
-case 3:
-case 4:
-case 7:
+case 3: case 4: case 7:
 	shader_set(sh_flash_med);
 	break;
-case 5:
-case 6:
+case 5: case 6:
 	shader_set(sh_flash_strong);
 	break;
 default:

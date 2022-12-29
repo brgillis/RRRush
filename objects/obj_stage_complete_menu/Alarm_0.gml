@@ -5,20 +5,20 @@ event_inherited();
 
 switch (menu_committed_y)
 {
-case PauseMenuOption.RESUME: case global.MENU_CANCEL: default:
-	set_game_state(old_game_state);
-	instance_destroy();
-	break;
-case PauseMenuOption.RESTART:
-	// Switch to level select menu
+case CompleteMenuOption.NEXT: default:
+	// TODO: Fix this to transition to next room
 	room_transition(TransMode.RESTART);
 	break;
-case PauseMenuOption.MAIN_MENU:
-	// Switch to level select menu
+case CompleteMenuOption.RESTART:
+	// Restart room
+	room_transition(TransMode.RESTART);
+	break;
+case CompleteMenuOption.MAIN_MENU:
+	// Switch to main menu
 	room_transition(TransMode.GOTO, rm_title_menu);
 	break;
 case PauseMenuOption.QUIT:
-	// Close the game
+	// CompleteMenuOption the game
 	game_end();
 	break;
 }
