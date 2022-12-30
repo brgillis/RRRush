@@ -12,7 +12,6 @@ switch (menu_committed_y)
 		// Set up the persistent object with info for the target stage
 		obj_persistent.world_index = menu_committed_y;
 		obj_persistent.stage_index = menu_committed_x;
-		obj_persistent.best_time_frames = 0; // FIXME
 		
 		// Transition to the target room
 		room_transition(TransMode.GOTO, _target_room);

@@ -114,6 +114,7 @@
     {"id":{"name":"obj_stage_complete_menu","path":"objects/obj_stage_complete_menu/obj_stage_complete_menu.yy",},"order":5,},
     {"id":{"name":"spr_gui_puff_frame","path":"sprites/spr_gui_puff_frame/spr_gui_puff_frame.yy",},"order":1,},
     {"id":{"name":"fnt_menu","path":"fonts/fnt_menu/fnt_menu.yy",},"order":4,},
+    {"id":{"name":"scr_saveload","path":"scripts/scr_saveload/scr_saveload.yy",},"order":10,},
     {"id":{"name":"fnt_level_select_menu","path":"fonts/fnt_level_select_menu/fnt_level_select_menu.yy",},"order":9,},
     {"id":{"name":"obj_pause_menu","path":"objects/obj_pause_menu/obj_pause_menu.yy",},"order":3,},
     {"id":{"name":"scr_text","path":"scripts/scr_text/scr_text.yy",},"order":5,},
