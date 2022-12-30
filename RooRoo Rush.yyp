@@ -17,6 +17,7 @@
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"order":0,},
     {"id":{"name":"obj_gui_best_time_frame","path":"objects/obj_gui_best_time_frame/obj_gui_best_time_frame.yy",},"order":4,},
     {"id":{"name":"spr_glitter_particles_greyscale","path":"sprites/spr_glitter_particles_greyscale/spr_glitter_particles_greyscale.yy",},"order":10,},
+    {"id":{"name":"scr_stages","path":"scripts/scr_stages/scr_stages.yy",},"order":9,},
     {"id":{"name":"snd_puff_collect","path":"sounds/snd_puff_collect/snd_puff_collect.yy",},"order":0,},
     {"id":{"name":"fnt_gui_button","path":"fonts/fnt_gui_button/fnt_gui_button.yy",},"order":3,},
     {"id":{"name":"obj_gui_puff","path":"objects/obj_gui_puff/obj_gui_puff.yy",},"order":1,},

@@ -3,41 +3,7 @@
 // Inherit the parent event
 event_inherited();
 
-// Enums for menu options
-
-enum WorldSelectOption {
-	WORLD_1 = 9,
-	WORLD_2 = 8,
-	WORLD_3 = 7,
-	WORLD_4 = 6,
-	WORLD_5 = 5,
-	WORLD_6 = 4,
-	WORLD_7 = 3,
-	WORLD_8 = 2,
-	DEBUG = 1,
-	BACK = 0,
-}
-
-enum StageSelectOption {
-	STAGE_4 = 3,
-	STAGE_3 = 2,
-	STAGE_2 = 1,
-	STAGE_1 = 0,
-}
-
 var num_lines = WorldSelectOption.WORLD_1 + 1;
-
-var num_worlds = 8;
-var num_stages = 4;
-
-ll_room_targets[WorldSelectOption.WORLD_1] = [rm_w1_s1, 0, 0, 0]
-ll_room_targets[WorldSelectOption.WORLD_2] = [0, 0, 0, 0]
-ll_room_targets[WorldSelectOption.WORLD_3] = [0, 0, 0, 0]
-ll_room_targets[WorldSelectOption.WORLD_4] = [0, 0, 0, 0]
-ll_room_targets[WorldSelectOption.WORLD_5] = [0, 0, 0, 0]
-ll_room_targets[WorldSelectOption.WORLD_6] = [0, 0, 0, 0]
-ll_room_targets[WorldSelectOption.WORLD_7] = [0, 0, 0, 0]
-ll_room_targets[WorldSelectOption.WORLD_8] = [0, 0, 0, 0]
 
 var ll_disabled_options;
 
@@ -58,9 +24,9 @@ menu_item_height = font_get_size(l_item_font[0]);
 menu_item_width = 5*font_get_size(l_item_font[0]);
 
 // Layout of the menu
-menu_x_start = global.display_width/2 - menu_item_width*(num_stages/2-0.5);
+menu_x_start = global.display_width/2 - menu_item_width*(global.NUM_STAGES/2-0.5);
 menu_y_start = -global.gui_height;
-menu_x_end = global.display_width/2 - menu_item_width*(num_stages/2-0.5);
+menu_x_end = global.display_width/2 - menu_item_width*(global.NUM_STAGES/2-0.5);
 menu_y_end = global.display_height/2 + 1.5*menu_item_height*(num_lines/2);
 menu_speed = 0.1;
 
@@ -74,10 +40,10 @@ l_item_valign = fa_bottom;
 for(var world_index=WorldSelectOption.WORLD_1; world_index>=WorldSelectOption.WORLD_8; world_index--)
 {
 	var l_items = []
-	for(var stage_index=num_stages-1; stage_index>=0; stage_index--)
+	for(var stage_index=global.NUM_STAGES-1; stage_index>=0; stage_index--)
 	{
-		var world_number = WorldSelectOption.WORLD_1-world_index+1;
-		var stage_number = stage_index+1;
+		var world_number = get_world_number(world_index);
+		var stage_number = get_stage_number(stage_index);
 		
 		l_items[stage_index] = new MenuItem(string(world_number)+"-"+string(stage_number),
 		                                    ll_disabled_options[world_index][stage_index]);

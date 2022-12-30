@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "scr_transition",
+  "name": "scr_stages",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
