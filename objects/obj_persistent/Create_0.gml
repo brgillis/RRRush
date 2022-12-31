@@ -21,6 +21,7 @@ world_number = -1;
 stage_index = -1;
 stage_number = -1;
 best_time_frames = 0;
+old_best_time_frames = best_time_frames;
 
 // Define an update function for when triggering room transitions
 function room_transition(_mode, _target_room=-1){
@@ -65,6 +66,7 @@ function update_best_time(_new_best_time_frames, _force=false)
 		}
 	}
 	
+	old_best_time_frames = best_time_frames;
 	best_time_frames = _new_best_time_frames;
 	global.LL_BEST_TIME_FRAMES[world_index][stage_index] = _new_best_time_frames;
 }

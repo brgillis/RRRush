@@ -65,7 +65,16 @@ l_item_valign = fa_bottom;
 var _msg_stage_complete = ("Stage " + string(obj_persistent.world_number) + "-" +
 						   string(obj_persistent.stage_number) + " Complete!");
 var _msg_time = "Time: " + get_time_string(obj_game.time_frames);
-var _msg_best_time = "Best Time: " + get_time_string(obj_persistent.best_time_frames);
+
+if (obj_persistent.best_time_frames < obj_persistent.old_best_time_frames)
+{
+	var _msg_best_time = ("Best Time: " + get_time_string(obj_persistent.old_best_time_frames)
+	                      + " -> " + get_time_string(obj_persistent.best_time_frames));
+}
+else
+{
+	var _msg_best_time = "Best Time: " + get_time_string(obj_persistent.best_time_frames);
+}
 
 l_menu_rows[CompleteMenuOption.MESSAGE] = new MenuRow(_msg_stage_complete, false, false);
 l_menu_rows[CompleteMenuOption.BLANK1] = new MenuRow("", false, false);
