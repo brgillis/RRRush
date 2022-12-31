@@ -5,7 +5,8 @@ set_game_state_no_control();
 
 // Init variables
 
-time_frames = 0;
+//time_frames = 0;
+time_frames = 4140; // FIXME
 puffs_collected = 0;
 glitterpuffs_collected = 0;
 glitterishness = 0;

@@ -14,7 +14,7 @@ else if ((global.game_state == GameState.ACTIVE) or (global.game_state == GameSt
      or (global.game_state == GameState.OVERLOAD)) and (key_pressed_pause())
 {
 	var old_game_state = global.game_state;
-	instance_create_layer(0,0,"Instances",obj_pause_menu);
+	instance_create_layer(0, 0, "Instances", obj_pause_menu);
 	obj_pause_menu.old_game_state = old_game_state;
 }
 

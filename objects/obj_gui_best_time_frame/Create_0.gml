@@ -2,7 +2,7 @@
 
 label = "Best:";
 if (obj_persistent.best_time_frames > 0)
-	value = get_time_string(obj_persistent.best_time_frames);
+	value = get_time_string(obj_persistent.best_time_frames, true);
 else
 	value = ""
 	

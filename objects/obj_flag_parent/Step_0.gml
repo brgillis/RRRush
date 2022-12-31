@@ -3,6 +3,13 @@
 if (obj_player.x < x)
 	exit;
 
+// Only trigger completion code once
+if (completion_triggered)
+	exit;
+	
+stage_complete = true;
+completion_triggered = true;
+
 // Mark level as complete to control how other objects behave
 obj_game.level_complete = true;
 	
@@ -17,7 +24,7 @@ if ((obj_persistent.best_time_frames <= 0) or (obj_game.time_frames < obj_persis
 	obj_gui_time_frame.value_c3 = $4040FF;
 	obj_gui_time_frame.value_c4 = $7070FF;
 		
-	obj_gui_best_time_frame.value = get_time_string(obj_persistent.best_time_frames);
+	obj_gui_best_time_frame.value = get_time_string(obj_persistent.best_time_frames, true);
 	obj_gui_best_time_frame.value_c1 = $10FF10;
 	obj_gui_best_time_frame.value_c2 = $00FF00;
 	obj_gui_best_time_frame.value_c3 = $00D000;
@@ -29,3 +36,6 @@ if ((obj_persistent.best_time_frames <= 0) or (obj_game.time_frames < obj_persis
 	
 // Stop player control of movement
 set_game_state_stage_end();
+
+// Load the stage complete menu
+instance_create_layer(0, 0, "Instances", obj_stage_complete_menu);

@@ -62,10 +62,15 @@ l_item_halign = fa_center;
 l_item_valign = fa_bottom;
 
 // Menu items
-l_menu_rows[CompleteMenuOption.MESSAGE] = new MenuRow("Stage Complete!", false, false);
+var _msg_stage_complete = ("Stage " + string(obj_persistent.world_number) + "-" +
+						   string(obj_persistent.stage_number) + " Complete!");
+var _msg_time = "Time: " + get_time_string(obj_game.time_frames);
+var _msg_best_time = "Best Time: " + get_time_string(obj_persistent.best_time_frames);
+
+l_menu_rows[CompleteMenuOption.MESSAGE] = new MenuRow(_msg_stage_complete, false, false);
 l_menu_rows[CompleteMenuOption.BLANK1] = new MenuRow("", false, false);
-l_menu_rows[CompleteMenuOption.CURTIME] = new MenuRow(get_time_string(obj_game.time_frames), "Time:", false);
-l_menu_rows[CompleteMenuOption.BESTTIME] = new MenuRow(get_time_string(obj_game.best_time_frames), "Best Time:", false);
+l_menu_rows[CompleteMenuOption.CURTIME] = new MenuRow(_msg_time, false, false);
+l_menu_rows[CompleteMenuOption.BESTTIME] = new MenuRow(_msg_best_time, false, false);
 l_menu_rows[CompleteMenuOption.BLANK2] = new MenuRow("", false, false);
 l_menu_rows[CompleteMenuOption.NEXT] = new MenuRow("Next Stage");
 l_menu_rows[CompleteMenuOption.RESTART] = new MenuRow("Restart Stage (R)");

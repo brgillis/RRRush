@@ -1,9 +1,9 @@
 /// Various utility functions
 
 /// Convert a time value in frames to a displayable string
-function get_time_string(time_frames)
+function get_time_string(_time_frames, _shorten=false)
 {
-	var _full_time_sec = time_frames / 60;
+	var _full_time_sec = _time_frames / 60;
 	var _full_time_min = _full_time_sec / 60;
 	var _full_time_hr  = _full_time_min / 60;
 	
@@ -11,23 +11,58 @@ function get_time_string(time_frames)
 	var _time_min = floor(_full_time_min - 60*_time_hr);
 	var _time_sec = _full_time_sec - 60*(_time_min + 60*_time_hr);
 	
+	if (_time_hr > 99)
+		return "99:59:59";
+	
 	if (_time_min == 0) and (_time_hr == 0)
 	{
-		var _time_sec_rounded = string_format(_time_sec,3,2);
+		var _time_sec_rounded = string_format(_time_sec, 2, 2);
 		return _time_sec_rounded;
 	}
 	else
 	{
-		var _time_sec_rounded = string_format(_time_sec,4,2);
+		
+		if (_shorten)
+		{
+			if (_time_min < 10)
+			{
+				var _sec_dec = 1;
+				var _dec_digits = 2;
+			}
+			else
+			{
+				var _sec_dec = 0;
+				var _dec_digits = 0;
+			}
+		}
+		else
+		{
+			var _sec_dec = 2;
+			var _dec_digits = 3;
+		}
+			
+		var _time_sec_rounded = string_format(_time_sec, 1, _sec_dec);
+		
+			
+		if (string_length(_time_sec_rounded) == 1+_dec_digits)
+			var _time_sec_rounded = "0" + _time_sec_rounded;
+			
 		if (_time_hr == 0)
 		{
-			var _time_min_rounded = string(_time_min);
+			var _time_min_rounded = string_format(_time_min, 1, 0);
 			return concat(_time_min_rounded,":",_time_sec_rounded);
 		}
 		else
 		{
-			var _time_min_rounded = string_format(_time_min,2,0);
-			return concat(_time_hr,":",_time_min_rounded,":",_time_sec_rounded);
+			if (string_length(_time_min_rounded) == 1)
+				var _time_min_rounded = "0" + string_format(_time_min, 1, 0);
+			else
+				var _time_min_rounded = string_format(_time_min, 2, 0);
+			var _time_hr_rounded = string_format(_time_hr,2,0);
+			if (_shorten)
+				return concat(_time_hr_rounded,":",_time_min_rounded);
+			else
+				return concat(_time_hr_rounded,":",_time_min_rounded,":",_time_sec_rounded);
 		}
 	}
 		

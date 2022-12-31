@@ -6,8 +6,9 @@ event_inherited();
 switch (menu_committed_y)
 {
 case CompleteMenuOption.NEXT: default:
-	// TODO: Fix this to transition to next room
-	room_transition(TransMode.RESTART);
+	var _l_next_world_stage = get_next_stage(obj_persistent.world_index, obj_persistent.stage_index);
+	var _next_room = global.LL_ROOM_TARGETS[_l_next_world_stage[0]][_l_next_world_stage[1]];
+	room_transition(TransMode.GOTO, _next_room);
 	break;
 case CompleteMenuOption.RESTART:
 	// Restart room

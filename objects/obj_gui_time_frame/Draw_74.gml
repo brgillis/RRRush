@@ -1,6 +1,6 @@
 /// @description Set value to be displayed
 
-value = get_time_string(obj_game.time_frames);
+value = get_time_string(obj_game.time_frames, true);
 
 // Set color of value
 if (!obj_game.level_complete)
