@@ -1,4 +1,4 @@
 /// @description Initialize variables
 
 stage_complete = false;
-completion_triggered = false;
+completion_frame = -1;

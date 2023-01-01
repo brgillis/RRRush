@@ -10,21 +10,23 @@ if (not global.player_move)
 if (flash_time > 0)
 	flash_time--;
 
-// Get values for control. If not controllable, set all to false
+// Get values for control. If not controllable, set all to false unless forced
 if(global.player_control)
 {
-	key_left = key_down_left();
-	key_right = key_down_right();
-	key_jump = key_down_jump();
-	key_run = key_down_cancel();
+	key_left = key_down_left() or force_key_left;
+	key_right = key_down_right() or force_key_right;
+	key_jump = key_down_jump() or force_key_jump;
+	key_run = key_down_cancel() or force_key_run;
 }
 else
 {
-	key_left = 0;
-	key_right = 0;
-	key_jump = 0;
-	key_run = 0;
+	key_left = force_key_left;
+	key_right = force_key_right;
+	key_jump = force_key_jump;
+	key_run = force_key_run;
 }
+
+clear_forced_inputs();
 
 // Calculate maximum speed boost due to glitterishness
 

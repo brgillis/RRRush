@@ -19,3 +19,13 @@ space_released = true;
 // Directions
 current_dir = 1;
 jump_dir = 1;
+
+// Variables to allow forced inputs if set to true (will be set to false the frame after used)
+function clear_forced_inputs() {
+	force_key_left = false;
+	force_key_right = false;
+	force_key_jump = false;
+	force_key_run = false;
+}
+
+clear_forced_inputs();

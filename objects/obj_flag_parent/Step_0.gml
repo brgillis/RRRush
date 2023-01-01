@@ -3,12 +3,39 @@
 if (obj_player.x < x)
 	exit;
 
-// Only trigger completion code once
-if (completion_triggered)
+// Code for subsequent frames after completion
+if (stage_complete)
+{
+	completion_frame++;
+	
+	// Sequence of events: Play completion sound, make player jump, make player super high jump,
+	// load completion menu
+	
+	if (completion_frame==5)
+	{
+		audio_play_sound(snd_level_end, 1, false);	
+	}
+	else if (completion_frame==40)
+	{
+		obj_player.force_key_jump = true;	
+	}
+	else if (completion_frame>50 and completion_frame<90)
+	{
+		obj_player.force_key_jump = true;	
+	}
+	else if (completion_frame==100)
+	{
+		// Load the stage complete menu
+		instance_create_layer(0, 0, "Instances", obj_stage_complete_menu);
+	}
+	
 	exit;
+}
+	
+// Code for first frame when level is completed
 	
 stage_complete = true;
-completion_triggered = true;
+completion_frame = 0;
 
 // Mark level as complete to control how other objects behave
 obj_game.level_complete = true;
@@ -31,11 +58,5 @@ if ((obj_persistent.best_time_frames <= 0) or (obj_game.time_frames < obj_persis
 	obj_gui_best_time_frame.value_c4 = $00FF00;
 }
 	
-	
-// Level completion code
-	
 // Stop player control of movement
 set_game_state_stage_end();
-
-// Load the stage complete menu
-instance_create_layer(0, 0, "Instances", obj_stage_complete_menu);
