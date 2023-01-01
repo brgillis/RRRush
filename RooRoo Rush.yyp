@@ -80,6 +80,7 @@
     {"id":{"name":"obj_flag_parent","path":"objects/obj_flag_parent/obj_flag_parent.yy",},"order":0,},
     {"id":{"name":"snd_cursor_move","path":"sounds/snd_cursor_move/snd_cursor_move.yy",},"order":2,},
     {"id":{"name":"snd_player_walk","path":"sounds/snd_player_walk/snd_player_walk.yy",},"order":2,},
+    {"id":{"name":"snd_level_end","path":"sounds/snd_level_end/snd_level_end.yy",},"order":1,},
     {"id":{"name":"obj_persistent","path":"objects/obj_persistent/obj_persistent.yy",},"order":3,},
     {"id":{"name":"obj_jump_effect","path":"objects/obj_jump_effect/obj_jump_effect.yy",},"order":0,},
     {"id":{"name":"fnt_gui_time_label","path":"fonts/fnt_gui_time_label/fnt_gui_time_label.yy",},"order":2,},
