@@ -29,6 +29,7 @@ if (stage_complete and not music_complete)
 		audio_sound_gain(_music_end, 1, FADE_TIME_MS);
 		music_complete = true;
 	}
+	exit;
 }
 else if (stage_complete and music_complete)
 {	
@@ -82,3 +83,6 @@ if ((obj_persistent.best_time_frames <= 0) or (obj_game.time_frames < obj_persis
 	
 // Stop player control of movement
 set_game_state_stage_end();
+
+// Play a burst animation on the player
+obj_player.burst_anim(obj_player, 30);

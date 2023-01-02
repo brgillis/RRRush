@@ -29,3 +29,15 @@ function clear_forced_inputs() {
 }
 
 clear_forced_inputs();
+
+function burst_anim(_target=self, _n_part=30) {
+
+	// Burst glitter particles
+	part_particles_create(obj_game.particle_system_between, _target.x, _target.y, obj_game.glitter_collect, _n_part);
+
+	// Flash the player white
+	flash_time = 8;
+
+	// Play sound
+	audio_play_sound(snd_puff_collect, 2, false);	
+}
