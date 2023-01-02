@@ -11,11 +11,11 @@ case PauseMenuOption.RESUME: case global.MENU_CANCEL: default:
 	break;
 case PauseMenuOption.RESTART:
 	// Switch to level select menu
-	room_transition(TransMode.RESTART);
+	obj_persistent.room_transition(TransMode.RESTART);
 	break;
 case PauseMenuOption.MAIN_MENU:
 	// Switch to level select menu
-	room_transition(TransMode.GOTO, rm_title_menu);
+	obj_persistent.room_transition(TransMode.GOTO, rm_title_menu);
 	break;
 case PauseMenuOption.QUIT:
 	// Close the game

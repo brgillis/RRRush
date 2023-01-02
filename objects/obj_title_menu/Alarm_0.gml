@@ -8,11 +8,11 @@ switch (menu_committed_y)
 case MainMenuOption.NEW_GAME: default:
 	obj_persistent.world_index = WorldSelectOption.WORLD_1;
 	obj_persistent.stage_index = 0;
-	room_transition(TransMode.GOTO, rm_w1_s1);
+	obj_persistent.room_transition(TransMode.GOTO, rm_w1_s1, obj_menu_music.title_music);
 	break;
 case MainMenuOption.CONTINUE:
 	// TODO: Playroom for testing now
-	room_transition(TransMode.GOTO, rm_test_stage);
+	obj_persistent.room_transition(TransMode.GOTO, rm_test_stage, obj_menu_music.title_music);
 	break;
 case MainMenuOption.LEVEL_SELECT:
 	// Switch to level select menu

@@ -1,29 +1,51 @@
-/// @description Check for level completion
+/// @description Check for Alevel completion
+
+#macro CYCLE_SEC (1.60145/4)
+#macro OFFSET 1.35594
+#macro FADE_TIME_MS 200
+#macro JUMP_DELAY_FRAMES 60
+#macro MAX_WAIT_FRAMES 120
 
 if (obj_player.x < x)
 	exit;
 
+// Keep track of wait so we can escape eventually if something goes wrong
+var _i = 0;
 // Code for subsequent frames after completion
-if (stage_complete)
+if (stage_complete and not music_complete)
 {
+	_i++;
+	
+	// Wait until music hits the proper point
+	var _music_time = audio_sound_get_track_position(obj_game.game_music);
+	var _cycle_pos = (_music_time - OFFSET)/CYCLE_SEC;
+	
+	// Check if we're within one frame of the point to switch over tracks
+	if (_i > MAX_WAIT_FRAMES) or ((_cycle_pos - floor(_cycle_pos))*CYCLE_SEC <= 2/60) 
+	{
+		// Fade out the music and fade in the ending sound
+		audio_sound_gain(obj_game.game_music, 0, FADE_TIME_MS);
+		var _music_end = audio_play_sound(msc_world_1_end, 1, false, 0);
+		audio_sound_gain(_music_end, 1, FADE_TIME_MS);
+		music_complete = true;
+	}
+}
+else if (stage_complete and music_complete)
+{	
 	completion_frame++;
 	
 	// Sequence of events: Play completion sound, make player jump, make player super high jump,
 	// load completion menu
 	
-	if (completion_frame==5)
-	{
-		audio_play_sound(snd_level_end, 1, false);	
-	}
-	else if (completion_frame==40)
+	if (completion_frame==JUMP_DELAY_FRAMES)
 	{
 		obj_player.force_key_jump = true;	
 	}
-	else if (completion_frame>50 and completion_frame<90)
+	else if (completion_frame>JUMP_DELAY_FRAMES+10 and completion_frame<JUMP_DELAY_FRAMES+50)
 	{
 		obj_player.force_key_jump = true;	
 	}
-	else if (completion_frame==100)
+	else if (completion_frame==JUMP_DELAY_FRAMES+60)
 	{
 		// Load the stage complete menu
 		instance_create_layer(0, 0, "Instances", obj_stage_complete_menu);

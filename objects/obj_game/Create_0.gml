@@ -1,10 +1,13 @@
 /// @description Init for each level
 
+#macro FADE_IN_TIME_MS 1000
+
 // Start without contol - control will be enabled after fade-in
 set_game_state_no_control();
 
-// Start playing music
-game_music = audio_play_sound(msc_world_1, 0, true);
+// Start playing music, fading it in
+game_music = audio_play_sound(msc_world_1, 0, true, 0);
+audio_sound_gain(game_music, 1, FADE_IN_TIME_MS);
 
 // Init variables
 
