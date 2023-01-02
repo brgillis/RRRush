@@ -3,6 +3,9 @@
 // Start without contol - control will be enabled after fade-in
 set_game_state_no_control();
 
+// Start playing music
+game_music = audio_play_sound(msc_world_1, 0, true);
+
 // Init variables
 
 time_frames = 0;

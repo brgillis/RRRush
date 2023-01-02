@@ -118,6 +118,7 @@
     {"id":{"name":"scr_saveload","path":"scripts/scr_saveload/scr_saveload.yy",},"order":10,},
     {"id":{"name":"fnt_level_select_menu","path":"fonts/fnt_level_select_menu/fnt_level_select_menu.yy",},"order":9,},
     {"id":{"name":"obj_pause_menu","path":"objects/obj_pause_menu/obj_pause_menu.yy",},"order":3,},
+    {"id":{"name":"msc_world_1","path":"sounds/msc_world_1/msc_world_1.yy",},"order":0,},
     {"id":{"name":"scr_text","path":"scripts/scr_text/scr_text.yy",},"order":5,},
     {"id":{"name":"spr_background_shroom","path":"sprites/spr_background_shroom/spr_background_shroom.yy",},"order":1,},
   ],
