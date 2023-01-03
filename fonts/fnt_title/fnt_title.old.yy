@@ -1,7 +1,7 @@
 {
   "resourceType": "GMFont",
   "resourceVersion": "1.0",
-  "name": "fnt_title_it",
+  "name": "fnt_title",
   "hinting": 0,
   "glyphOperations": 0,
   "interpreter": 0,
@@ -24,7 +24,7 @@
     "path": "texturegroups/Default",
   },
   "ascenderOffset": 0,
-  "ascender": 0,
+  "ascender": 142,
   "glyphs": {
     "32": {"x":2,"y":2,"w":44,"h":184,"character":32,"shift":44,"offset":0,},
     "33": {"x":1865,"y":374,"w":45,"h":184,"character":33,"shift":53,"offset":6,},

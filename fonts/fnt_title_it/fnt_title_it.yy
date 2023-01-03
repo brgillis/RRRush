@@ -1,8 +1,12 @@
 {
+  "resourceType": "GMFont",
+  "resourceVersion": "1.0",
+  "name": "fnt_title_it",
   "hinting": 0,
   "glyphOperations": 0,
   "interpreter": 0,
   "pointRounding": 0,
+  "applyKerning": 0,
   "fontName": "Liberation Sans",
   "styleName": "Bold Italic",
   "size": 120.0,
@@ -20,6 +24,7 @@
     "path": "texturegroups/Default",
   },
   "ascenderOffset": 0,
+  "ascender": 142,
   "glyphs": {
     "32": {"x":2,"y":2,"w":44,"h":184,"character":32,"shift":44,"offset":0,},
     "33": {"x":1865,"y":374,"w":45,"h":184,"character":33,"shift":53,"offset":6,},
@@ -231,8 +236,4 @@
     "name": "Fonts",
     "path": "folders/Fonts.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "fnt_title_it",
-  "tags": [],
-  "resourceType": "GMFont",
 }

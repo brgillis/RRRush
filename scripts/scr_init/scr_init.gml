@@ -42,7 +42,7 @@ global.A_PLAYER_IMAGES = [0, 0, 0,
                           1, 0,
 						  0, 0]
 						  
-// Constatns related to display
+// Constants related to display
 
 global.display_width = display_get_gui_width();
 global.display_height = display_get_gui_height();
