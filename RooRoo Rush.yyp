@@ -101,7 +101,7 @@
     {"id":{"name":"spr_black_screen","path":"sprites/spr_black_screen/spr_black_screen.yy",},"order":4,},
     {"id":{"name":"fnt_gui_time_number","path":"fonts/fnt_gui_time_number/fnt_gui_time_number.yy",},"order":1,},
     {"id":{"name":"snd_player_super_jump","path":"sounds/snd_player_super_jump/snd_player_super_jump.yy",},"order":3,},
-    {"id":{"name":"obj_menu_music","path":"objects/obj_menu_music/obj_menu_music.yy",},"order":4,},
+    {"id":{"name":"obj_title_screen","path":"objects/obj_title_screen/obj_title_screen.yy",},"order":4,},
     {"id":{"name":"obj_game","path":"objects/obj_game/obj_game.yy",},"order":2,},
     {"id":{"name":"obj_button_retry","path":"objects/obj_button_retry/obj_button_retry.yy",},"order":1,},
     {"id":{"name":"spr_glitter_particles","path":"sprites/spr_glitter_particles/spr_glitter_particles.yy",},"order":9,},

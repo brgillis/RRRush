@@ -14,15 +14,15 @@ switch (menu_committed_y)
 		obj_persistent.stage_index = menu_committed_x;
 		
 		// Transition to the target room
-		obj_persistent.room_transition(TransMode.GOTO, _target_room, obj_menu_music.title_music);
+		obj_persistent.room_transition(TransMode.GOTO, _target_room, obj_title_screen.title_music);
 		
 		break;
 		
 	case WorldSelectOption.DEBUG:
 		if (menu_committed_x==0)
-			obj_persistent.room_transition(TransMode.GOTO, rm_playroom, obj_menu_music.title_music)
+			obj_persistent.room_transition(TransMode.GOTO, rm_playroom, obj_title_screen.title_music)
 		else
-			obj_persistent.room_transition(TransMode.GOTO, rm_test_stage, obj_menu_music.title_music)
+			obj_persistent.room_transition(TransMode.GOTO, rm_test_stage, obj_title_screen.title_music)
 		break;
 		
 	case WorldSelectOption.BACK: case global.MENU_CANCEL:

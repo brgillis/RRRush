@@ -37,7 +37,7 @@ for(i=0; i<n_glitter; i++)
 	part_particles_create(obj_game.particle_system_gui,
 						  particle_x_source,
 						  particle_y_source,
-						  obj_game.glitter_gui,
+						  obj_persistent.glitter_gui,
 						  1);
 }
 					  
