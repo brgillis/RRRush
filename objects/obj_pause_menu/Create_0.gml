@@ -12,11 +12,11 @@ for (var i = 0; i < num_inst; ++i;)
 }
 
 // Pause sequence animations
-l_seq_ids = layer_get_all_elements("Interact_assets");
-num_seq = array_length(l_seq_ids);
-for (var i = 0; i <num_seq; ++i;)
+var _l_seq_ids = layer_get_all_elements("Interact_assets");
+var _num_seq = array_length(_l_seq_ids);
+for (var i = 0; i <_num_seq; ++i;)
 {
-	var seq = l_seq_ids[i];
+	var seq = _l_seq_ids[i];
 	layer_sequence_pause(seq);
 }
 
