@@ -1,10 +1,14 @@
 {
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "pobj_puff",
   "spriteId": {
     "name": "spr_puff_med",
     "path": "sprites/spr_puff_med/spr_puff_med.yy",
   },
   "solid": false,
   "visible": true,
+  "managed": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": null,
@@ -20,15 +24,13 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [],
+  "eventList": [
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,},
+  ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Interactable",
-    "path": "folders/Objects/Interactable.yy",
+    "name": "Puffs",
+    "path": "folders/Objects/Interactable/Puffs.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "obj_puff",
-  "tags": [],
-  "resourceType": "GMObject",
 }

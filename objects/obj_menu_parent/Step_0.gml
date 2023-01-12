@@ -79,6 +79,9 @@ if (menu_control)
 			
 			// Set an alarm for when to execute selection
 			alarm_set(0, commit_delay);
+			
+			// Set an alarm for any actions to take by children immediately
+			alarm_set(3, 1);
 		}
 	}
 	

@@ -44,12 +44,12 @@ global.A_PLAYER_IMAGES = [0, 0, 0,
 						  
 // Constants related to display
 
-global.display_width = display_get_gui_width();
-global.display_height = display_get_gui_height();
+global.DISPLAY_WIDTH = display_get_gui_width();
+global.DISPLAY_HEIGHT = display_get_gui_height();
 
-global.gui_margin = 32;
-global.gui_width = global.display_width - global.gui_margin;
-global.gui_height = global.display_height - global.gui_margin;
+global.GUI_MARGIN = 32;
+global.GUI_WIDTH = global.DISPLAY_WIDTH - global.GUI_MARGIN;
+global.GUI_HEIGHT = global.DISPLAY_HEIGHT - global.GUI_MARGIN;
 
 // Constants related to motion
 
@@ -104,6 +104,7 @@ global.GLITTER_DECAY_IDLE = 0.2
 global.GLITTER_DECAY_WALK = 0.05
 global.GLITTER_DECAY_RUN = 0.0
 global.GLITTER_OVERLOAD_FACTOR = 4
+global.GLITTER_GAIN_FACTOR = 1.0
 
 // Camera controls
 global.CAMERA_X_SPEED = 0.2;
@@ -120,7 +121,6 @@ global.GLITTER_PARTICLE_RATE = 50;
 global.GLITTER_PARTICLE_POWER = 6;
 
 // Misc variables
-global._tmp_best_time_frames = 200;
 global.game_state = GameState.MENU;
 global.player_control = false;
 global.player_move = false;

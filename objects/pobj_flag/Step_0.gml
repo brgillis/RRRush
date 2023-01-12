@@ -1,6 +1,6 @@
-/// @description Check for Alevel completion
+/// @description Check for level completion
 
-#macro CYCLE_SEC (1.60145/4)
+#macro CYCLE_SEC (1.60145/2)
 #macro OFFSET 1.35594
 #macro FADE_TIME_MS 200
 #macro JUMP_DELAY_FRAMES 60

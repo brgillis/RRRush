@@ -1,17 +1,20 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_flag_parent",
+  "name": "obj_puff_small",
   "spriteId": {
-    "name": "spr_flag_red_h2",
-    "path": "sprites/spr_flag_red_h2/spr_flag_red_h2.yy",
+    "name": "spr_puff_small",
+    "path": "sprites/spr_puff_small/spr_puff_small.yy",
   },
   "solid": false,
   "visible": true,
   "managed": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "pobj_puff",
+    "path": "objects/pobj_puff/pobj_puff.yy",
+  },
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -25,13 +28,12 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Flags",
-    "path": "folders/Objects/Interactable/Flags.yy",
+    "name": "Puffs",
+    "path": "folders/Objects/Interactable/Puffs.yy",
   },
 }

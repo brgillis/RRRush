@@ -16,13 +16,11 @@ case MainMenuOption.CONTINUE:
 	break;
 case MainMenuOption.LEVEL_SELECT:
 	// Switch to level select menu
-	obj_title_screen.dismiss_title();
 	instance_create_layer(0,0,"Instances",obj_level_select_menu);
 	instance_destroy();
 	break;
 case MainMenuOption.CONTROLS:
 	// Switch to controls menu
-	obj_title_screen.dismiss_title();
 	instance_create_layer(0,0,"Instances",obj_controls_menu);
 	instance_destroy();
 	break;

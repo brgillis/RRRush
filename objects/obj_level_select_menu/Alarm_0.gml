@@ -19,15 +19,21 @@ switch (menu_committed_y)
 		break;
 		
 	case WorldSelectOption.DEBUG:
+	
 		if (menu_committed_x==0)
 			obj_persistent.room_transition(TransMode.GOTO, rm_playroom, obj_title_screen.title_music)
 		else
 			obj_persistent.room_transition(TransMode.GOTO, rm_test_stage, obj_title_screen.title_music)
+			
 		break;
 		
 	case WorldSelectOption.BACK: case global.MENU_CANCEL:
+	
 		// Return to the title menu
 		instance_create_layer(0,0,"Instances",obj_title_menu);
+		obj_title_screen.recreate_title();
+		
 		instance_destroy();
+		
 		break;
 }

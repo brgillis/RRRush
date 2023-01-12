@@ -30,7 +30,7 @@ function clear_forced_inputs() {
 
 clear_forced_inputs();
 
-function burst_anim(_target=self, _n_part=30) {
+function burst_anim(_target=self, _n_part=30, _sound_gain=1.0) {
 
 	// Burst glitter particles
 	part_particles_create(obj_game.particle_system_between, _target.x, _target.y, obj_persistent.glitter_collect, _n_part);
@@ -39,5 +39,5 @@ function burst_anim(_target=self, _n_part=30) {
 	flash_time = 8;
 
 	// Play sound
-	audio_play_sound(snd_puff_collect, 2, false);	
+	audio_play_sound(snd_puff_collect, 2, false, _sound_gain);	
 }

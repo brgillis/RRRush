@@ -1,16 +1,19 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_title_menu",
-  "spriteId": null,
+  "name": "obj_puff_med",
+  "spriteId": {
+    "name": "spr_puff_med",
+    "path": "sprites/spr_puff_med/spr_puff_med.yy",
+  },
   "solid": false,
   "visible": true,
   "managed": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "obj_menu_parent",
-    "path": "objects/obj_menu_parent/obj_menu_parent.yy",
+    "name": "pobj_puff",
+    "path": "objects/pobj_puff/pobj_puff.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -25,14 +28,12 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":2,"collisionObjectId":null,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":3,"eventType":2,"collisionObjectId":null,},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Menus",
-    "path": "folders/Objects/Menus.yy",
+    "name": "Puffs",
+    "path": "folders/Objects/Interactable/Puffs.yy",
   },
 }

@@ -4,7 +4,7 @@
 
 draw_set_color(back_color);
 draw_set_alpha(back_alpha);
-draw_rectangle(0,0,global.display_width,global.display_height,false);
+draw_rectangle(0,0,global.DISPLAY_WIDTH,global.DISPLAY_HEIGHT,false);
 draw_set_alpha(1);
 
 // Draw the menu options

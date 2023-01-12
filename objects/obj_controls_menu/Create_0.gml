@@ -59,10 +59,10 @@ l_c_label = c_black;
 l_label_font = fnt_controls_label;
 
 // Layout of the menu
-menu_x_start =  0.35 * global.display_width - menu_item_width;
-menu_y_start = -global.gui_height;
-menu_x_end = 0.35 * global.display_width - menu_item_width;
-menu_y_end = global.display_height/2 + 1.5*menu_item_height*(num_lines/2);
+menu_x_start =  0.35 * global.DISPLAY_WIDTH - menu_item_width;
+menu_y_start = -global.GUI_HEIGHT;
+menu_x_end = 0.35 * global.DISPLAY_WIDTH - menu_item_width;
+menu_y_end = global.DISPLAY_HEIGHT/2 + 1.5*menu_item_height*(num_lines/2);
 menu_speed = 0.1;
 
 sel_prefix = "> ";

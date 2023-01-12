@@ -44,12 +44,12 @@ menu_item_height = font_get_size(l_item_font[0]);
 
 // Layout of the menu
 back_alpha_start = 0;
-menu_x_start = global.display_width/2;
-menu_y_start = 1.5*global.gui_height + 1.5*menu_item_height*(num_options/2);
+menu_x_start = global.DISPLAY_WIDTH/2;
+menu_y_start = 1.5*global.GUI_HEIGHT + 1.5*menu_item_height*(num_options/2);
 
 back_alpha_end = 0.5;
-menu_x_end = global.display_width/2;
-menu_y_end = 0.5*global.display_height + 1.5*menu_item_height*(num_options/2);
+menu_x_end = global.DISPLAY_WIDTH/2;
+menu_y_end = 0.5*global.DISPLAY_HEIGHT + 1.5*menu_item_height*(num_options/2);
 menu_speed = 0.05;
 
 

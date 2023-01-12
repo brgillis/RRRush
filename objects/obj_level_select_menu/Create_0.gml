@@ -24,10 +24,10 @@ menu_item_height = font_get_size(l_item_font[0]);
 menu_item_width = 5*font_get_size(l_item_font[0]);
 
 // Layout of the menu
-menu_x_start = global.display_width/2 - menu_item_width*(global.NUM_STAGES/2-0.5);
-menu_y_start = -global.gui_height;
-menu_x_end = global.display_width/2 - menu_item_width*(global.NUM_STAGES/2-0.5);
-menu_y_end = global.display_height/2 + 1.5*menu_item_height*(num_lines/2);
+menu_x_start = global.DISPLAY_WIDTH/2 - menu_item_width*(global.NUM_STAGES/2-0.5);
+menu_y_start = -global.GUI_HEIGHT;
+menu_x_end = global.DISPLAY_WIDTH/2 - menu_item_width*(global.NUM_STAGES/2-0.5);
+menu_y_end = global.DISPLAY_HEIGHT/2 + 1.5*menu_item_height*(num_lines/2);
 menu_speed = 0.1;
 
 sel_prefix = "> ";

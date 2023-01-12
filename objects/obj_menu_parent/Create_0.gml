@@ -8,12 +8,12 @@ allow_cancel = true; // Whether or not it's possible to cancel out of this menu
 // Layout of the menu
 back_color = c_black;
 back_alpha_start = 0;
-menu_x_start = global.display_width+200;
-menu_y_start = global.gui_height;
+menu_x_start = global.DISPLAY_WIDTH+200;
+menu_y_start = global.GUI_HEIGHT;
 
 back_alpha_end = 0;
-menu_x_end = global.gui_width;
-menu_y_end = global.gui_height;
+menu_x_end = global.GUI_WIDTH;
+menu_y_end = global.GUI_HEIGHT;
 
 menu_speed = 0.04;
 

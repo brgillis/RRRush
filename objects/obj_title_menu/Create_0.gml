@@ -16,10 +16,10 @@ var num_lines = MainMenuOption.NEW_GAME + 1;
 menu_item_height = 1.5 * font_get_size(l_item_font[0]);
 
 // Layout of the menu
-menu_x_start = global.display_width/2;
-menu_y_start = global.display_height + (num_lines+2)*menu_item_height;
-menu_x_end = global.display_width/2;
-menu_y_end = global.gui_height - 0.75*menu_item_height;
+menu_x_start = global.DISPLAY_WIDTH/2;
+menu_y_start = global.DISPLAY_HEIGHT + (num_lines+2)*menu_item_height;
+menu_x_end = global.DISPLAY_WIDTH/2;
+menu_y_end = global.GUI_HEIGHT - 0.75*menu_item_height;
 menu_speed = 0.04;
 
 // How menu items are drawn
