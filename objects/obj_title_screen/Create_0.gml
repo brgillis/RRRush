@@ -21,11 +21,11 @@ function dismiss_title() {
 	// Find the sequence element ID of the title
 	if (title_seq_element_id==-1)
 	{
-		var _l_seq_ids = layer_get_all_elements(title_layer);
-		var _num_seq = array_length(_l_seq_ids);
-		for (var i = 0; i <_num_seq; ++i;)
+		var l_seq_ids = layer_get_all_elements(title_layer);
+		var num_seq = array_length(l_seq_ids);
+		for (var i = 0; i <num_seq; ++i;)
 		{
-			var _seq_element_id = _l_seq_ids[i];
+			var _seq_element_id = l_seq_ids[i];
 			var _seq = layer_sequence_get_sequence(_seq_element_id);
 			if (_seq.name=="seq_title")
 			{
