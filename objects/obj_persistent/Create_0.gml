@@ -38,12 +38,10 @@ part_type_sprite(glitter_collect, spr_particle_pink, false, false, true);
 part_type_speed(glitter_collect, 4, 8, -0.1, 0);
 
 part_type_sprite(glitter_gui, spr_particle_blue, false, false, true);
-part_system_automatic_draw(glitter_gui, false); // Need to manually draw on GUI layer
 part_type_speed(glitter_gui, 1, 12, -0.1, 0.1);
 
 part_type_speed(glitter_collect_flash, 1, 2, -0.1, 0.1);
 
-part_system_automatic_draw(glitter_gui_flash, false); // Need to manually draw on GUI layer
 part_type_speed(glitter_gui_flash, 1, 2, -0.1, 0.1);
 
 // Set properties common to basic glitter types

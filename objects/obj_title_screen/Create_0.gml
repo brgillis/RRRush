@@ -4,6 +4,7 @@ title_music = audio_play_sound(msc_title, 0, true);
 
 particle_system_between = part_system_create_layer("Effects_between", 0);
 particle_system_gui = part_system_create_layer("Effects_gui", 0);
+part_system_automatic_draw(particle_system_gui, false); // Need to manually draw on GUI layer
 
 title_dismiss_fspeed = 0.1;
 title_is_dismissed = false;

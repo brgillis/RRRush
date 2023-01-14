@@ -21,3 +21,4 @@ fade_in = true; // Note at start we're fading in, so we can set game state to ac
 
 particle_system_between = part_system_create_layer("Effects_between", 0);
 particle_system_gui = part_system_create_layer("Effects_gui", 0);
+part_system_automatic_draw(particle_system_gui, false); // Need to manually draw on GUI layer
