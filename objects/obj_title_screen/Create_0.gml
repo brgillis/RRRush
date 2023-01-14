@@ -12,6 +12,8 @@ title_seq_element_id = -1;
 
 title_layer = layer_get_id("GUI_assets");
 
+text_glitter = false;
+
 function dismiss_title() {
 	/// @description Dismisses the title, causing it to go offscreen
 	

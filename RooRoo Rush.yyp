@@ -113,6 +113,7 @@
     {"id":{"name":"spr_glitterishness","path":"sprites/spr_glitterishness/spr_glitterishness.yy",},"order":0,},
     {"id":{"name":"spr_button","path":"sprites/spr_button/spr_button.yy",},"order":3,},
     {"id":{"name":"scr_utility","path":"scripts/scr_utility/scr_utility.yy",},"order":3,},
+    {"id":{"name":"scr_burst","path":"scripts/scr_burst/scr_burst.yy",},"order":11,},
     {"id":{"name":"obj_gui_puff_frame","path":"objects/obj_gui_puff_frame/obj_gui_puff_frame.yy",},"order":2,},
     {"id":{"name":"spr_jump_effect_full","path":"sprites/spr_jump_effect_full/spr_jump_effect_full.yy",},"order":3,},
     {"id":{"name":"obj_controls_menu","path":"objects/obj_controls_menu/obj_controls_menu.yy",},"order":4,},
@@ -158,6 +159,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Buttons","folderPath":"folders/Objects/GUI/Buttons.yy","order":6,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Interactable","folderPath":"folders/Objects/Interactable.yy","order":13,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Flags","folderPath":"folders/Objects/Interactable/Flags.yy","order":1,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Puffs","folderPath":"folders/Objects/Interactable/Puffs.yy","order":3,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Menus","folderPath":"folders/Objects/Menus.yy","order":17,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Utility","folderPath":"folders/Objects/Utility.yy","order":16,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Paths","folderPath":"folders/Paths.yy","order":4,},
@@ -183,7 +185,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tile Sets","folderPath":"folders/Sprites/Tile Sets.yy","order":7,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tile Sets","folderPath":"folders/Tile Sets.yy","order":2,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy","order":8,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Puffs","folderPath":"folders/Objects/Interactable/Puffs.yy","order":3,},
   ],
   "AudioGroups": [
     {"resourceType":"GMAudioGroup","resourceVersion":"1.3","name":"audiogroup_default","targets":-1,},

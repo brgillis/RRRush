@@ -27,19 +27,8 @@ leftover_glitter = f_glitter - n_glitter;
 
 // Determine a random point on the glitter bar to spawn particles this frame
 var bar_max_x = min_x+(max_x-min_x)*obj_game.glitterishness/100;
-for(i=0; i<n_glitter; i++)
-{
-	var particle_x_source = random_range(min_x,
-	                                     bar_max_x);
-	var particle_y_source = random_range(min_y,
-	                                     max_y);
 
-	part_particles_create(obj_game.particle_system_gui,
-						  particle_x_source,
-						  particle_y_source,
-						  obj_persistent.glitter_gui,
-						  1);
-}
+burst_rect(obj_game.particle_system_gui, min_x, bar_max_x, min_y, max_y, obj_persistent.glitter_gui, n_glitter);
 					  
 // Draw particles on the GUI layer
 part_system_drawit(obj_game.particle_system_gui);
