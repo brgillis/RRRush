@@ -1,3 +1,3 @@
-/// @description Track particles to emit
+/// @description Track leftover glitter to emit
 
 leftover_glitter = 0;

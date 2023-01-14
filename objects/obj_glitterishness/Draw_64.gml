@@ -19,7 +19,7 @@ draw_healthbar(min_x, // x1
 			   false, // show background
 			   true); // show border
 			   
-var f_glitter = leftover_glitter + global.GLITTER_PARTICLE_RATE*power(obj_game.glitterishness/100, global.GLITTER_PARTICLE_POWER);
+var f_glitter = leftover_glitter + global.GLITTER_PARTICLE_RATE*power(obj_game.glitterishness/global.GLITTER_MAX, global.GLITTER_PARTICLE_POWER);
 
 var n_glitter = floor(f_glitter);
 
