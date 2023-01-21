@@ -1,5 +1,9 @@
 /// @description Options and appearance
 
+// Variables which need to be set by the function calling for creation of this menu
+old_game_state = -1;
+game_music = -1;
+
 /// Special handling for the pause menu - stop all animations
 
 // Stop instance animations and save image speed

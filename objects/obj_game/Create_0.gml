@@ -13,7 +13,6 @@ audio_sound_gain(game_music, 1, FADE_IN_TIME_MS);
 
 time_frames = 0;
 glitterpuffs_collected = 0;
-glitterishness = 0;
 level_complete = false;
 
 fade_in = true; // Note at start we're fading in, so we can set game state to active only once
@@ -23,12 +22,18 @@ particle_system_between = part_system_create_layer("Effects_between", 0);
 particle_system_gui = part_system_create_layer("Effects_gui", 0);
 part_system_automatic_draw(particle_system_gui, false); // Need to manually draw on GUI layer
 
+// Variables and functions related to glitterishness
+
 enum WeatherState {
 	RAINBOW = 0,
 	SUNNY = 1,
 	CLOUDY = 2,
 	RAINY = 3
 }
+
+glitterishness = 0;
+base_glitter_gain = global.DEFAULT_BASE_GLITTER_GAIN;
+glitter_gain_factor = global.DEFAULT_GLITTER_GAIN_FACTOR;
 
 function set_weather_state(_weather) {
 	/// @description Set the weather state, which controls the glitter gain rates for various actions

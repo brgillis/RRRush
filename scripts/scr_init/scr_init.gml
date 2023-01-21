@@ -100,11 +100,8 @@ global.GRAVITY_FALL_VACCEL = 1.4
 // Glitterishness
 global.GLITTER_MIN = 0
 global.GLITTER_MAX = 100
-global.GLITTER_DECAY_IDLE = 0.2
-global.GLITTER_DECAY_WALK = 0.05
-global.GLITTER_DECAY_RUN = 0.0
-global.GLITTER_OVERLOAD_FACTOR = 4
-global.GLITTER_GAIN_FACTOR = 1.0
+global.DEFAULT_BASE_GLITTER_GAIN = 1.0
+global.DEFAULT_GLITTER_GAIN_FACTOR = 1.0
 
 // Camera controls
 global.CAMERA_X_SPEED = 0.2;

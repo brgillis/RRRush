@@ -14,8 +14,11 @@ else if ((global.game_state == GameState.ACTIVE) or (global.game_state == GameSt
      or (global.game_state == GameState.OVERLOAD)) and (key_pressed_pause())
 {
 	var old_game_state = global.game_state;
+	audio_play_sound(snd_menu_select, 0, false);
+	audio_pause_sound(game_music);
 	instance_create_layer(0, 0, "Instances", obj_pause_menu);
 	obj_pause_menu.old_game_state = old_game_state;
+	obj_pause_menu.game_music = game_music;
 }
 
 // Update time in active and overload states
@@ -40,22 +43,27 @@ if  ((global.game_state == GameState.ACTIVE) or (global.game_state == GameState.
 	}
 	else
 	{
+		var _glitter_gain = base_glitter_gain;
 		// Glitter decay, depending on move and game state
 		if (global.game_state==GameState.OVERLOAD)
 		{
 			var _glitter_gain = glitter_gain_overload;
 		}
-		else if (obj_player.key_run)
-		{
-			var _glitter_gain = glitter_gain_run;
-		}
-		else if (obj_player.move_state == MoveState.IDLE)
-		{
-			var _glitter_gain = glitter_gain_idle;	
-		}
 		else
 		{
-			var _glitter_gain = glitter_gain_walk;
+			if (obj_player.key_run)
+			{
+				var _glitter_gain = glitter_gain_run;
+			}
+			else if (obj_player.move_state == MoveState.IDLE)
+			{
+				var _glitter_gain = glitter_gain_idle;	
+			}
+			else
+			{
+				var _glitter_gain = glitter_gain_walk;
+			}
+			_glitter_gain *= glitter_gain_factor;
 		}
 		
 		glitterishness += _glitter_gain;

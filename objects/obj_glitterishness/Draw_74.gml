@@ -30,5 +30,6 @@ var bar_max_x = min_x+(max_x-min_x)*obj_game.glitterishness/100;
 
 burst_rect(obj_game.particle_system_gui, min_x, bar_max_x, min_y, max_y, obj_persistent.glitter_gui, n_glitter);
 					  
-// Draw particles on the GUI layer
-part_system_drawit(obj_game.particle_system_gui);
+// Draw particles on the GUI layer if not paused
+if (global.game_state!=GameState.MENU)
+	part_system_drawit(obj_game.particle_system_gui);

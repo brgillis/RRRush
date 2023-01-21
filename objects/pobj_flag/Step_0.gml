@@ -69,16 +69,14 @@ if ((obj_persistent.best_time_frames <= 0) or (obj_game.time_frames < obj_persis
 	obj_persistent.update_best_time(obj_game.time_frames);
 		
 	// Update the display of the time and best time
-	obj_gui_time_frame.value_c1 = $A0A0FF;
-	obj_gui_time_frame.value_c2 = $7070FF;
-	obj_gui_time_frame.value_c3 = $4040FF;
-	obj_gui_time_frame.value_c4 = $7070FF;
-		
-	obj_gui_best_time_frame.value = get_time_string(obj_persistent.best_time_frames, true);
-	obj_gui_best_time_frame.value_c1 = $10FF10;
-	obj_gui_best_time_frame.value_c2 = $00FF00;
-	obj_gui_best_time_frame.value_c3 = $00D000;
-	obj_gui_best_time_frame.value_c4 = $00FF00;
+	obj_gui_time_frame.new_high_score = true;
+	obj_gui_best_time_frame.new_high_score = true;
+	obj_gui_best_time_frame.base_value = get_time_string(obj_persistent.best_time_frames, true);
+}
+else
+{
+	// Set the "old_best_time_frames" variable to the current best time, to signal that it hasn't changed
+	obj_persistent.old_best_time_frames = obj_persistent.best_time_frames;
 }
 	
 // Stop player control of movement

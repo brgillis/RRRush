@@ -23,7 +23,6 @@ case 5: case 6:
 case 0:
 	if (global.game_state==GameState.OVERLOAD)
 	{
-
 		// Play repeated sound and flash
 		audio_play_sound(snd_overload, 2, false, 0.5, 0, 0.5+0.5*_f_glitter);	
 		flash_time = 12;

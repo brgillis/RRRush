@@ -1,22 +1,39 @@
-/// @description Set value to be displayed
+/// @description Set value to be displayed and draw it
 
-value = get_time_string(obj_game.time_frames, true);
+// Get the label and value for this step
+get_value();
+get_value_color();
+get_label();
+get_label_color();
 
-// Set color of value
-if (!obj_game.level_complete)
-{
-	if ((obj_persistent.best_time_frames > 0) and (obj_game.time_frames <= obj_persistent.best_time_frames))
-	{
-		value_c1 = $C0C0FF;
-		value_c2 = $9090FF;
-		value_c3 = $6060FF;
-		value_c4 = $9090FF;
-	}
-	else
-	{
-		value_c1 = $6060FF;
-		value_c2 = $3030FF;
-		value_c3 = $0000FF;
-		value_c4 = $3030FF;
-	}
-}
+/// @description Draw GUI with timer
+
+draw_self();
+
+draw_set_valign(fa_middle);
+
+draw_set_halign(fa_left);
+draw_set_font(fnt_gui_time_label);
+draw_text_color(x - 98,
+                y + 2,
+				label,
+				label_c1,
+				label_c2,
+				label_c3,
+				label_c4,
+				1);
+				
+
+draw_set_halign(fa_right);
+draw_set_font(fnt_gui_time_number);
+draw_text_color(x + 95,
+                y + 4,
+				value,
+				value_c1,
+				value_c2,
+				value_c3,
+				value_c4,
+				1);
+
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);

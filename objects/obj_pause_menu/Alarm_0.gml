@@ -7,6 +7,7 @@ switch (menu_committed_y)
 {
 case PauseMenuOption.RESUME: case global.MENU_CANCEL: default:
 	set_game_state(old_game_state);
+	audio_resume_sound(game_music);
 	instance_destroy();
 	break;
 case PauseMenuOption.RESTART:
