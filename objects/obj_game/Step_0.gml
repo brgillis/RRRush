@@ -40,25 +40,25 @@ if  ((global.game_state == GameState.ACTIVE) or (global.game_state == GameState.
 	}
 	else
 	{
-		// Glitter decay, depending on move state
-		if (obj_player.key_run)
+		// Glitter decay, depending on move and game state
+		if (global.game_state==GameState.OVERLOAD)
 		{
-			var _glitter_decay = global.GLITTER_DECAY_RUN;
+			var _glitter_gain = glitter_gain_overload;
+		}
+		else if (obj_player.key_run)
+		{
+			var _glitter_gain = glitter_gain_run;
 		}
 		else if (obj_player.move_state == MoveState.IDLE)
 		{
-			var _glitter_decay = global.GLITTER_DECAY_IDLE;	
+			var _glitter_gain = glitter_gain_idle;	
 		}
 		else
 		{
-			var _glitter_decay = global.GLITTER_DECAY_WALK;
+			var _glitter_gain = glitter_gain_walk;
 		}
 		
-		// Apply overload modifier if in overload state
-		if global.game_state==GameState.OVERLOAD
-			_glitter_decay *= global.GLITTER_OVERLOAD_FACTOR;
-		
-		glitterishness -= _glitter_decay;
+		glitterishness += _glitter_gain;
 	}
 
 	// Clamp glitterishness within bounds, and handle overload
