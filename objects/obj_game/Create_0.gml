@@ -32,8 +32,12 @@ enum WeatherState {
 }
 
 glitterishness = 0;
+glitter_gain = 0;
 base_glitter_gain = global.DEFAULT_BASE_GLITTER_GAIN;
 glitter_gain_factor = global.DEFAULT_GLITTER_GAIN_FACTOR;
+glitter_gain = 0;
+glitter_gain_max_mag = 0.4;
+glitter_loss_max_mag = 0.8;
 
 function set_weather_state(_weather) {
 	/// @description Set the weather state, which controls the glitter gain rates for various actions

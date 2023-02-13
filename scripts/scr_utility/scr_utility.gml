@@ -105,24 +105,25 @@ function approach(_a, _b, _amount)
 }
 
 /// Move value towards another value by a given fractional amount of the distance between them
-function fapproach(_a, _b, _famount) 
+function fapproach(_a, _b, _frac, _min) 
 {
-	if (_a < _b)
-	{
-	    _a += _famount * (_b-_a);
-	}
-	else
-	{
-	    _a -= _famount * (_b-_a);
-	}
-	return _a;
+	var _amount = _frac * abs(_b-_a)
+	if (_amount<_min)
+		_amount = _min
+	
+	return approach(_a, _b, _amount);
 }
 
 // Sin waves a value between two values over a given time. 
-function wave(_from, _to, _duration, _offset) 
+function wave(_from, _to, _period, _offset=0) 
+{
+	return wave_position(_from, _to, (current_time * 0.001), _period, _offset);
+}
+
+function wave_position(_from, _to, _t, _period, _offset=0) 
 {
 	var a4 = (_to - _from) * 0.5;
-	return _from + a4 + sin((((current_time * 0.001) + _duration * _offset) / _duration) * (pi*2)) * a4; 
+	return _from + a4 + sin(((_t + _period * _offset) / _period) * (pi*2)) * a4; 
 }
 
 // Wraps a value between a minimum and a given wrap point
