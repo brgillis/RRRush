@@ -35,7 +35,6 @@ glitterishness = 0;
 glitter_gain = 0;
 base_glitter_gain = global.DEFAULT_BASE_GLITTER_GAIN;
 glitter_gain_factor = global.DEFAULT_GLITTER_GAIN_FACTOR;
-glitter_gain = 0;
 glitter_gain_max_mag = 0.4;
 glitter_loss_max_mag = 0.8;
 
@@ -72,3 +71,10 @@ function set_weather_state(_weather) {
 
 // Default to cloudy weather state
 set_weather_state(WeatherState.SUNNY);
+
+function gain_glitter(_amount = 1) {
+	/// @description Function to be called when gaining glitter through an in-game event such as picking
+	/// up a puff
+	glitterishness += _amount * glitter_gain_factor;;
+	obj_weather_rate.animate_glitter_gain(_amount);
+}

@@ -37,7 +37,14 @@ if (_fill_frac>=0)
 	var _c_frac = power(max(_fill_frac-2*O_WR_BAR_OSC_FX_MAG,0),1/4);
 else
 	var _c_frac = -power(-min(_fill_frac+2*O_WR_BAR_OSC_FX_MAG,0),1/4);
+
+// Make the diamond a more extreme color
 var _c_diamond = merge_color(O_WR_BAR_C_MIN, _c_max, _c_frac);
+
+// Shade the diamond white if flashing
+var _flash_frac = get_flash_frac(get_flash_mag(flash_time, true));
+if _flash_frac>0
+	_c_diamond = merge_color(_c_diamond, c_white, _flash_frac);
 
 var _bar_tip_x = x + O_WR_BAR_X_HSIZE * _display_position;
 
@@ -58,7 +65,7 @@ draw_set_color(O_WR_CLINE_C);
 draw_set_alpha(O_WR_CLINE_ALPHA);
 draw_line_width(x-O_WR_CLINE_WIDTH/2+1, y+O_WR_BAR_Y_MIN, x-O_WR_CLINE_WIDTH/2+1, y+O_WR_BAR_Y_MAX, O_WR_CLINE_WIDTH);
 
-// Centre diamond
+// Centre diamond - account for possible flashing of it
 draw_set_color(_c_diamond);
 draw_set_alpha(O_WR_DIAM_ALPHA);
 draw_primitive_begin(pr_trianglestrip);
@@ -67,6 +74,7 @@ draw_vertex(x,            y+O_WR_BAR_Y_MID - O_WR_DIAM_HHEIGHT);
 draw_vertex(x,            y+O_WR_BAR_Y_MID + O_WR_DIAM_HHEIGHT);
 draw_vertex(x + O_WR_DIAM_HWIDTH, y+O_WR_BAR_Y_MID);
 draw_primitive_end();
+shader_reset();
 
 // Centre diamond outline
 draw_set_color(O_WR_CLINE_C);
@@ -79,3 +87,7 @@ draw_line_width(x-1,            y+O_WR_BAR_Y_MID + O_WR_DIAM_HEIGHT/2-1, x - O_W
 // Reset drawing color and alpha
 draw_set_color(c_black);
 draw_set_alpha(1);
+
+// Decrement flash time
+if (flash_time > 0)
+	flash_time--;

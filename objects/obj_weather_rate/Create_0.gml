@@ -29,5 +29,15 @@
 #macro O_WR_DIAM_HWIDTH (O_WR_DIAM_WIDTH/2)
 #macro O_WR_DIAM_ALPHA 1.0
 
+#macro O_WR_PART_MULT 3
+
 cur_position = 0;
 target_position = 0;
+flash_time = 0;
+
+// Define a function that can be called to animate on glitter gain
+function animate_glitter_gain(_amount = 1) {
+	part_particles_create(obj_game.particle_system_gui, x, y+O_WR_BAR_Y_MID,
+	                      obj_persistent.glitter_gui, _amount*O_WR_PART_MULT);
+	flash_time = 8;
+}

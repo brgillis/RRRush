@@ -2,7 +2,7 @@
 
 // Increment counter and increase glitterishness
 obj_game.glitterpuffs_collected += 1;
-obj_game.glitterishness += other.glitterishness * obj_game.glitter_gain_factor;
+obj_game.gain_glitter(other.glitterishness);
 
 // Burst glitter particles
 
